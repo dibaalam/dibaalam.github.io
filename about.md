@@ -1,8 +1,14 @@
 ---
 layout: page
-# title: About
+title : About
 permalink: /about/
 ---
+
+This is normal text.
+
+<span class="typewriter">This is my special typewriter text!</span>
+
+<div class="stamp-red">STAMP!</div>
 
 This is the base Jekyll theme. You can find out more info about customizing your Jekyll theme, as well as basic Jekyll usage documentation at [jekyllrb.com](https://jekyllrb.com/)
 
