@@ -42,7 +42,7 @@ h1, h2, h3 {
 
 // Structural layout
 .wrapper {
-  max-width: 90% !important; // Forces the site to use the full screen width
+  max-width: 90% !important; 
   margin-right: auto;
   margin-left: auto;
 }
@@ -53,8 +53,7 @@ h1, h2, h3 {
   top: 0;
   width: 100%;
   z-index: 999;
-  background-color: #ffffff; 
-  border-bottom: 2px solid $passport-blue; // Border line, may remove
+  background-color: #d0e7ff; 
 }
 
 // Header Flexbox (Name Left, Tabs Right)
@@ -62,13 +61,13 @@ h1, h2, h3 {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  min-height: 70px;
+  min-height: 60px;
 }
 
 // Content Offset
 .page-content {
-  padding-top: 150px; 
-  padding-left: 80px;
+  padding-top: 100px; 
+  width: 100%;
 }
 
 .site-nav {
@@ -91,4 +90,66 @@ h1, h2, h3 {
     border-radius: 4px;
     background-color: #f0f4f8;
   }
+}
+
+// PAGES ---------------------------------------------------------------------------------
+
+body.sky-theme {
+  background-color: #d0e7ff !important;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+.home-section {
+  min-height: 100vh;
+  width: 100%;
+  box-sizing: border-box;
+  
+  position: relative;
+  padding: 10px 5% 10px 5%; 
+  justify-content: flex-start;
+
+  display: flex;
+  flex-direction: column;
+  background-color: #d0e7ff;
+}
+
+.passport-card {
+  width: 100%;
+  max-width: 1000px;
+  max-height: 70vh;
+  aspect-ratio: 1.6 / 1;
+  
+  // Styling
+  background-color: #ffffff;
+  border: 8px solid #a47c03; // Your signature yellow border
+  border-radius: 12px;
+  box-shadow: 12px 12px 0px rgba(0, 0, 0, 0.1);
+
+  display: flex;
+  flex-direction: row; 
+  padding: 0;
+  overflow: hidden; 
+  margin: 20px auto;
+}
+
+.passport-left {
+  flex: 1;
+  background-color: #fcfcfc;
+  border-right: 2px solid #eee;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.passport-right {
+  // NOTE: Will need to fix viewport sizing
+  flex: 1;
+  padding: 40px 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
