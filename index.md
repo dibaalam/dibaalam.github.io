@@ -92,7 +92,7 @@ destinations:
   </div>
 </section>
 
-<section class="contact-section" id="contact">
+<section class="home-section" id="contact">
   <div class="section-header">
     <h2 class="hanken-text">Arrivals</h2>
     <hr class="header-line">
@@ -108,3 +108,24 @@ destinations:
     <div class="footer-right">LinkedIn / GitHub</div>
   </footer>
 </section>
+
+<style>
+  .passport-actions {
+    margin-top: 15px;
+    display: flex;
+    gap: 20px;
+  }
+  .btn-stamp {
+    background-color: transparent;
+    border: 2px solid #333;
+    padding: 10px 20px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: 'JetBrains Mono', monospace;
+      &:hover { 
+      background-color: #f1d4d4;
+    }
+  }
+</style>

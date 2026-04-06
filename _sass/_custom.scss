@@ -115,23 +115,20 @@ body.sky-theme {
   background-color: #d0e7ff;
 }
 
-.contact-section {
-  min-height: calc(100vh - 150px);
-  width: 100%;
+.home-section:first-of-type {
+  padding-top: 70px; // Extra padding for the first section to account for the fixed header
   box-sizing: border-box;
-  
-  position: relative;
-  padding: 10px 5% 10px 5%; 
-  justify-content: flex-start;
+}
 
-  display: flex;
-  flex-direction: column;
-  background-color: #d0e7ff;
+.home-section:last-of-type {
+  min-height: calc(100vh - 150px); // Extra padding for the last section to prevent content from being cut off
+  box-sizing: border-box;
 }
 
 .passport-card {
   width: 100%;
-  max-width: 1000px;
+  // max-width: 1000px;
+  max-width: 110vh;
   max-height: 70vh;
   aspect-ratio: 1.6 / 1;
   

@@ -27,24 +27,6 @@
     {%- endif -%}
   </div>
 
-  <!-- <div class="flight-container">
-    <div class="sky-line">
-      <div id="solid-path"></div>
-      <div class="dashed-path"></div>
-      <div class="waypoints-container">
-        {%- for item in page.destinations -%}
-          <div class="waypoint"></div>
-        {%- endfor -%}
-      </div>
-      <div id="plane-indicator">✈️</div>
-    </div>
-    <ul class="destinations">
-      {%- for item in page.destinations -%}
-        <li><a href="#{{ item.id }}">{{ item.name }}</a></li>
-      {%- endfor -%}
-    </ul>
-  </div> -->
-
   <div class="flight-container">
     <div class="destinations-wrapper">
       <div class="sky-line">
@@ -153,7 +135,7 @@
     padding: 0;
   }
 
-  .destinations a {
+  .destinations-list a {
     text-decoration: none;
     font-size: 12px;
     font-weight: bold;
