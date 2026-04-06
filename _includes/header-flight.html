@@ -1,0 +1,227 @@
+<header class="site-header frozen-header" role="banner">
+  <div class="wrapper">
+    {%- assign default_paths = site.pages | map: "path" -%}
+    {%- assign page_paths = site.header_pages | default: default_paths -%}
+    <a class="site-title" rel="author" href="{{ "/" | relative_url }}">{{ site.title | escape }}</a>
+
+    {%- if page_paths -%}
+      <nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger">
+          {%- for path in page_paths -%}
+            {%- assign my_page = site.pages | where: "path", path | first -%}
+            {%- if my_page.title -%}
+            <a class="page-link" href="{{ my_page.url | relative_url }}">{{ my_page.title | escape }}</a>
+            {%- endif -%}
+          {%- endfor -%}
+        </div>
+      </nav>
+    {%- endif -%}
+  </div>
+
+  <!-- <div class="flight-container">
+    <div class="sky-line">
+      <div id="solid-path"></div>
+      <div class="dashed-path"></div>
+      <div class="waypoints-container">
+        {%- for item in page.destinations -%}
+          <div class="waypoint"></div>
+        {%- endfor -%}
+      </div>
+      <div id="plane-indicator">✈️</div>
+    </div>
+    <ul class="destinations">
+      {%- for item in page.destinations -%}
+        <li><a href="#{{ item.id }}">{{ item.name }}</a></li>
+      {%- endfor -%}
+    </ul>
+  </div> -->
+
+  <div class="flight-container">
+    <div class="destinations-wrapper">
+      <div class="sky-line">
+        <div id="solid-path"></div>
+        <div class="dashed-path"></div>
+        <div id="plane-indicator">✈️</div>
+      </div>
+
+      <ul class="destinations-list">
+        {%- for item in page.destinations -%}
+          <li class="destination-item">
+            <div class="waypoint"></div>
+            <a class="dest-link" href="#{{ item.id }}">{{ item.name }}</a>
+          </li>
+        {%- endfor -%}
+      </ul>
+    </div>
+  </div>
+
+</header>
+
+<style>
+  section[id] {
+    scroll-margin-top: 120px;
+  }
+
+  /* Frozen joint header unit */
+  /* Regular header */
+  .frozen-header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 999;
+    background-color: #d0e7ff; 
+    border-bottom: none !important;
+  }
+
+  /* Flight navigation container */
+  /* Transparency not working */
+  .flight-container { 
+    width: 100%;
+    background-color: rgba(#d0e7ff, 0.5);
+    padding-bottom: 10px;
+  }
+
+  .waypoints-container {
+    position: absolute;
+    top: -4px; /* Centers the 10px circle on the 2px line */
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    pointer-events: none; /* So they don't interfere with clicking links */
+    z-index: 2; /* Sits above the dashed line, but below the plane */
+  }
+
+   .waypoint {
+    width: 12px;
+    height: 12px;
+    background-color: #ff4d4d;
+    border-radius: 50%;
+    margin-bottom: 10px;
+  }
+
+  .sky-line {
+    position: absolute;
+    top: 5px;
+    left: 0;
+    right: 0; 
+    height: 2px;
+    z-index: 3;
+  }
+
+  .dashed-path {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    border-top: 2px dashed #ff4d4d;
+    z-index: 1;
+  }
+
+  #solid-path {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0%;
+    border-top: 2px solid #ff4d4d;
+    z-index: 2;
+  }
+
+  #plane-indicator {
+    position: absolute;
+    top: -14px;
+    left: 0%;
+    font-size: 20px;
+    transition: left 0.1s linear;
+    z-index: 999;
+    transform: translateX(-50%) rotate(45deg);
+  }
+
+  .destinations {
+    display: flex;
+    justify-content: space-between;
+    list-style: none;
+    margin: 5px 5% 0;
+    padding: 0;
+  }
+
+  .destinations a {
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: bold;
+    font-family: 'JetBrains Mono', monospace;
+    color: #333;
+    text-transform: uppercase;
+  }
+
+  .destinations-wrapper {
+    position: relative;
+    width: 89%; /* Controls the overall shrink toward center */
+    margin: 0 auto;
+  }
+
+  .destinations-list {
+    display: flex;
+    justify-content: space-between;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    position: relative;
+    z-index: 2;
+  }
+
+  .destination-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Locks Dot and Text to the same center-line */
+    width: 0; /* Forces the flex-engine to use the center of the text as the point */
+    white-space: nowrap;
+  }
+
+
+
+
+
+
+
+</style>
+
+
+
+
+
+
+<script>
+  (function() {
+    function updateFlight() {
+      const winScroll = window.pageYOffset || document.documentElement.scrollTop;
+      const height = document.documentElement.scrollHeight - window.innerHeight;
+      const scrolled = (winScroll / height) * 100;
+      
+      const plane = document.getElementById("plane-indicator");
+      const solidLine = document.getElementById("solid-path");
+      
+      if (plane && solidLine) {
+        const position = Math.min(Math.max(scrolled, 0), 100) + "%";
+        
+        // Move the plane
+        plane.style.left = position;
+        
+        // Grow the solid line
+        solidLine.style.width = position;
+      }
+    }
+
+    window.addEventListener('scroll', updateFlight);
+    window.addEventListener('resize', updateFlight);
+    window.addEventListener('load', updateFlight);
+  })();
+</script>

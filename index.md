@@ -1,7 +1,14 @@
 ---
 layout: home-experience
+hide_footer: true
 title: About
 permalink: /
+destinations:
+  - { name: "Home", id: "hero" }
+  - { name: "Experience", id: "flight-path" }
+  - { name: "Projects", id: "destinations" }
+  - { name: "Blogs", id: "travel-logs" }
+  - { name: "Contact", id: "contact" }
 ---
 
 <section class="home-section" id="hero">
@@ -85,7 +92,7 @@ permalink: /
   </div>
 </section>
 
-<section class="home-section" id="contact">
+<section class="contact-section" id="contact">
   <div class="section-header">
     <h2 class="hanken-text">Arrivals</h2>
     <hr class="header-line">

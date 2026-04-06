@@ -5,7 +5,11 @@
 
   <body>
 
-    {%- include header.html -%}
+    {% if page.destinations %}
+      {% include header-flight.html %}
+    {% else %}
+      {% include header.html %}
+    {% endif %}
 
     <main class="page-content" aria-label="Content">
       <div class="wrapper">
@@ -13,7 +17,9 @@
       </div>
     </main>
 
-    {%- include footer.html -%}
+    {% unless page.hide_footer %}
+      {% include footer.html %}
+    {% endunless %}
 
   </body>
 

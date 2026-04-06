@@ -115,6 +115,20 @@ body.sky-theme {
   background-color: #d0e7ff;
 }
 
+.contact-section {
+  min-height: calc(100vh - 150px);
+  width: 100%;
+  box-sizing: border-box;
+  
+  position: relative;
+  padding: 10px 5% 10px 5%; 
+  justify-content: flex-start;
+
+  display: flex;
+  flex-direction: column;
+  background-color: #d0e7ff;
+}
+
 .passport-card {
   width: 100%;
   max-width: 1000px;
@@ -152,4 +166,18 @@ body.sky-theme {
   display: flex;
   flex-direction: column;
   justify-content: center;
+}
+
+.frozen-nav-stack {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  pointer-events: none; /* Allows clicks to pass through the empty space */
+}
+
+/* Re-enable clicks for the actual buttons and links */
+.frozen-nav-stack header, 
+.flight-nav-container {
+  pointer-events: auto;
 }
