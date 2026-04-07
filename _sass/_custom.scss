@@ -73,6 +73,7 @@ h1, h2, h3 {
 .site-nav {
   margin-left: auto; // Push the navigation to the right
   float: none !important;
+  z-index: 1001; // Ensure it stays above the header background
 }
 
 .trigger {
@@ -118,6 +119,9 @@ body.sky-theme {
 .home-section:first-of-type {
   padding-top: 70px; // Extra padding for the first section to account for the fixed header
   box-sizing: border-box;
+  @media (max-width: 900px) {
+    padding-top: 30px; // Reduce padding on mobile to save space
+  }
 }
 
 .home-section:last-of-type {
@@ -125,45 +129,228 @@ body.sky-theme {
   box-sizing: border-box;
 }
 
-.passport-card {
-  width: 100%;
-  // max-width: 1000px;
-  max-width: 110vh;
-  max-height: 70vh;
-  aspect-ratio: 1.6 / 1;
-  
-  // Styling
-  background-color: #ffffff;
-  border: 8px solid #a47c03; // Your signature yellow border
-  border-radius: 12px;
-  box-shadow: 12px 12px 0px rgba(0, 0, 0, 0.1);
+// PASSPORT CARD ---------------------------------------------------------------------------------
 
-  display: flex;
-  flex-direction: row; 
-  padding: 0;
-  overflow: hidden; 
-  margin: 20px auto;
+.passport-card {
+  width: 95%;
+  max-width: 900px;
+  margin: 40px auto;
+  background-color: #fff;
+  border: 6px solid #a47c03; // Thinner for a more modern look
+  border-radius: 16px;
+  box-shadow: 12px 12px 0px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  font-family: 'JetBrains Mono', monospace;
 }
 
+.passport-inner {
+  display: flex;
+  flex-direction: row;
+  min-height: 450px;
+
+  @media (max-width: 900px) {
+    flex-direction: column;
+  }
+}
+
+// Left Section: The "ID" side
 .passport-left {
-  flex: 1;
-  background-color: #fcfcfc;
-  border-right: 2px solid #eee;
-  padding: 40px;
+  flex: 0 0 40%;
+  background-color: #f9f9f9;
+  border-right: 1px dashed #ccc;
+  padding: 40px 40px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
+  justify-content: space-between;
+
+  @media (max-width: 900px) {
+    order: 2; /* Moves the photo BELOW the name on mobile */
+    border-right: none;
+    border-top: 1px dashed #ccc;
+    flex: none;
+    padding: 20px;
+  }
+}
+
+.profile-photo-area {
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+  aspect-ratio: 1 / 1.2; 
+  background: #f0f0f0;
+  // border: 2px solid #333;
+  display: flex;
+  overflow: hidden; /* Essential: clips the sheen and the zoom to the box */
+  cursor: pointer;
+
+  // 1. THE IMAGE
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+    z-index: 1;
+  }
+
+  // 2. THE HOLOGRAPHIC SHEEN
+  .sheen-layer {
+    position: absolute;
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 100%;
+    /* We use a multi-stop gradient to mimic light hitting plastic */
+    background: linear-gradient(
+      115deg,
+      transparent 10%,
+      rgba(255, 255, 255, 0.15) 25%,
+      rgba(0, 255, 255, 0.1) 45%,
+      rgba(255, 0, 255, 0.1) 55%,
+      rgba(255, 255, 255, 0.15) 75%,
+      transparent 90%
+    );
+    background-size: 250% 250%;
+    background-position: 150% 150%;
+    transition: background-position 0.9s ease, opacity 0.5s ease;
+    opacity: 0;
+    z-index: 5;
+    pointer-events: none;
+  }
+
+  // 3. THE INTERACTION
+  &:hover {
+    .sheen-layer {
+      opacity: 1;
+      background-position: 0% 0%; 
+    }
+  }
+
+  @media (max-width: 900px) {
+    max-width: 220px; /* Adjusted for better mobile scaling */
+  }
+}
+
+.field-group {
+  display: flex;
+  flex-direction: column;
+  gap: 20px; 
+  margin-bottom: clamp(15px, 3vh, 25px); /* Fluid vertical spacing */
+  width: 100%;
+
+  @media (max-width: 900px) {
+    align-items: center; /* Centers the label+text combo for mobile view */
+    text-align: center;
+  }
+}
+
+.field-label {
+  font-size: 9px;
+  color: #b59229c7;
+  letter-spacing: 1px;
+  font-weight: bold;
+  display: block;
+  margin-bottom: -5px; /* Pulls the label closer to the header */
+  opacity: 0.7;
+  &::before {
+    content: "> ";
+    opacity: 0.5;
+  }
+}
+
+.passport-id-code {
+  font-size: 10px;
+  color: #888;
+  letter-spacing: 2px;
+  margin-top: 20px;
+  text-align: center;
 }
 
 .passport-right {
-  // NOTE: Will need to fix viewport sizing
   flex: 1;
-  padding: 40px 60px;
+  padding: 40px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
+
+  @media (max-width: 900px) {
+    order: 1; 
+    padding: 30px 20px;
+  }
 }
+
+.passport-name {
+  margin: 0;
+  font-size: clamp(2rem, 5vw, 3.5rem); // Scales based on screen size
+  text-transform: uppercase;
+  color: #222;
+  line-height: 1;
+  @media (max-width: 900px) {
+    font-size: clamp(3rem, 4vw, 2.5rem);
+    text-align: center; 
+  }
+}
+
+.passport-subtitle {
+  font-size: 14px;
+  color: #a47c03;
+  margin-bottom: 0px;
+  font-weight: bold;
+  @media (max-width: 900px) {
+    text-align: center; 
+  }
+}
+
+.passport-description-box {
+  background-color: rgba(245, 245, 245, 0.7);
+  border-left: 3px solid #333;
+  padding: 15px;
+  font-size: 15px;
+  line-height: 1.6;
+  margin-bottom: 15px;
+  position: relative;
+  text-align: left;
+}
+
+.passport-description-box p{
+  margin: 0;
+  padding: 0;
+}
+
+.passport-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: left;
+  @media (max-width: 900px) {
+    justify-content: center;
+  }
+}
+
+.btn-stamp {
+  background: transparent;
+  border: 2px solid #333;
+  padding: 8px 20px;
+  font-size: 13px;
+  font-weight: 800;
+  cursor: pointer;
+  position: relative;
+  transition: transform 0.1s ease;
+  font-family: 'JetBrains Mono', monospace;
+
+  &:hover {
+    background-color: rgba(0, 51, 153, 0.05); // Very faint blue tint
+    border: 2px solid #003399; // "Security Blue" ink color
+    color: #003399;
+    box-shadow: 2px 2px 0px rgba(0, 51, 153, 0.2);
+  }
+}
+
+
+
+
+
+// NAVIGATION STACK ---------------------------------------------------------------------------------
 
 .frozen-nav-stack {
   position: fixed;

@@ -14,23 +14,36 @@ destinations:
 <section class="home-section" id="hero">
 
   <div class="passport-card">
-    <div class="passport-left">
-      <div class="profile-photo-area">
-        <span class="typewriter">IMAGE OF ME</span>
+    <div class="passport-inner">
+      <div class="passport-left">
+        <div class="profile-photo-area">
+          <div class="sheen-layer"></div> <img src="assets\images\id_headshot.jpg" alt="Your Name">
+        </div>
+        <div class="passport-id-code">P<CAN<<<<<<ALAM<<DIBA<<<<<<<<<<<<<<<<2026<<<</div>
       </div>
-    </div>
-    <div class="passport-right">
-      <h1 class="passport-name" style="font-size: 60px;">Full Name</h1>
-      <p class="passport-subtitle typewriter">Machine Intelligence, Robotics, and Systems Design Engineer</p>
-      
-      <div class="passport-description-box">
-        <p>Description of me goes here. Focus on EngSci, Robotics, and leadership.</p>
-      </div>
+      <div class="passport-right">
+        <div class="field-group">
+    <span class="field-label">NAME // SURNAME</span>
+    <h1 class="passport-name">Diba Alam</h1>
+  </div>
 
-      <div class="passport-actions">
-        <button class="btn-stamp">RESUME</button>
-        <button class="btn-stamp">BLOG</button>
-        <button class="btn-stamp">CONTACT ME</button>
+  <div class="field-group">
+    <span class="field-label">SPECIALIZATION // CORE_SYSTEMS</span>
+    <p class="passport-subtitle">Machine Intelligence, Robotics, & Systems Design</p>
+  </div>
+  
+  <div class="field-group">
+    <span class="field-label">BIOMETRIC_DATA // BIO</span>
+    <div class="passport-description-box">
+      <p>Engineering Science student at the University of Toronto specializing in autonomy. Focused on bridging the gap between intelligent algorithms and physical robotic systems. Experience in space robotics applications.</p>
+    </div>
+  </div>
+
+  <div class="passport-actions">
+    <button class="btn-stamp">RESUME</button>
+    <button class="btn-stamp">BLOG</button>
+    <button class="btn-stamp">CONTACT</button>
+  </div>
       </div>
     </div>
   </div>
@@ -108,24 +121,3 @@ destinations:
     <div class="footer-right">LinkedIn / GitHub</div>
   </footer>
 </section>
-
-<style>
-  .passport-actions {
-    margin-top: 15px;
-    display: flex;
-    gap: 20px;
-  }
-  .btn-stamp {
-    background-color: transparent;
-    border: 2px solid #333;
-    padding: 10px 20px;
-    font-size: 14px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    font-family: 'JetBrains Mono', monospace;
-      &:hover { 
-      background-color: #f1d4d4;
-    }
-  }
-</style>
