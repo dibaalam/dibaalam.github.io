@@ -12,9 +12,13 @@
     {% endif %}
 
     <main class="page-content" aria-label="Content">
-      <div class="wrapper">
+      {% if page.full_width %}
         {{ content }}
-      </div>
+      {% else %}
+        <div class="wrapper">
+          {{ content }}
+        </div>
+      {% endif %}
     </main>
 
     {% unless page.hide_footer %}
