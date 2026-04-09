@@ -22,30 +22,27 @@ destinations:
           <div class="sheen-layer"></div> <img src="assets\images\id_headshot.jpg" alt="Your Name">
         </div>
         <div class="passport-id-code">P<CAN<<<<<<ALAM<<DIBA<<<<<<<<<<<<<<<<2026<<<</div>
-      </div>
-      <div class="passport-right">
+        </div>
+        <div class="passport-right">
+          <div class="field-group">
+          <span class="field-label">NAME // SURNAME</span>
+          <h1 class="passport-name">Diba Alam</h1>
+        </div>
         <div class="field-group">
-    <span class="field-label">NAME // SURNAME</span>
-    <h1 class="passport-name">Diba Alam</h1>
-  </div>
-
-  <div class="field-group">
-    <span class="field-label">SPECIALIZATION // CORE_SYSTEMS</span>
-    <p class="passport-subtitle">Machine Intelligence, Robotics, & Systems Design</p>
-  </div>
-  
-  <div class="field-group">
-    <span class="field-label">BIOMETRIC_DATA // BIO</span>
-    <div class="passport-description-box">
-      <p>Engineering Science student at the University of Toronto specializing in autonomy. Focused on bridging the gap between intelligent algorithms and physical robotic systems. Experience in space robotics applications.</p>
-    </div>
-  </div>
-
-  <div class="passport-actions">
-    <button class="btn-stamp">RESUME</button>
-    <button class="btn-stamp">BLOG</button>
-    <button class="btn-stamp">CONTACT</button>
-  </div>
+          <span class="field-label">SPECIALIZATION // CORE_SYSTEMS</span>
+          <p class="passport-subtitle">Machine Intelligence, Robotics, & Systems Design</p>
+        </div>      
+        <div class="field-group">
+          <span class="field-label">BIOMETRIC_DATA // BIO</span>
+          <div class="passport-description-box">
+            <p>Engineering Science student at the University of Toronto specializing in autonomy. Focused on bridging the gap between intelligent algorithms and physical robotic systems. Experience in space robotics applications.</p>
+          </div>
+        </div>
+        <div class="passport-actions">
+          <button class="btn-stamp">RESUME</button>
+          <button class="btn-stamp">BLOG</button>
+          <button class="btn-stamp">CONTACT</button>
+        </div>
       </div>
     </div>
   </div>
@@ -53,30 +50,30 @@ destinations:
 
 <div class="wrapper">
   <section class="home-section" id="flight-path">
-    <div class="section-header">
-      <h2 class="hanken-text">Flight Path</h2>
-      <hr class="header-line">
-      <span class="section-label">Experience</span>
+    <div class="home-header-container">
+      <div class="header-wrapper">
+        <h1 class="header-title">Flight Path</h1>
+          <div class="header-line"></div>
+        <span class="header-caption">Experience</span>
+      </div>
     </div>
 
     <div class="description-text-box">
       <p>Overview of my professional trajectory from UofT to MDA Space.</p>
     </div>
+    <p>Placeholder for Solari Board (Developing)</p>
 
-    <div class="solari-board-container">
-      <div class="solari-placeholder">
-        [SOLARI BOARD INTERFACE LOADING...]
-      </div>
-    </div>
   </section>
 </div>
 
 <div class="wrapper">
   <section class="home-section" id="destinations">
-    <div class="section-header">
-      <h2 class="hanken-text">Destinations</h2>
-      <hr class="header-line">
-      <span class="section-label">Projects</span>
+    <div class="home-header-container">
+      <div class="header-wrapper">
+        <h1 class="header-title">Destinations</h1>
+          <div class="header-line"></div>
+        <span class="header-caption">Projects</span>
+      </div>
     </div>
 
     <div class="description-text-box">
@@ -94,10 +91,12 @@ destinations:
 
 <div class="wrapper">
   <section class="home-section" id="travel-logs">
-    <div class="section-header">
-      <h2 class="hanken-text">Travel Logs</h2>
-      <hr class="header-line">
-      <span class="section-label">Blogs</span>
+    <div class="home-header-container">
+      <div class="header-wrapper">
+        <h1 class="header-title">Travel Logs</h1>
+          <div class="header-line"></div>
+        <span class="header-caption">Blogs</span>
+      </div>
     </div>
 
     <div class="description-text-box">
@@ -115,10 +114,12 @@ destinations:
 
 <div class="wrapper">
   <section class="home-section" id="contact">
-    <div class="section-header">
-      <h2 class="hanken-text">Arrivals</h2>
-      <hr class="header-line">
-      <span class="section-label">Contact</span>
+    <div class="home-header-container">
+      <div class="header-wrapper">
+        <h1 class="header-title">Arrivals</h1>
+          <div class="header-line"></div>
+        <span class="header-caption">Contact</span>
+      </div>
     </div>
 
     <div class="contact-terminal-area">
