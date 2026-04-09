@@ -22,22 +22,24 @@ destinations:
           <div class="sheen-layer"></div> <img src="assets\images\id_headshot.jpg" alt="Your Name">
         </div>
         <div class="passport-id-code">P<CAN<<<<<<ALAM<<DIBA<<<<<<<<<<<<<<<<2026<<<</div>
-        </div>
-        <div class="passport-right">
+      </div>
+      <div class="passport-right">
+        <div class="passport-column">
           <div class="field-group">
-          <span class="field-label">NAME // SURNAME</span>
-          <h1 class="passport-name">Diba Alam</h1>
-        </div>
-        <div class="field-group">
-          <span class="field-label">SPECIALIZATION // CORE_SYSTEMS</span>
-          <p class="passport-subtitle">Machine Intelligence, Robotics, & Systems Design</p>
-        </div>      
-        <div class="field-group">
-          <span class="field-label">BIOMETRIC_DATA // BIO</span>
-          <div class="passport-description-box">
-            <p>Engineering Science student at the University of Toronto specializing in autonomy. Focused on bridging the gap between intelligent algorithms and physical robotic systems. Experience in space robotics applications.</p>
+            <span class="field-label">NAME // SURNAME</span>
+            <h1 class="passport-name">Diba Alam</h1>
           </div>
+          <div class="field-group">
+            <span class="field-label">SPECIALIZATION // CORE_SYSTEMS</span>
+            <p class="passport-subtitle">Machine Intelligence, Robotics, & Systems Design</p>
+          </div>      
         </div>
+          <div class="field-group">
+            <span class="field-label">BIOMETRIC_DATA // BIO</span>
+            <div class="passport-description-box">
+              <p>Engineering Science student at the University of Toronto specializing in autonomy. Focused on bridging the gap between intelligent algorithms and physical robotic systems. Experience in space robotics applications.</p>
+            </div>
+          </div>
         <div class="passport-actions">
           <button class="btn-stamp">RESUME</button>
           <button class="btn-stamp">BLOG</button>

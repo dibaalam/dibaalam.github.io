@@ -117,7 +117,7 @@ body.sky-theme {
   padding-top: 70px; // Extra padding for the first section to account for the fixed header
   box-sizing: border-box;
   @media (max-width: 900px) {
-    padding-top: 30px; // Reduce padding on mobile to save space
+    padding-top: 0px; // Reduce padding on mobile to save space
   }
 }
 
@@ -290,6 +290,16 @@ body.sky-theme {
   }
 }
 
+.passport-column {
+  @media (max-width: 900px) {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    gap: 20px;
+    width: 100%;
+  }
+}
+
 .passport-id-code {
   font-size: 10px;
   color: #888;
@@ -331,7 +341,7 @@ body.sky-theme {
   margin-bottom: 0px;
   font-weight: bold;
   @media (max-width: 900px) {
-    text-align: center; 
+    text-align: left; 
   }
 }
 
