@@ -10,9 +10,10 @@
   align-items: stretch;
   gap: 40px;
   margin-bottom: 20px;
+  height: clamp(80px, 23vh, 220px);
 }
 
-.luggage-box {
+.blog-image {
     // fixed square ratio but still flexible to the height of the boarding pass
     aspect-ratio: 1 / 1;
     // border thickness
@@ -36,6 +37,7 @@
   color: #333;
   box-shadow: 5px 5px 0px rgba(0,0,0,0.05);
   min-width: 0;
+  min-height: 0;
   transition: transform 0.2s ease;
 
   &, &:hover, &:visited, &:active {
@@ -58,7 +60,7 @@
   /* Header Styles */
   .series-banner {
         display: grid; 
-        grid-template-columns: 75% 25%; /* Hard-coded ratio */
+        grid-template-columns: 78% 22%; /* Hard-coded ratio */
         width: 100%;
         font-weight: bold;
         text-transform: uppercase;
@@ -73,13 +75,22 @@
     
     .banner-right {
       text-align: center;
+      display: block;
+      text-align: center;
+      font-weight: 800;
+      letter-spacing: 1px;
+      
+      // The 'Magic' resizing line:
+      // (Minimum size, Preferred size based on viewport/container, Maximum size)
+      font-size: clamp(0.7rem, 2vw, 1rem);
+      text-transform: uppercase;
     }
   }
 
   /* Body Styles */
   .pass-body {
     display: grid; 
-        grid-template-columns: 75% 25%; /* Hard-coded ratio */
+        grid-template-columns: 78% 22%; /* Hard-coded ratio */
         width: 100%;
         box-sizing: border-box;
         overflow: hidden;
@@ -112,15 +123,6 @@
             &:nth-child(2) { text-align: center; }
             &:nth-child(3) { text-align: right; }
         }
-      }
-
-      .airport-codes {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        font-weight: 800;
-        font-size: 1.3rem;
-        .plane-icon { font-size: 1rem; transform: rotate(45deg); }
       }
 
       .barcode-area {
@@ -158,13 +160,38 @@
 
 .airport-codes {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  font-weight: 800;
-  font-size: 1.2rem;
-  
+  gap: 8px;
+  width: 100%;
+  margin-top: 10px;
+
+  .code {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 800;
+    font-size: 1.2rem;
+    flex-shrink: 0; 
+    letter-spacing: 1px;
+  }
+
+  .flight-path {
+    flex-grow: 1; /* These lines act like springs */
+    height: 0;
+    border-bottom: 2px dashed rgba(0,0,0,0.15);
+    align-self: center;
+    margin-bottom: 2px;
+  }
+
   .plane-icon {
     font-size: 0.9rem;
-    transform: rotate(45deg);
+    flex-shrink: 0;
+    opacity: 0.6;
+    /* If the emoji looks weird, rotate it */
+    transform: rotate(90deg); 
+  }
+}
+
+@media (max-width: 800px) {
+  .blog-image {
+    display: none;       /* Optionally hide remarks on mobile to keep it super clean */
   }
 }

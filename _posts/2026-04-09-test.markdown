@@ -4,6 +4,8 @@ title:  "Test!"
 date:   2026-04-09 20:11:08 -0400
 category: Tech
 excerpt: "This is a test post."
+departure: "JFK"
+arrival: "LAX"
 permalink: /blog/test/
 ---
 

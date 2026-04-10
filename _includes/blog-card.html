@@ -1,5 +1,5 @@
 <div class="blog-entry-wrapper">
-    <div class="luggage-box theme-{{ include.color }}">
+    <div class="blog-image theme-{{ include.color }}">
         <img src="{{ include.image | relative_url }}" alt="{{ include.title }}">
     </div>
 
@@ -9,9 +9,7 @@
                 <span class="series-name"><i>{{ include.category }}</i></span>
                 <span class="flight-num">FLIGHT #{{ include.index | prepend: '00' | slice: -3, 3 }}</span>
             </div>
-            <div class="banner-right">
-                <span class="boarding-text">BOARDING PASS</span>
-            </div>
+            <div class="banner-right">BOARDING PASS</div>
         </header>
         
         <div class="pass-body">
@@ -23,12 +21,16 @@
             
             <div class="pass-stub">
                 <div class="metadata-grid">
-                    <div class="meta-item"><span>SEAT</span><strong>{{ include.date | date: "%d" }}</strong></div>
-                    <div class="meta-item"><span>GATE</span><strong>{{ include.date | date: "%b" | upcase }}</strong></div>
-                    <div class="meta-item"><span>TERMINAL</span><strong>{{ include.date | date: "%Y" }}</strong></div>
+                    <div class="meta-item" style="font-family: 'JetBrains Mono', monospace;"><span>SEAT</span><strong>{{ include.date | date: "%d" }}</strong></div>
+                    <div class="meta-item" style="font-family: 'JetBrains Mono', monospace;"><span>GATE</span><strong>{{ include.date | date: "%b" | upcase }}</strong></div>
+                    <div class="meta-item" style="font-family: 'JetBrains Mono', monospace;"><span>TERMINAL</span><strong>{{ include.date | date: "%Y" }}</strong></div>
                 </div>
                 <div class="airport-codes">
-                    <span>YYZ</span> <span class="plane-icon">✈️</span> <span>END</span>
+                    <span class="code">{{ include.departure }}</span>
+                    <div class="flight-path"></div>
+                    <span class="plane-icon">✈️</span>
+                    <div class="flight-path"></div>
+                    <span class="code">{{ include.arrival }}</span>
                 </div>
                 <div class="barcode-area"></div>
             </div>

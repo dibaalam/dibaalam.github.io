@@ -4,6 +4,8 @@ title:  "Welcome to Jekyll!"
 date:   2026-04-03 22:11:08 -0400
 category: Travel
 excerpt: "This is my first post using Jekyll. I'm excited to share my thoughts and experiences with you!"
+departure: YYZ
+arrival: LHR
 permalink: /blog/welcome-to-jekyll/
 ---
 You’ll find this post in your `_posts` directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run `jekyll serve`, which launches a web server and auto-regenerates your site when a file is updated.
