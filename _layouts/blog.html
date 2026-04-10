@@ -1,0 +1,52 @@
+---
+layout: default
+---
+<div class="home">
+  {%- if page.title -%}
+    <h1 class="page-heading">{{ page.title }}</h1>
+  {%- endif -%}
+
+  {{ content }}
+
+  {%- if site.posts.size > 0 -%}
+    <h2 class="post-list-heading">{{ page.list_title | default: "Posts" }}</h2>
+    
+        <div class="blog-terminal-grid">
+            {% for post in site.posts %}
+                
+                {% comment %} 1. CATEGORY SETTINGS {% endcomment %}
+                {% assign brand = site.series_settings[post.category] %}
+                {% assign current_color = brand.color | default: "blue" %}
+
+                {% comment %} 2. CATEGORY-SPECIFIC NUMBERING LOGIC {% endcomment %}
+                {% assign category_posts = site.categories[post.category] %}
+                {% assign total_category_posts = category_posts | size %}
+
+                {% for c_post in category_posts %}
+                    {% if c_post.url == post.url %}
+                    {% assign display_index = total_category_posts | minus: forloop.index | plus: 1 %}
+                    {% if display_index < 10 %}
+                        {% assign final_index = display_index | prepend: '0' %}
+                    {% else %}
+                        {% assign final_index = display_index %}
+                    {% endif %}
+                    {% endif %}
+                {% endfor %}
+
+                {% comment %} 3. PASS final_index TO THE INCLUDE {% endcomment %}
+                {% include blog-card.html 
+                    title=post.title 
+                    date=post.date
+                    category=post.category
+                    color=current_color
+                    gate=brand.gate
+                    code=brand.code
+                    url=post.url
+                    index=final_index 
+                    image=post.image 
+                    description=post.excerpt %}
+
+            {% endfor %}
+        </div>
+    {%- endif -%}
+</div>

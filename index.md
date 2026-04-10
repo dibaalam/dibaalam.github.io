@@ -80,40 +80,7 @@ destinations:
     <div class="description-text-box">
       <p>Technical deep dives into autonomous systems and robotics engineering.</p>
     </div>
-
-    <div class="destinations-grid">
-      <div class="boarding-pass">
-        <div class="pass-stab category-orange"><span class="category-text">CATEGORY</span></div>
-        <div class="pass-body">
-          <div class="project-info">PROJECT 1</div>
-          <div class="pass-stub"><a href="#" class="view-link">View Project</a></div>
-        </div>
-      </div>
-
-      <div class="boarding-pass">
-        <div class="pass-stab category-pink"><span class="category-text">CATEGORY</span></div>
-        <div class="pass-body">
-          <div class="project-info">PROJECT 2</div>
-          <div class="pass-stub"><a href="#" class="view-link">View Project</a></div>
-        </div>
-      </div>
-
-      <div class="boarding-pass">
-        <div class="pass-stab category-purple"><span class="category-text">CATEGORY</span></div>
-        <div class="pass-body">
-          <div class="project-info">PROJECT 3</div>
-          <div class="pass-stub"><a href="#" class="view-link">View Project</a></div>
-        </div>
-      </div>
-
-      <div class="boarding-pass">
-        <div class="pass-stab category-green"><span class="category-text">CATEGORY</span></div>
-        <div class="pass-body">
-          <div class="project-info">PROJECT 4</div>
-          <div class="pass-stub"><a href="#" class="view-link">View Project</a></div>
-        </div>
-      </div>
-    </div>
+    <p>Placeholder for project postcards (Developing)</p>
   </section>
 </div>
 

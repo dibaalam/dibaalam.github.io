@@ -1,0 +1,170 @@
+.blog-terminal-grid {
+  display: grid;
+  grid-template-columns: 1fr; /* Only one column, taking up 100% width */
+  gap: 30px;                  /* Vertical space between tickets */
+  width: 100%;
+}
+
+.blog-entry-wrapper {
+  display: flex;
+  align-items: stretch;
+  gap: 40px;
+  margin-bottom: 20px;
+}
+
+.luggage-box {
+    // fixed square ratio but still flexible to the height of the boarding pass
+    aspect-ratio: 1 / 1;
+    // border thickness
+    border: 2px solid rgba(0,0,0,0.1);
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 8px;
+    }
+}
+
+.boarding-pass {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  background: #fffdf0;
+  border-radius: 12px;
+  overflow: hidden;
+  text-decoration: none;
+  color: #333;
+  box-shadow: 5px 5px 0px rgba(0,0,0,0.05);
+  min-width: 0;
+  transition: transform 0.2s ease;
+
+  &, &:hover, &:visited, &:active {
+    text-decoration: none;
+    color: #333;          /* 4. Force your preferred "Ink" color here */
+  }
+
+  /* Shared Perforation Logic */
+  .banner-left, .main-info {
+    border-right: 2px dashed rgba(0,0,0,0.1);
+    padding: 15px 25px;
+    overflow: hidden;
+  }
+
+  .banner-right, .pass-stub {
+    padding: 15px;
+    overflow: hidden;
+  }
+
+  /* Header Styles */
+  .series-banner {
+        display: grid; 
+        grid-template-columns: 75% 25%; /* Hard-coded ratio */
+        width: 100%;
+        font-weight: bold;
+        text-transform: uppercase;
+        font-size: 0.85rem;
+        box-sizing: border-box;
+        overflow: hidden;
+
+    .banner-left {
+      display: flex;
+      justify-content: space-between;
+    }
+    
+    .banner-right {
+      text-align: center;
+    }
+  }
+
+  /* Body Styles */
+  .pass-body {
+    display: grid; 
+        grid-template-columns: 75% 25%; /* Hard-coded ratio */
+        width: 100%;
+        box-sizing: border-box;
+        overflow: hidden;
+
+    .main-info {
+      .post-title { margin: 10px 0; font-size: 1.8rem; }
+      .pass-divider { border: 0; border-top: 1px solid rgba(0,0,0,0.08); margin: 15px 0; }
+      .post-description { font-size: 0.95rem; opacity: 0.8; line-height: 1.4; }
+    }
+
+    .pass-stub {
+      flex-direction: column;
+      justify-content: space-between;
+      background: rgba(0,0,0,0.01);
+
+      .metadata-grid {
+        display: grid;
+        /* Creates 3 equal columns that stay inside the stub */
+        grid-template-columns: repeat(3, 1fr); 
+        gap: 10px;
+        width: 100%;
+        box-sizing: border-box;
+        margin-bottom: 15px;
+        .meta-item {
+            display: flex;
+            flex-direction: column;
+            span { font-size: 0.6rem; opacity: 0.5; }
+            strong { font-size: 0.9rem; }
+            &:nth-child(1) { text-align: left; }
+            &:nth-child(2) { text-align: center; }
+            &:nth-child(3) { text-align: right; }
+        }
+      }
+
+      .airport-codes {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-weight: 800;
+        font-size: 1.3rem;
+        .plane-icon { font-size: 1rem; transform: rotate(45deg); }
+      }
+
+      .barcode-area {
+        height: 35px;
+        margin-top: 15px;
+        background: repeating-linear-gradient(90deg, #333, #333 1px, transparent 1px, transparent 3px);
+      }
+    }
+  }
+
+  /* Dynamic Themes */
+  &.theme-pink .series-banner { background: #ff80bf; }
+  &.theme-orange .series-banner { background: #ff9f43; }
+  &.theme-green .series-banner { background: #2ecc71; }
+  &.theme-blue .series-banner { background: #3498db; }
+}
+
+.barcode-area {
+  height: 40px;
+  background: repeating-linear-gradient(90deg, #333, #333 2px, transparent 2px, transparent 4px);
+}
+
+.metadata-grid {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+
+  .meta-item {
+    display: flex;
+    flex-direction: column;
+    span { font-size: 0.65rem; opacity: 0.5; font-weight: bold; }
+    strong { font-size: 0.9rem; }
+  }
+}
+
+.airport-codes {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 800;
+  font-size: 1.2rem;
+  
+  .plane-icon {
+    font-size: 0.9rem;
+    transform: rotate(45deg);
+  }
+}

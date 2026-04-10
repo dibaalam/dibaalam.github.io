@@ -13,6 +13,7 @@
 # you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
+
 title: Diba Alam
 email: diba [dot] alam [at] mail [dot] utoronto [dot] ca
 description: >- # this means to ignore newlines until "baseurl:"
@@ -22,6 +23,22 @@ url: "https://dibaalam.github.io" # the base hostname & protocol for your site, 
 
 github_username:  dibaalam
 linkedin_username: diba-alam
+
+
+series_settings:
+  Travel:
+    color: "pink"
+    icon: "🌙"
+    code: "TRV"
+  Design:
+    color: "orange"
+    icon: "☕"
+    code: "DSGN"
+  Tech:
+    color: "green"
+    gate: "C-01"
+    code: "TCH"
+
 
 # Build settings
 markdown: kramdown
