@@ -1,0 +1,123 @@
+:root {
+  /* You can adjust these variables in your theme-specific CSS files */
+  --board-text: #222;
+  --board-accent: #0066cc; /* A professional blue */
+  --row-bg: rgba(255, 255, 255, 0.4); /* Light mode row */
+}
+
+[data-theme='dark'] {
+  --board-text: #eee;
+  --board-accent: #00f2ff; /* A cyan glow for dark mode */
+  --row-bg: rgba(0, 0, 0, 0.3); /* Dark mode row */
+}
+
+.departure-board {
+  width: 100%;            /* Occupies most of the container width */    /* Prevents it from getting absurdly wide on ultrawide monitors */
+  margin: 2rem auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.flight-row {
+  display: flex;
+  align-items: top;
+  padding: 1rem 1.5rem;
+  margin-bottom: 7px;
+  background: var(--row-bg);
+  backdrop-filter: blur(8px);
+  border-left: 5px solid var(--board-accent);
+  gap: 30px;             /* Space between columns */
+  height: auto;
+}
+
+// Match the header style of flight-row
+.board-header { 
+  display: flex;         
+  align-items: flex-start; 
+  padding: 1rem 1.5rem;  
+  margin-bottom: 15px;
+  background: hsl(211, 100%, 84%); // Maybe change to make the header more prevalent
+  backdrop-filter: blur(8px); 
+  border-left: 5px solid transparent; 
+  gap: 30px; 
+}
+
+// The specific children of .board-header (titles) that still use format of each column within the board
+.board-header > div {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 1.5rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: var(--board-accent);
+  
+  padding: 0;
+  margin: 0;
+}
+
+/* 1. Time Column: Fixed width so dates don't jump around */
+.time-col {
+  flex: 0 0 150px; // these three mean "don't grow, don't shrink, always 110px wide"
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.9rem;
+  color: var(--board-accent);
+  padding-top: 4px; 
+}
+
+/* 2. Destination Column: Flexible (grows to fill space) */
+.destination-col {
+  flex: 1;               
+  min-width: 0;          /* Prevents text overflow issues */
+}
+
+.company {
+  font-weight: 700;
+  font-size: clamp(0.9rem, 2vw, 1.1rem); /* Fluid typography */
+  text-transform: uppercase;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis; /* Adds "..." if the company name is too long */
+}
+
+.role {
+  white-space: pre-line; /* This preserves the new lines from your YAML */
+  line-height: 1.6;      /* Give the lines a bit of breathing room */
+}
+
+.description {
+  white-space: pre-line; /* This preserves the new lines from your YAML */
+  opacity: 0.5;
+  line-height: 1.6;      /* Give the lines a bit of breathing room */
+  font-style: italic;
+}
+
+/* 3. Remarks Column: Auto-adjusting */
+.remarks-col {
+  flex: 0 0 200px;  // set size for the remarks      
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+  font-weight: 800;
+}
+
+/* --- Mobile Responsiveness --- */
+@media (max-width: 900px) {
+    .board-header {
+        display: none !important;
+    }
+
+    .flight-row {
+        padding: 0.8rem 1rem;
+        flex-wrap: wrap;     /* Allows elements to wrap if it gets too thin */
+        // how to turn off display flex
+        display: block;     /* Stacks everything vertically on mobile */
+    }
+    
+    .time-col {
+        flex: 1 0 100%;      /* Moves Time to its own line on very small screens */
+        margin-bottom: 5px;
+    }
+    
+    .remarks-col {
+        display: none;       /* Optionally hide remarks on mobile to keep it super clean */
+    }
+}

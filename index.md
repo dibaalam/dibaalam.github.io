@@ -60,10 +60,24 @@ destinations:
       </div>
     </div>
 
-    <div class="description-text-box">
-      <p>Overview of my professional trajectory from UofT to MDA Space.</p>
+    <div class="departure-board">
+      <div class="board-header">
+        <div class="time-col">TIME</div>
+        <div class="destination-col">DESTINATION</div>
+        <div class="remarks-col">REMARKS</div>
+      </div>
+      {% for flight in site.data.experiences %}
+      <div class="flight-row">
+        <div class="time-col">{{ flight.time }}</div>
+        <div class="destination-col">
+          <div class="company">{{ flight.destination }}</div>
+          <div class="role">{{ flight.title }}</div>
+          <div class="description">{{ flight.description }}</div>
+        </div>
+        <div class="remarks-col">{{ flight.remarks }}</div>
+      </div>
+      {% endfor %}
     </div>
-    <p>Placeholder for Solari Board (Developing)</p>
 
   </section>
 </div>
