@@ -59,26 +59,26 @@ destinations:
         <span class="header-caption">Experience</span>
       </div>
     </div>
-
-    <div class="departure-board">
-      <div class="board-header">
-        <div class="time-col">TIME</div>
-        <div class="destination-col">DESTINATION</div>
-        <div class="remarks-col">REMARKS</div>
-      </div>
-      {% for flight in site.data.experiences %}
-      <div class="flight-row">
-        <div class="time-col">{{ flight.time }}</div>
-        <div class="destination-col">
-          <div class="company">{{ flight.destination }}</div>
-          <div class="role">{{ flight.title }}</div>
-          <div class="description">{{ flight.description }}</div>
+    <div class="board-container">
+      <div class="departure-board">
+        <div class="board-header">
+          <div class="time-col">TIME</div>
+          <div class="destination-col">DESTINATION</div>
+          <div class="remarks-col">REMARKS</div>
         </div>
-        <div class="remarks-col">{{ flight.remarks }}</div>
+        {% for flight in site.data.experiences %}
+        <div class="flight-row">
+          <div class="time-col">{{ flight.time }}</div>
+          <div class="destination-col">
+            <div class="company">{{ flight.destination }}</div>
+            <div class="role">{{ flight.title }}</div>
+            <div class="description">{{ flight.description }}</div>
+          </div>
+          <div class="remarks-col">{{ flight.remarks }}</div>
+        </div>
+        {% endfor %}
       </div>
-      {% endfor %}
     </div>
-
   </section>
 </div>
 
@@ -142,3 +142,38 @@ destinations:
   </section>
 </div>
 
+
+
+
+
+
+
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        typeEffect(entry.target, 60); // 60ms per character
+        observer.unobserve(entry.target); // Only animate once
+      }
+    });
+  });
+
+  function typeEffect(element, speed) {
+    const text = element.innerHTML;
+    element.innerHTML = "";
+    
+    let i = 0;
+    const timer = setInterval(() => {
+      if (i < text.length) {
+        element.append(text.charAt(i));
+        i++;
+      } else {
+        clearInterval(timer);
+      }
+    }, speed);
+  }
+
+  // Tell the observer to watch your destination columns
+  document.querySelectorAll('.company, .role, .description').forEach(el => observer.observe(el));
+</script>

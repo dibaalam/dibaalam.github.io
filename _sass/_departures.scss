@@ -11,9 +11,19 @@
   --row-bg: rgba(0, 0, 0, 0.3); /* Dark mode row */
 }
 
+.board-container {
+  width: 100%;
+  box-sizing: border-box;
+  margin-top: 30px;
+  padding: 1.5rem;      /* Internal padding so the rows don't touch the blue edges */
+  background: #92c6ff;
+  border-radius: 15px;  /* Smooths out the "card" look */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); /* Adds depth */
+  overflow: hidden;     /* Ensures rows don't bleed out of the rounded corners */
+}
+
 .departure-board {
   width: 100%;            /* Occupies most of the container width */    /* Prevents it from getting absurdly wide on ultrawide monitors */
-  margin: 2rem auto;
   display: flex;
   flex-direction: column;
 }
@@ -23,10 +33,10 @@
   align-items: top;
   padding: 1rem 1.5rem;
   margin-bottom: 7px;
-  background: var(--row-bg);
+  background: #d0e7ff;
   backdrop-filter: blur(8px);
   border-left: 5px solid var(--board-accent);
-  gap: 30px;             /* Space between columns */
+  gap: 30px; // Space between columns
   height: auto;
 }
 
@@ -34,9 +44,8 @@
 .board-header { 
   display: flex;         
   align-items: flex-start; 
-  padding: 1rem 1.5rem;  
+  padding: 0rem 1.5rem;  
   margin-bottom: 15px;
-  background: hsl(211, 100%, 84%); // Maybe change to make the header more prevalent
   backdrop-filter: blur(8px); 
   border-left: 5px solid transparent; 
   gap: 30px; 
@@ -56,11 +65,12 @@
 
 /* 1. Time Column: Fixed width so dates don't jump around */
 .time-col {
-  flex: 0 0 150px; // these three mean "don't grow, don't shrink, always 110px wide"
+  flex: 0 0 120px; // these three mean "don't grow, don't shrink, always 110px wide"
   font-family: 'JetBrains Mono', monospace;
   font-size: 0.9rem;
+  font-weight: 800;
   color: var(--board-accent);
-  padding-top: 4px; 
+  padding-top: 2px; 
 }
 
 /* 2. Destination Column: Flexible (grows to fill space) */
@@ -70,7 +80,8 @@
 }
 
 .company {
-  font-weight: 700;
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 1000;
   font-size: clamp(0.9rem, 2vw, 1.1rem); /* Fluid typography */
   text-transform: uppercase;
   white-space: nowrap;
@@ -97,27 +108,65 @@
   font-size: 0.9rem;
   letter-spacing: 1px;
   font-weight: 800;
+  padding-top: 2px;
 }
 
 /* --- Mobile Responsiveness --- */
 @media (max-width: 900px) {
+
+    .departure-board {
+        margin-top: 20px;
+    }
+
     .board-header {
         display: none !important;
     }
 
     .flight-row {
         padding: 0.8rem 1rem;
-        flex-wrap: wrap;     /* Allows elements to wrap if it gets too thin */
-        // how to turn off display flex
-        display: block;     /* Stacks everything vertically on mobile */
+        flex-wrap: wrap;
+        display: block; //Stacks everything vertically on mobile
+        background: var(--row-bg);
+        backdrop-filter: blur(8px);
     }
     
     .time-col {
-        flex: 1 0 100%;      /* Moves Time to its own line on very small screens */
+        flex: 1 0 100%; // Moves time to its own line on very small screens
         margin-bottom: 5px;
     }
     
     .remarks-col {
-        display: none;       /* Optionally hide remarks on mobile to keep it super clean */
+        display: none; // Hide the remarks
     }
+
+    .board-container{
+      display: contents;
+    }
+}
+
+
+
+// Test typing
+
+.typewriter {
+  overflow: hidden; /* Ensures the content is not revealed until the animation */
+  border-right: .15em solid var(--board-accent); /* The typewriter cursor */
+  white-space: nowrap; /* Keeps the content on a single line */
+  margin: 0 auto; 
+  letter-spacing: .15em; 
+  animation: 
+    typing 3.5s steps(40, end),
+    blink-caret .75s step-end infinite;
+}
+
+/* The typing effect */
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+/* The typewriter cursor effect */
+@keyframes blink-caret {
+  from, to { border-color: transparent }
+  50% { border-color: var(--board-accent); }
 }
