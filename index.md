@@ -94,7 +94,35 @@ destinations:
     <div class="description-text-box">
       <p>Technical deep dives into autonomous systems and robotics engineering.</p>
     </div>
-    <p>Placeholder for project postcards (Developing)</p>
+    
+    <div class="carousel-container">
+      <button class="nav-btn prev" onclick="moveCarousel(-1)">&#10094;</button>
+      
+      <div class="carousel-track">
+        {% assign featured_projects = site.data.projects | where: "featured", true %}
+        {% for project in featured_projects %}
+          <div class="postcard-card {% if forloop.first %}active{% endif %}">
+            <div class="postcard-inner">
+              <div class="postcard-content">
+                <span class="postmark">{{ project.location }} — {{ project.date }}</span>
+                <h3>{{ project.title }}</h3>
+                <p class="typewriter-text">{{ project.description }}</p>
+                <a href="{{ project.link | relative_url }}" class="ticket-link">View Itinerary</a>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+
+      <button class="nav-btn next" onclick="moveCarousel(1)">&#10095;</button>
+
+      <div class="progress-path">
+        <div class="progress-line" id="progressLine"></div>
+        <div class="plane-icon" id="planeIcon">✈</div>
+      </div>
+    </div>
+
+
   </section>
 </div>
 
@@ -144,3 +172,36 @@ destinations:
 
 
 <script src="{{ '/assets/js/main.js' | relative_url }}"></script>
+
+<script>
+let currentIndex = 0;
+const slides = document.querySelectorAll('.postcard-card');
+const totalSlides = slides.length;
+
+function updateCarousel() {
+  slides.forEach((slide, index) => {
+    slide.classList.remove('active', 'prev-slide', 'next-slide');
+    
+    if (index === currentIndex) {
+      slide.classList.add('active');
+    } else if (index === (currentIndex - 1 + totalSlides) % totalSlides) {
+      slide.classList.add('prev-slide');
+    } else if (index === (currentIndex + 1) % totalSlides) {
+      slide.classList.add('next-slide');
+    }
+  });
+
+  // Update Progress Bar/Plane
+  const progress = (currentIndex / (totalSlides - 1)) * 100;
+  document.getElementById('progressLine').style.width = `${progress}%`;
+  document.getElementById('planeIcon').style.left = `${progress}%`;
+}
+
+function moveCarousel(direction) {
+  currentIndex = (currentIndex + direction + totalSlides) % totalSlides;
+  updateCarousel();
+}
+
+// Initialize
+updateCarousel();
+</script>

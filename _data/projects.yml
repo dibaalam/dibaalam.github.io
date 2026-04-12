@@ -1,0 +1,29 @@
+# projects.yml
+- id: "mars-rover-autonomy"
+  title: "Autonomous Mars Rover"
+  location: "ESA Robotics"
+  date: "2026"
+  description: "Implemented a memory representation system for path planning in unstructured environments."
+  tags: ["ROS", "C++", "Python"]
+  image: "/assets/projects/rover.jpg"
+  featured: true  # This will show up in your About Page Carousel
+  link: "/projects/mars-rover"
+
+- id: "lunar-robotic-arm"
+  title: "Lunar Arm Testing"
+  location: "MDA Space"
+  date: "2025"
+  description: "Systems design and reliability testing for lunar-surface robotic manipulation."
+  tags: ["Systems Design", "Testing"]
+  image: "/assets/projects/mda-arm.jpg"
+  featured: true
+  link: "/projects/lunar-arm"
+
+- id: "side-logic-puzzle"
+  title: "Logic Controller"
+  location: "Toronto"
+  date: "2024"
+  description: "A minor side project exploring PLC logic."
+  tags: ["PLC", "Logic"]
+  image: "/assets/projects/logic.jpg"
+  featured: true

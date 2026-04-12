@@ -45,7 +45,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // --- 2. TYPEWRITER EFFECT LOGIC ---
   const typeEffect = (element, speed) => {
-    const text = element.innerHTML.trim(); // .trim() removes extra YAML whitespace
+    const text = element.innerHTML.trim();
     element.innerHTML = "";
     element.style.visibility = 'visible';
     
@@ -63,16 +63,57 @@ document.addEventListener("DOMContentLoaded", () => {
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
-        typeEffect(entry.target, 40); // Slightly faster for better UX
+        typeEffect(entry.target, 40);
         observer.unobserve(entry.target);
       }
     });
   }, { threshold: 0.1 });
 
-  // Select all targets inside the data rows
   const typewriterTargets = document.querySelectorAll(
     '.flight-row .time-col, .flight-row .company, .flight-row .role, .flight-row .description, .flight-row .remarks-col'
   );
 
   typewriterTargets.forEach(el => observer.observe(el));
+
+  // --- 3. PROJECT POSTCARD CAROUSEL LOGIC ---
+  const carouselTrack = document.querySelector('.carousel-track');
+  
+  if (carouselTrack) {
+    let currentIndex = 0;
+    const slides = document.querySelectorAll('.postcard-card');
+    const totalSlides = slides.length;
+
+    // Define globally so buttons can access it
+    window.moveCarousel = (direction) => {
+      currentIndex = (currentIndex + direction + totalSlides) % totalSlides;
+      updateCarousel();
+    };
+
+    function updateCarousel() {
+      slides.forEach((slide, index) => {
+        slide.classList.remove('active', 'prev-slide', 'next-slide');
+        
+        if (index === currentIndex) {
+          slide.classList.add('active');
+        } else if (index === (currentIndex - 1 + totalSlides) % totalSlides) {
+          slide.classList.add('prev-slide');
+        } else if (index === (currentIndex + 1) % totalSlides) {
+          slide.classList.add('next-slide');
+        }
+      });
+
+      // Update Carousel Progress Bar
+      const progressLine = document.getElementById('progressLine');
+      const planeIcon = document.getElementById('planeIcon');
+      
+      if (progressLine && planeIcon) {
+        const progressPercentage = (currentIndex / (totalSlides - 1)) * 100;
+        progressLine.style.width = `${progressPercentage}%`;
+        planeIcon.style.left = `${progressPercentage}%`;
+      }
+    }
+
+    // Initialize state
+    updateCarousel();
+  }
 });
