@@ -143,37 +143,4 @@ destinations:
 </div>
 
 
-
-
-
-
-
-
-<script>
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        typeEffect(entry.target, 60); // 60ms per character
-        observer.unobserve(entry.target); // Only animate once
-      }
-    });
-  });
-
-  function typeEffect(element, speed) {
-    const text = element.innerHTML;
-    element.innerHTML = "";
-    
-    let i = 0;
-    const timer = setInterval(() => {
-      if (i < text.length) {
-        element.append(text.charAt(i));
-        i++;
-      } else {
-        clearInterval(timer);
-      }
-    }, speed);
-  }
-
-  // Tell the observer to watch your destination columns
-  document.querySelectorAll('.company, .role, .description').forEach(el => observer.observe(el));
-</script>
+<script src="{{ '/assets/js/main.js' | relative_url }}"></script>

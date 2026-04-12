@@ -11,13 +11,11 @@ section[id] {
     width: 100%;
     z-index: 999;
     background-color: #b1d7ff;
-    border-bottom: none !important;
 }
 
   /* Flight navigation container */
 .flight-container { 
     width: 100%;
-    padding-bottom: 10px;
 }
 
 .waypoints-container {
@@ -96,6 +94,7 @@ section[id] {
     position: relative;
     width: 89%; /* Controls the overall shrink toward center */
     margin: 0 auto;
+    margin-bottom: 5px;
 }
 
 .destinations-list {
