@@ -27,7 +27,12 @@
     {%- endif -%}
   </div>
 
-  <div class="flight-container">
+  {%- assign dest_ids = "" -%}
+  {%- for item in page.destinations -%}
+    {%- assign dest_ids = dest_ids | append: item.id | append: "," -%}
+  {%- endfor -%}
+
+  <div class="flight-container" data-destinations='[{% for item in page.destinations %}"{{ item.id }}"{% unless forloop.last %},{% endunless %}{% endfor %}]'></div>
     <div class="destinations-wrapper">
       <div class="sky-line">
         <div id="solid-path"></div>
@@ -45,163 +50,7 @@
       </ul>
     </div>
   </div>
-
 </header>
 
-<style>
-  section[id] {
-    scroll-margin-top: 120px;
-  }
-
-  /* Frozen joint header unit */
-  /* Regular header */
-  .frozen-header {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: 999;
-    background-color: #b1d7ff;
-    border-bottom: none !important;
-  }
-
-  /* Flight navigation container */
-  .flight-container { 
-    width: 100%;
-    padding-bottom: 10px;
-  }
-
-  .waypoints-container {
-    position: absolute;
-    top: -4px; /* Centers the 10px circle on the 2px line */
-    left: 0;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    pointer-events: none; /* So they don't interfere with clicking links */
-    z-index: 2; /* Sits above the dashed line, but below the plane */
-  }
-
-   .waypoint {
-    width: 12px;
-    height: 12px;
-    background-color: #ff4d4d;
-    border-radius: 50%;
-    margin-bottom: 10px;
-  }
-
-  .sky-line {
-    position: absolute;
-    top: 5px;
-    left: 0;
-    right: 0; 
-    height: 2px;
-    z-index: 3;
-  }
-
-  .dashed-path {
-    position: absolute;
-    top: 0;
-    width: 100%;
-    border-top: 2px dashed #ff4d4d;
-    z-index: 1;
-  }
-
-  #solid-path {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 0%;
-    border-top: 2px solid #ff4d4d;
-    z-index: 2;
-  }
-
-  #plane-indicator {
-    position: absolute;
-    top: -14px;
-    left: 0%;
-    font-size: 20px;
-    transition: left 0.1s linear;
-    z-index: 999;
-    transform: translateX(-50%) rotate(45deg);
-  }
-
-  .destinations {
-    display: flex;
-    justify-content: space-between;
-    list-style: none;
-    margin: 5px 5% 0;
-    padding: 0;
-  }
-
-  .destinations-list a {
-    text-decoration: none;
-    font-size: 12px;
-    font-weight: bold;
-    font-family: 'JetBrains Mono', monospace;
-    color: #333;
-    text-transform: uppercase;
-  }
-
-  .destinations-wrapper {
-    position: relative;
-    width: 89%; /* Controls the overall shrink toward center */
-    margin: 0 auto;
-  }
-
-  .destinations-list {
-    display: flex;
-    justify-content: space-between;
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    position: relative;
-    z-index: 2;
-  }
-
-  .destination-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center; /* Locks Dot and Text to the same center-line */
-    width: 0; /* Forces the flex-engine to use the center of the text as the point */
-    white-space: nowrap;
-  }
-
-
-
-
-
-
-
-</style>
-
-
-
-
-
-
-<script>
-  (function() {
-    function updateFlight() {
-      const winScroll = window.pageYOffset || document.documentElement.scrollTop;
-      const height = document.documentElement.scrollHeight - window.innerHeight;
-      const scrolled = (winScroll / height) * 100;
-      
-      const plane = document.getElementById("plane-indicator");
-      const solidLine = document.getElementById("solid-path");
-      
-      if (plane && solidLine) {
-        const position = Math.min(Math.max(scrolled, 0), 100) + "%";
-        
-        // Move the plane
-        plane.style.left = position;
-        
-        // Grow the solid line
-        solidLine.style.width = position;
-      }
-    }
-
-    window.addEventListener('scroll', updateFlight);
-    window.addEventListener('resize', updateFlight);
-    window.addEventListener('load', updateFlight);
-  })();
-</script>
+<!-- Scrolling logic from main.js -->
+<script src="{{ '/assets/js/main.js' | relative_url }}"></script>
