@@ -76,44 +76,72 @@ document.addEventListener("DOMContentLoaded", () => {
   typewriterTargets.forEach(el => observer.observe(el));
 
   // --- 3. PROJECT POSTCARD CAROUSEL LOGIC ---
-  const carouselTrack = document.querySelector('.carousel-track');
-  
-  if (carouselTrack) {
-    let currentIndex = 0;
-    const slides = document.querySelectorAll('.postcard-card');
-    const totalSlides = slides.length;
+  const beltContainer = document.querySelector('.conveyor-belt');
+  const beltTrack = document.getElementById('beltTrack');
 
-    // Define globally so buttons can access it
+  if (beltTrack && beltContainer) {
+    const stepValue = 800; // Updated to match the new card width + margin (500px + 300px currently)
+    const bufferCount = 2; 
+    
+    const allSlides = document.querySelectorAll('.postcard-wrapper');
+    const totalRealSlides = allSlides.length - (bufferCount * 2);
+    
+    let currentIndex = bufferCount; 
+    let isTransitioning = false;
+
     window.moveCarousel = (direction) => {
-      currentIndex = (currentIndex + direction + totalSlides) % totalSlides;
-      updateCarousel();
+      if (isTransitioning) return;
+      currentIndex += direction;
+      updateBeltPosition(true);
     };
 
-    function updateCarousel() {
-      slides.forEach((slide, index) => {
-        slide.classList.remove('active', 'prev-slide', 'next-slide');
-        
-        if (index === currentIndex) {
-          slide.classList.add('active');
-        } else if (index === (currentIndex - 1 + totalSlides) % totalSlides) {
-          slide.classList.add('prev-slide');
-        } else if (index === (currentIndex + 1) % totalSlides) {
-          slide.classList.add('next-slide');
-        }
-      });
-
-      // Update Carousel Progress Bar
-      const progressLine = document.getElementById('progressLine');
-      const planeIcon = document.getElementById('planeIcon');
+    function updateBeltPosition(withTransition) {
+      isTransitioning = true;
       
-      if (progressLine && planeIcon) {
-        const progressPercentage = (currentIndex / (totalSlides - 1)) * 100;
-        progressLine.style.width = `${progressPercentage}%`;
-        planeIcon.style.left = `${progressPercentage}%`;
+      const transitionStyle = withTransition ? 'transform 0.8s cubic-bezier(0.65, 0, 0.35, 1)' : 'none';
+      beltTrack.style.transition = transitionStyle;
+      beltContainer.style.transition = withTransition ? 'background-position 0.8s cubic-bezier(0.65, 0, 0.35, 1)' : 'none';
+
+      const offset = currentIndex * stepValue;
+      beltTrack.style.transform = `translateX(-${offset}px)`;
+      beltContainer.style.backgroundPosition = `-${offset}px 0`;
+
+      if (!withTransition) {
+        syncActiveState();
+        isTransitioning = false;
+        return;
       }
+
+      beltTrack.addEventListener('transitionend', function handleEnd() {
+        isTransitioning = false;
+
+        // Teleport back to beginning state after reaching the clones
+        if (currentIndex > (totalRealSlides + bufferCount - 1)) {
+          currentIndex = bufferCount; 
+          updateBeltPosition(false); 
+        } else if (currentIndex < bufferCount) {
+          currentIndex = totalRealSlides + bufferCount - 1;
+          updateBeltPosition(false); 
+        }
+
+        syncActiveState();
+        beltTrack.removeEventListener('transitionend', handleEnd);
+      }, { once: true });
     }
 
-    // Initialize state
-    updateCarousel();
+    function syncActiveState() {
+      allSlides.forEach((slide, index) => {
+        slide.classList.toggle('active', index === currentIndex);
+      });
+    }
+
+    // Optional keyboard navigation
+    document.addEventListener('keydown', (e) => {
+      if (e.key === "ArrowLeft") window.moveCarousel(-1);
+      if (e.key === "ArrowRight") window.moveCarousel(1);
+    });
+
+    // Home the rig
+    updateBeltPosition(false);
   }
 });
