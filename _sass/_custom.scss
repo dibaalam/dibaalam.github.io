@@ -100,12 +100,13 @@ body.sky-theme {
 }
 
 .home-section {
-  min-height: 100vh;
+  min-height: 400px;
+  height: auto;
   width: 100%;
   box-sizing: border-box;
 
   position: relative;
-  padding: 2% 2%; 
+  padding: 3% 2%; 
   justify-content: flex-start;
 
   display: flex;
@@ -117,13 +118,10 @@ body.sky-theme {
   padding-top: 70px; // Extra padding for the first section to account for the fixed header
   box-sizing: border-box;
   @media (max-width: 900px) {
+    padding-left: 6%;
+    padding-right: 6%;
     padding-top: 0px; // Reduce padding on mobile to save space
   }
-}
-
-.home-section:last-of-type {
-  min-height: calc(100vh - 150px); // Extra padding for the last section to prevent content from being cut off
-  box-sizing: border-box;
 }
 
 .home-header-container {
