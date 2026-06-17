@@ -80,7 +80,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const beltTrack = document.getElementById('beltTrack');
 
   if (beltTrack && beltContainer) {
-    const stepValue = 800; // Updated to match the new card width + margin (500px + 300px currently)
+    const stepValue = 700; // Updated to match the new card width + margin (500px + 200px currently)
+    // if you change postcard-wrapper for spacing in between, need to change this number to center it
     const bufferCount = 2; 
     
     const allSlides = document.querySelectorAll('.postcard-wrapper');

@@ -92,6 +92,7 @@
 .role {
   white-space: pre-line; /* This preserves the new lines from your YAML */
   line-height: 1.6;      /* Give the lines a bit of breathing room */
+  font-size: clamp(0.9rem, 2vw, 1.1rem);
 }
 
 .description {
@@ -99,6 +100,7 @@
   opacity: 0.5;
   line-height: 1.6;      /* Give the lines a bit of breathing room */
   font-style: italic;
+  font-size: clamp(0.9rem, 2vw, 1.1rem);
 }
 
 /* 3. Remarks Column: Auto-adjusting */
@@ -136,7 +138,7 @@
     }
     
     .remarks-col {
-        display: none; // Hide the remarks
+      display: none; // Hide the remarks
     }
 
     .board-container{

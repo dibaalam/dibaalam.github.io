@@ -23,7 +23,8 @@
 
 .site-nav {
   float: right;
-  line-height: $base-line-height * $base-font-size * 2.25;
+  line-height: $base-line-height * $base-font-size * 2;
+
 
   .nav-trigger {
       display: none;
@@ -36,10 +37,28 @@
   .page-link {
     color: $text-color;
     line-height: $base-line-height;
+    position: relative;
+    text-decoration: none;
+    padding-bottom: 4px;
+    // text spacing
+    
 
-    // Gaps between nav items, but not on the last one
-    &:not(:last-child) {
-      margin-right: 20px;
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 10px;
+      width: 0;
+      height: 1px;
+      background-color: #2a4d69;
+      transition: width 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+    &:hover {
+      background-color: transparent; // Clean up that box
+      
+      &::after {
+        width: calc(100% - 20px); // Expands to the width of the text
+      }
     }
   }
 

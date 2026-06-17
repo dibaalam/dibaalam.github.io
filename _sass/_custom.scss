@@ -80,14 +80,32 @@ h1, h2, h3 {
 .page-link {
   text-decoration: none;
   padding: 5px 10px;
-  border: 1px solid transparent;
-  transition: all 0.3s ease;
+  //transition: opacity 0.3s ease, letter-spacing 0.3s ease;
+  font-family: 'JetBrains Mono', monospace;
+  text-transform: uppercase;
 
-  &:hover { // TODO: Edit hover effect for page links
-    border: 1px solid #2a4d69; 
-    border-radius: 4px;
-    background-color: #f0f4f8;
-  }
+  &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 10px;
+      width: 0;
+      height: 1px;
+      background-color: #2a4d69;
+      transition: width 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+    &:hover {
+      background-color: transparent; // Clean up that box
+      
+      &::after {
+        width: calc(100% - 20px); // Expands to the width of the text
+      }
+    }
+
+  // no margin on the last one
+  &:not(:last-child) {
+      margin-right: 20px;
+    }
 }
 
 // PAGES ---------------------------------------------------------------------------------
@@ -115,7 +133,6 @@ body.sky-theme {
 }
 
 #hero {
-  padding-top: 70px; // Extra padding for the first section to account for the fixed header
   box-sizing: border-box;
   @media (max-width: 900px) {
     padding-left: 6%;
@@ -183,3 +200,37 @@ body.sky-theme {
   font-style: italic;
 }
 
+// BLOG POSTS --------------------------------------------------------------------------------------
+.postcard-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* Creates the 2-column layout */
+  gap: 30px;                             /* Spacing between the tickets */
+  margin-top: 20px;
+}
+
+/* 2. Target the include's root element. 
+      In Jekyll, this is usually the first tag inside the postcard-item. */
+.postcard-item > a, 
+.postcard-item > div,
+.postcard-item .boarding-pass {
+  display: flex !important;
+  flex-direction: column !important;
+  width: 100% !important;     /* Forces the card to fill the grid column */
+  max-width: none !important;  /* Removes any width limits from the original CSS */
+  flex-grow: 1 !important;
+}
+
+/* 3. Re-affirm the internal grid logic so the left side (1fr) expands */
+.postcard-item .series-banner,
+.postcard-item .pass-body {
+  display: grid !important;
+  width: 100% !important;
+  grid-template-columns: 1fr 250px !important; /* Left stretches, right stays 250px */
+}
+
+/* Mobile Responsiveness: Stack them in 1 column on smaller screens */
+@media (max-width: 900px) {
+  .postcard-grid {
+    grid-template-columns: 1fr;
+  }
+}

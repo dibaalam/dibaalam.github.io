@@ -24,6 +24,11 @@ url: "https://dibaalam.github.io" # the base hostname & protocol for your site, 
 github_username:  dibaalam
 linkedin_username: diba-alam
 
+header_pages: # controls the ordering of the pages
+  - index.md 
+  - blog.md 
+  - portfolio.md
+  - travel.md
 
 series_settings:
   Travel:

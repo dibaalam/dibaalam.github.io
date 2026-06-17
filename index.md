@@ -2,7 +2,7 @@
 layout: home-experience
 hide_footer: true
 full_width: true
-title: About
+title: Home
 permalink: /
 destinations:
   - { name: "Home", id: "hero" }
@@ -33,7 +33,7 @@ destinations:
           </div>
           <div class="field-group">
             <span class="field-label">SPECIALIZATION // CORE_SYSTEMS</span>
-            <p class="passport-subtitle">Machine Intelligence, Robotics, & Systems Design</p>
+            <p class="passport-subtitle">Machine Intelligence, Robotics, & Systems Design Engineering</p>
           </div>      
         </div>
           <div class="field-group">
@@ -43,9 +43,9 @@ destinations:
             </div>
           </div>
         <div class="passport-actions">
-          <button class="btn-stamp">RESUME</button>
-          <button class="btn-stamp">BLOG</button>
-          <button class="btn-stamp">CONTACT</button>
+          <a href="{{ '/blog/' | relative_url }}" class="btn-stamp">RESUME</a>
+          <a href="{{ '/blog/' | relative_url }}" class="btn-stamp">BLOG</a>
+          <a href="{{ '/contact/' | relative_url }}" class="btn-stamp">CONTACT</a>
         </div>
       </div>
     </div>
@@ -208,10 +208,20 @@ destinations:
     </div>
 
     <div class="postcard-grid">
-      <div class="postcard-item">BLOG POST 1</div>
-      <div class="postcard-item">BLOG POST 2</div>
-      <div class="postcard-item">BLOG POST 3</div>
-      <div class="postcard-item">BLOG POST 4</div>
+      {% assign featured_posts = site.posts | where: "featured", true %}
+      {% for post in featured_posts limit: 4 %}
+      {% assign brand = site.series_settings[post.category] %}
+      {% assign current_color = brand.color | default: "blue" %}
+        <div class="postcard-item">
+          {% include blog-card.html 
+            title=post.title 
+            show_image=false
+            color=current_color
+            date=post.date 
+            url=post.url 
+            index=forloop.index %}
+        </div>
+      {% endfor %}
     </div>
   </section>
 </div>

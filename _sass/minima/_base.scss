@@ -113,6 +113,7 @@ a {
   &:hover {
     color: $text-color;
     text-decoration: underline;
+    background-color: transparent;
   }
 
   .social-media-list &:hover {
@@ -143,32 +144,135 @@ blockquote {
 
 
 
-/**
- * Code formatting
- */
+// CODE FORMATTING
+
+
+/* 1. Global typography for both */
 pre,
 code {
   @include relative-font-size(0.9375);
-  border: 1px solid $grey-color-light;
-  border-radius: 3px;
-  background-color: #eef;
+  font-family: 'JetBrains Mono', monospace;
 }
 
-code {
-  padding: 1px 5px;
+/* 2. TRUE Inline code snippets ONLY */
+/* By adding :not(pre code), we explicitly tell the browser: 
+   Do NOT apply this 10% background if the code tag is inside a pre block! Colour changes*/
+code:not(pre code) {
+  padding: 2px 5px;
+  background-color: color-mix(in srgb, var(--accent) 10%, transparent);
+  color: var(--accent);
+  border: 1px solid color-mix(in srgb, var(--accent) 20%, transparent);
+  border-radius: 4px;
 }
 
+/* 3. The Big Code Block Container */
 pre {
-  padding: 8px 12px;
+  padding: 12px 16px;
   overflow-x: auto;
+  margin-bottom: $spacing-unit;
+  background-color: color-mix(in srgb, var(--accent) 5%, #f8f9fa); /* Mixed with a light off-white base for crispness */
+  border: 1px solid color-mix(in srgb, var(--accent) 15%, transparent);
+  border-left: 4px solid var(--accent); 
+  border-radius: 8px;
 
-  > code {
-    border: 0;
-    padding-right: 0;
-    padding-left: 0;
+  /* 4. Complete safety reset for the text container inside */
+  code {
+    background: transparent !important; 
+    border: 0 !important;
+    padding: 0 !important;
+    font-size: inherit;
+    color: inherit; 
   }
 }
 
+// IMAGES
+figure.highlight,
+div.highlighter-rouge,
+div[class*="language-"] {
+  margin-bottom: $spacing-unit;
+  width: 100%;
+
+  pre {
+    padding: 12px 16px !important;
+    overflow-x: auto !important;
+    margin: 0 !important;
+    
+    // Solid white base stops dark backgrounds from leaking through transparency
+    background-color: color-mix(in srgb, var(--accent) 5%, #ffffff) !important;
+    border: 1px solid color-mix(in srgb, var(--accent) 15%, #eeeeee) !important;
+    border-left: 4px solid var(--accent) !important; 
+    border-radius: 8px !important;
+  }
+
+  code {
+    background: transparent !important;
+    border: 0 !important;
+    padding: 0 !important;
+    font-size: inherit;
+    color: inherit;
+  }
+}
+
+.post-content {
+  &::after {
+    content: "";
+    clear: both;
+    display: table;
+  }
+
+  figure.polaroid-log {
+    background: color-mix(in srgb, var(--accent) 3%, #ffffff);
+    border: 1px solid color-mix(in srgb, var(--accent) 12%, #e1e4e6);
+    padding: 10px 10px 4px 10px; 
+    border-radius: 6px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+    max-width: 280px;
+    margin-bottom: 1rem;
+    display: block;
+    
+    img {
+      width: 100%;
+      height: auto;
+      border-radius: 3px;
+      margin: 0;
+    }
+
+    figcaption {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.65rem;
+      color: $grey-color;
+      text-align: center;
+      margin: 8px 0 4px 0;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    /* Odd images (1st, 3rd...) snap right */
+    &:nth-of-type(odd) {
+      float: right;
+      margin-left: 2rem;
+      margin-right: 0;
+    }
+
+    /* Even images (2nd, 4th...) snap left */
+    &:nth-of-type(even) {
+      float: left;
+      margin-right: 2rem;
+      margin-left: 0;
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  .post-content figure.polaroid-log {
+    &:nth-of-type(odd),
+    &:nth-of-type(even) {
+      float: none !important;
+      margin: 2rem auto !important;
+      max-width: 100%;
+    }
+  }
+}
 
 
 /**
