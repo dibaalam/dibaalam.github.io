@@ -1,0 +1,10 @@
+- city: "Toronto"
+  lat: 43.6532
+  lng: -79.3832
+  code: "YYZ"
+  iso: "CA"
+- city: "London"
+  lat: 51.5074
+  lng: -0.1278
+  code: "LHR"
+  iso: "GB"

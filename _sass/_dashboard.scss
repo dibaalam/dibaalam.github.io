@@ -1,0 +1,146 @@
+/* Standard browser and base styles to change design from the default ----------------------- */
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100vh; // Always take up the full height of the viewport
+  overflow: hidden; // Prevent scrolling
+  font-family: $body-font;
+  background-color: #d3d3d3;
+}
+
+// Main page container with two columns: sidebar and main content
+.dashboard-container {
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+
+// Sidebar styles
+.sidebar {
+  width: 80px; // Change width of sidebar
+  height: 100%;
+  background-color: #a9a9a9; 
+  //border-right: 2px solid #888;
+  
+  // Flexbox inside to stack items vertically
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; 
+  align-items: center;
+  padding: 20px 0;
+  box-sizing: border-box;
+  position: relative; // Keep for overlapping items
+  z-index: 10;
+}
+
+// Main content styles
+.main-content {
+  flex: 1; // Take up remaining horizontal space
+  height: 100%;           
+  background-color: #e5e5e5;
+  position: relative;
+  overflow: hidden;
+}
+
+// Main content globe container
+#globe-viewport {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  // Center globe in the middle
+  justify-content: center; 
+  align-items: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+/* SIDEBAR DESIGN ---------------------------------------------------------------------------- */
+
+// Top section of sidebar: logo
+// Will change this later to be a custom logo, placeholder
+.sidebar-brand {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px; 
+  width: 100%;
+  padding-top: 5px;
+  font-weight: bold;
+  font-size: 1.1rem;
+  letter-spacing: 0.2rem;  
+  color: #c0392b; 
+  user-select: none; // Prevents text highlighting when clicked
+}
+
+// Middle section of sidebar: navigation ribbons
+.sidebar-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%; // Main nav container takes full width of sidebar
+  position: relative; 
+  margin-bottom: auto; // Pushes nav section up to the top
+  margin-top: 30px; // Room between nav and brand sections
+}
+
+// Base ribbon styling
+.ribbon-btn {
+  display: block;
+  width: 120px;           // Force wider than sidebar. Need to make relative sizing
+  height: 35px;
+  line-height: 35px;      // Vertically centers the text
+  padding-left: 15px;     // Nudges the text slightly away from the left edge
+  font-weight: bold;
+  font-size: 0.85rem;
+  text-decoration: none;  // Removes the default underline due to hyperlink
+  color: #ffffff;
+  text-align: left;
+  letter-spacing: 0.15rem;
+  box-sizing: border-box;
+  clip-path: polygon(0% 0%, 100% 0%, 90% 50%, 100% 100%, 0% 100%); // Ribbon chevron shape
+  transition: width 0.3s ease-in-out; // Hover animation smooth
+  user-select: none;
+}
+
+// Individual ribbon colours and definition
+a.ribbon-btn.passport { background-color: #6c5ce7; color: #ffffff; }
+a.ribbon-btn.trips   { background-color: #ff3399; color: #ffffff; }
+a.ribbon-btn.gallery { background-color: #0ba1a9; color: #ffffff; }
+
+// Main has a default override that makes background transparent, so we need to override it here
+a.ribbon-btn:hover {
+  width: 130px;
+  cursor: pointer;
+  text-decoration: none;
+  color: #ffffff;
+  // Lighten slightly on hover
+  &.passport { background-color: lighten(#6c5ce7, 5%); }
+  &.trips   { background-color: lighten(#ff3399, 5%); }
+  &.gallery { background-color: lighten(#0ba1a9, 5%); }    
+}
+
+// Bottom section of sidebar: utility icons
+.icon-btn {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%; // Forces the button to be a perfect circle
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2rem;
+  cursor: pointer; // Makes it clear these are interactive elements
+  box-sizing: border-box;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+  background-color: #e0e0e0;
+  margin-bottom: 10px;
+}
+
+// Temporary utility button styles
+// Will add icons later and functionality of buttons
+.home-btn { border: 3px solid #6c5ce7; }
+.pin-btn { border: 3px solid #4cd137; }
+.theme-btn { border: 3px solid #00a8ff; }
+.icon-btn:hover { transform: scale(1.1); background-color: #ffffff; }
