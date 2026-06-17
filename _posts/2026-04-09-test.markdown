@@ -6,7 +6,63 @@ category: Tech
 excerpt: "This is a test post."
 departure: "JFK"
 arrival: "LAX"
+featured: true
 permalink: /blog/test/
 ---
 
 Test content.
+
+<!-- write me something with all the markdown features of a text -->
+
+# Heading 1
+{% include photo.html src="/assets/images/id_headshot.jpg" alt="Identity headshot visual" caption="LOG #01: This is a caption" %}
+Type a paragraph here of nonsense. Keep going. This is just filler text to demonstrate the markdown features. You can write anything you want here, but it should be enough to show how the formatting works. Next, let's add an image. Keep typing to fill up the space. This is just a test post, so it doesn't need to be meaningful. The important thing is that it demonstrates the markdown features. Now, let's add a list. You can choose either an ordered or unordered list, or even both! Just keep typing to fill up the space. This is all about showing how the formatting works, so don't worry about the content. Finally, let's add a blockquote and a link. This will complete our demonstration of markdown features in this test post. This is the text paragraph before the image asset is initialized. The browser will automatically wrap this prose around the side of the photo box.
+
+Type a paragraph here of nonsense. Keep going. This is just filler text to demonstrate the markdown features. You can write anything you want here, but it should be enough to show how the formatting works. Next, let's add an image. Keep typing to fill up the space. This is just a test post, so it doesn't need to be meaningful. The important thing is that it demonstrates the markdown features. Now, let's add a list. You can choose either an ordered or unordered list, or even both! Just keep typing to fill up the space. This is all about showing how the formatting works, so don't worry about the content. Finally, let's add a blockquote and a link. This will complete our demonstration of markdown features in this test post. This is the text paragraph before the image asset is initialized. The browser will automatically wrap this prose around the side of the photo box. Type a paragraph here of nonsense. Keep going. This is just filler text to demonstrate the markdown features. You can write anything you want here, but it should be enough to show how the formatting works. Next, let's add an image. Keep typing to fill up the space. This is just a test post, so it doesn't need to be meaningful. The important thing is that it demonstrates the markdown features. Now, let's add a list. You can choose either an ordered or unordered list, or even both! Just keep typing to fill up the space. This is all about showing how the formatting works, so don't worry about the content. Finally, let's add a blockquote and a link. This will complete our demonstration of markdown features in this test post. This is the text paragraph before the image asset is initialized. The browser will automatically wrap this prose around the side of the photo box. Type a paragraph here of nonsense. Keep going. This is just filler text to demonstrate the markdown features. You can write anything you want here, but it should be enough to show how the formatting works. Next, let's add an image. Keep typing to fill up the space. This is just a test post, so it doesn't need to be meaningful. The important thing is that it demonstrates the markdown features. Now, let's add a list. You can choose either an ordered or unordered list, or even both! Just keep typing to fill up the space. This is all about showing how the formatting works, so don't worry about the content. Finally, let's add a blockquote and a link. This will complete our demonstration of markdown features in this test post. This is the text paragraph before the image asset is initialized. The browser will automatically wrap this prose around the side of the photo box.
+
+
+## Heading 2
+### Heading 3
+**Bold Text**
+
+Type a paragraph here of nonsense. Keep going. This is just filler text to demonstrate the markdown features. You can write anything you want here, but it should be enough to show how the formatting works. Next, let's add an image. Keep typing to fill up the space. This is just a test post, so it doesn't need to be meaningful. The important thing is that it demonstrates the markdown features. Now, let's add a list. You can choose either an ordered or unordered list, or even both! Just keep typing to fill up the space. This is all about showing how the formatting works, so don't worry about the content. Finally, let's add a blockquote and a link. This will complete our demonstration of markdown features in this test post. This is the text paragraph before the image asset is initialized. The browser will automatically wrap this prose around the side of the photo box.
+
+{% include photo.html src="/assets/images/id_headshot.jpg" alt="Identity headshot visual" caption="LOG #01: IDENTITY VERIFICATION Testing a longer post now" %}
+
+This is the next log entry section. Because we explicitly declared the figure block layout container through our HTML include helper, this content will instantly stream along the side. Type a paragraph here of nonsense. Keep going. This is just filler text to demonstrate the markdown features. You can write anything you want here, but it should be enough to show how the formatting works. Next, let's add an image. Keep typing to fill up the space. This is just a test post, so it doesn't need to be meaningful. The important thing is that it demonstrates the markdown features. Now, let's add a list. You can choose either an ordered or uType a paragraph here of nonsense. Keep going. This is just filler text to demonstrate the markdown features. You can write anything you want here, but it should be enough to show how the formatting works. Next, let's add an image. Keep typing to fill up the space. This is just a test post, so it doesn't need to be meaningful. The important thing is that it demonstrates the markdown features. Now, let's add a list. You can choose either an ordered or u
+
+Type a paragraph here of nonsense. Keep going. This is just filler text to demonstrate the markdown features. You can write anything you want here, but it should be enough to show how the formatting works. Next, let's add an image. Keep typing to fill up the space. This is just a test post, so it doesn't need to be meaningful. The important thing is that it demonstrates the markdown features. Now, let's add a list. You can choose either an ordered or unordered list, or even both! Just keep typing to fill up the space. This is all about showing how the formatting works, so don't worry about the content. Finally, let's add a blockquote and a link. This will complete our demonstration of markdown features in this test post. Type a paragraph here of nonsense. Keep going. This is just filler text to demonstrate the markdown features. You can write anything you want here, but it should be enough to show how the formatting works. Next, let's add an image. Keep typing to fill up the space. This is just a test post, so it doesn't need to be meaningful. The important thing is that it demonstrates the markdown features. Now, let's add a list. You can choose either an ordered or unordered list, or even both! Just keep typing to fill up the space. This is all about showing how the formatting works, so don't worry about the content. Finally, let's add a blockquote and a link. This will complete our demonstration of markdown features in this test post. Type a paragraph here of nonsense. Keep going. This is just filler text to demonstrate the markdown features. You can write anything you want here, but it should be enough to show how the formatting works. Next, let's add an image. Keep typing to fill up the space. This is just a test post, so it doesn't need to be meaningful. The important thing is that it demonstrates the markdown features. Now, let's add a list. You can choose either an ordered or unordered list, or even both! Just keep typing to fill up the space. This is all about showing how the formatting works, so don't worry about the content. Finally, let's add a blockquote and a link. This will complete our demonstration of markdown features in this test post.
+
+- Unordered list item 1
+- Unordered list item 2
+1. Ordered list item 1
+2. Ordered list item 2
+
+This is the text paragraph before the image asset is initialized. The browser will automatically wrap this prose around the side of the photo box.
+
+
+
+This is the next log entry section. Because we explicitly declared the figure block layout container through our HTML include helper, this content will instantly stream along the side.
+
+*Italic Text*
+~~Strikethrough~~
+`Inline code`
+
+{% highlight ruby %}
+def hello_world():
+    print("Hello, world!")
+{% endhighlight %}
+
+- Unordered list item 1
+- Unordered list item 2
+1. Ordered list item 1
+2. Ordered list item 2
+> Blockquote
+
+Next paragraph
+[Link to Google](https://www.google.com)
+
+| Column Title 1 | Column Title 2 | Column Title 3 |
+| -------------- | -------------- | -------------- |
+| Row 1, Cell 1  | Row 1, Cell 2  | Row 1, Cell 3  |
+| Row 2, Cell 1  | Row 2, Cell 2  | Row 2, Cell 3  |

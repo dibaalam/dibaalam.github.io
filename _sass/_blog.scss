@@ -1,3 +1,10 @@
+.theme-pink   { --accent: #ff80bf; }
+.theme-orange { --accent: #ff9f43; }
+.theme-green  { --accent: #2ecc71; }
+.theme-blue   { --accent: #3498db; }
+.theme-purple { --accent: #9b59b6; }
+
+
 .blog-terminal-grid {
   display: grid;
   grid-template-columns: 1fr; /* Only one column, taking up 100% width */
@@ -6,11 +13,26 @@
 }
 
 .blog-entry-wrapper {
-  display: flex;
-  align-items: stretch;
+  display: grid;
+  grid-template-columns: max-content 1fr; /* Image takes only what it needs, pass takes the rest */
   gap: 40px;
+  align-items: stretch;
   margin-bottom: 20px;
-  height: clamp(80px, 23vh, 220px);
+  height: clamp(160px, 18vw, 220px);
+
+  @media (max-width: 900px) {
+    /* MOBILE: One single column */
+    grid-template-columns: 1fr; 
+    gap: 0;       /* No gap needed if image is gone */
+    
+    .blog-image {
+      display: none; /* The image exits the chat */
+    }
+
+    .boarding-pass {
+      width: 100%; /* Pass now takes the full width of the screen */
+    }
+  }
 }
 
 .blog-image {
@@ -43,6 +65,7 @@
   &, &:hover, &:visited, &:active {
     text-decoration: none;
     color: #333;          /* 4. Force your preferred "Ink" color here */
+    background: #fffdf0;
   }
 
   /* Shared Perforation Logic */
@@ -59,30 +82,37 @@
 
   /* Header Styles */
   .series-banner {
-        display: grid; 
-        grid-template-columns: 78% 22%; /* Hard-coded ratio */
-        width: 100%;
-        font-weight: bold;
-        text-transform: uppercase;
-        font-size: 0.85rem;
-        box-sizing: border-box;
-        overflow: hidden;
+    container-type: inline-size;
+    display: grid; 
+    grid-template-columns: 1fr 250px; /* Hard-coded ratio */
+    width: 100%;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    box-sizing: border-box;
+    overflow: hidden;
 
     .banner-left {
       display: flex;
       justify-content: space-between;
+      min-width: 0;
     }
     
     .banner-right {
+      display: flex;
+      align-items: center;
       text-align: center;
-      display: block;
-      text-align: center;
+      justify-content: center;
+      min-width: 0;
+
+      white-space: nowrap;   /* ABSOLUTELY NO WRAPPING */
+      overflow: hidden;
       font-weight: 800;
-      letter-spacing: 1px;
-      
+      letter-spacing: 1px; 
+      padding: 0 10px;
       // The 'Magic' resizing line:
       // (Minimum size, Preferred size based on viewport/container, Maximum size)
-      font-size: clamp(0.7rem, 2vw, 1rem);
+      font-size: clamp(0.5rem, 2.5vw, 1.1rem);
       text-transform: uppercase;
     }
   }
@@ -90,7 +120,7 @@
   /* Body Styles */
   .pass-body {
     display: grid; 
-        grid-template-columns: 78% 22%; /* Hard-coded ratio */
+        grid-template-columns: 1fr 250px; /* Hard-coded ratio */
         width: 100%;
         box-sizing: border-box;
         overflow: hidden;
@@ -105,6 +135,8 @@
       flex-direction: column;
       justify-content: space-between;
       background: rgba(0,0,0,0.01);
+      min-width: 0;
+      overflow: hidden;
 
       .metadata-grid {
         display: grid;
@@ -113,11 +145,12 @@
         gap: 10px;
         width: 100%;
         box-sizing: border-box;
+        min-width: 0;
         margin-bottom: 15px;
         .meta-item {
             display: flex;
             flex-direction: column;
-            span { font-size: 0.6rem; opacity: 0.5; }
+            span { font-size: 0.9rem; opacity: 0.5; }
             strong { font-size: 0.9rem; }
             &:nth-child(1) { text-align: left; }
             &:nth-child(2) { text-align: center; }
@@ -134,10 +167,30 @@
   }
 
   /* Dynamic Themes */
-  &.theme-pink .series-banner { background: #ff80bf; }
-  &.theme-orange .series-banner { background: #ff9f43; }
-  &.theme-green .series-banner { background: #2ecc71; }
-  &.theme-blue .series-banner { background: #3498db; }
+  &.theme-pink {
+    --accent: #ff80bf;
+    .series-banner { background: #ff80bf; }
+  }
+
+  &.theme-orange {
+    --accent: #ff9f43;
+    .series-banner { background: #ff9f43; }
+  }
+
+  &.theme-green {
+    --accent: #a3e4d7;
+    .series-banner { background: #2ecc71; }
+  }
+
+  &.theme-blue {
+    --accent: #3498db;
+    .series-banner { background: #3498db; }
+  }
+
+  &.theme-purple {
+    --accent: #9b59b6;
+    .series-banner { background: #9b59b6; }
+  }
 }
 
 .barcode-area {
@@ -145,18 +198,6 @@
   background: repeating-linear-gradient(90deg, #333, #333 2px, transparent 2px, transparent 4px);
 }
 
-.metadata-grid {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 20px;
-
-  .meta-item {
-    display: flex;
-    flex-direction: column;
-    span { font-size: 0.65rem; opacity: 0.5; font-weight: bold; }
-    strong { font-size: 0.9rem; }
-  }
-}
 
 .airport-codes {
   display: flex;
@@ -186,12 +227,149 @@
     flex-shrink: 0;
     opacity: 0.6;
     /* If the emoji looks weird, rotate it */
-    transform: rotate(90deg); 
+    transform: rotate(45deg); 
   }
 }
 
-@media (max-width: 800px) {
-  .blog-image {
-    display: none;       /* Optionally hide remarks on mobile to keep it super clean */
+
+
+// POST LAYOUTS
+
+/* Add this to your SCSS file */
+
+.post-header.ticket-style {
+  border-bottom: 2px solid var(--accent);
+  padding-bottom: 2rem;
+  margin-bottom: 3rem;
+  
+  .ticket-top {
+    display: flex;
+    justify-content: space-between;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    color: $brand-color;
+    margin-bottom: 0.5rem;
+  }
+
+  .post-title {
+    font-size: 2.5rem;
+    letter-spacing: -1px;
+    line-height: 1.1;
+    margin-top: 0;
+  }
+}
+
+.post-content {
+  line-height: 1.8; /* Increased for readability */
+  h1, h2, h3, h4, h5, h6 {
+    clear: both;
+    padding-top: 1.5rem; /* Restores comfortable breathing room above the header */
+    margin-bottom: 1rem;
+  }
+  
+  // Target both bulleted and numbered lists
+  ul, ol {
+    /* THE FIX: Forces the list to establish its own block context */
+    overflow: hidden; 
+    
+    /* Optional: Ensures comfortable breathing room if a list starts right next to an image */
+    padding-left: 1.5rem; 
+    
+    // Make sure nested sub-lists preserve their deeper indentation levels cleanly
+    ul, ol {
+      padding-left: 1.5rem;
+    }
+  }
+
+  /* Modern Blockquote */
+  blockquote {
+    border-left: 5px solid $brand-color;
+    background: lighten($grey-color-light, 10%);
+    padding: 1.5rem;
+    margin: 2rem 0;
+    border-radius: 0 8px 8px 0;
+    color: darken($text-color, 10%);
+  }
+
+}
+
+.ticket-style {
+  .header-main-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end; // Aligns bottom of title with bottom of meta
+    gap: 2rem;
+  }
+
+  .header-left {
+    flex: 1; 
+  }
+
+  .header-right {
+    display: flex;
+    gap: 2.5rem; // Space between Log, Timestamp, and Category
+  }
+
+  .meta-item {
+    display: flex;
+    flex-direction: column;
+    text-align: right;
+
+    .label {
+      font-size: 0.9rem;
+      color: $grey-color;
+      font-weight: bold;
+      letter-spacing: 0.1em;
+      margin-bottom: 2px;
+    }
+
+    .value {
+      font-size: 0.85rem;
+      color: var(--accent);
+      font-weight: 500;
+      white-space: nowrap; // Prevents dates/categories from snapping to two lines
+    }
+  }
+
+  .post-title {
+    font-size: 2.4rem;
+    margin: 0;
+    line-height: 1;
+    color: $text-color;
+  }
+
+  .post-author-tag {
+    margin-top: 0.75rem;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    
+    .label {
+      color: $grey-color;
+      margin-right: 4px;
+    }
+    .p-author {
+      font-weight: bold;
+    }
+  }
+}
+
+// Mobile: Stack everything when the screen gets too narrow
+@include media-query($on-laptop) {
+  .header-main-row {
+    flex-direction: column;
+    align-items: flex-start;
+
+    .header-right {
+      width: 100%;
+      justify-content: space-between;
+      gap: 1rem;
+      border-top: 1px solid #eee;
+      padding-top: 1rem;
+    }
+    
+    .meta-item {
+      text-align: left;
+    }
   }
 }

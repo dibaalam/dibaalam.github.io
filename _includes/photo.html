@@ -1,0 +1,6 @@
+<figure class="polaroid-log">
+  <img src="{{ include.src | relative_url }}" alt="{{ include.alt | escape }}">
+  {% if include.caption %}
+    <figcaption>{{ include.caption | upcase }}</figcaption>
+  {% endif %}
+</figure>

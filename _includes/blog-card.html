@@ -1,7 +1,9 @@
 <div class="blog-entry-wrapper">
+    {% if include.show_image%}
     <div class="blog-image theme-{{ include.color }}">
         <img src="{{ include.image | relative_url }}" alt="{{ include.title }}">
     </div>
+    {% endif %}
 
     <a href="{{ include.url | relative_url }}" class="boarding-pass theme-{{ include.color }}">
         <header class="series-banner">

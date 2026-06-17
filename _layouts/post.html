@@ -1,18 +1,66 @@
 ---
 layout: default
 ---
-<article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
 
-  <header class="post-header">
-    <h1 class="post-title p-name" itemprop="name headline">{{ page.title | escape }}</h1>
-    <p class="post-meta">
-      <time class="dt-published" datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">
-        {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
-        {{ page.date | date: date_format }}
-      </time>
-      {%- if page.author -%}
-        • <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">{{ page.author }}</span></span>
-      {%- endif -%}</p>
+{% assign brand = site.series_settings[page.category] %}
+{% assign theme_color = brand.color | default: "blue" %}
+
+<article class="post h-entry theme-{{ theme_color }}" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header ticket-style">
+    <div class="header-main-row">
+      <div class="header-left">
+        <h1 class="post-title p-name" itemprop="name headline">
+          {{ page.title | escape }}
+        </h1>
+        {% if page.author %}
+          <div class="post-author-tag">
+            <span class="label">OPERATOR:</span>
+            <span class="p-author h-card" itemprop="name">{{ page.author }}</span>
+          </div>
+        {% endif %}
+      </div>
+
+      <div class="header-right">
+        <div class="meta-item">
+          <span class="label">ENTRY LOG</span>
+          <span class="value">
+            {% comment %} 1. REPLICATE THE CATEGORY NUMBERING LOGIC {% endcomment %}
+            {% assign category_posts = site.categories[page.category] %}
+            {% assign total_category_posts = category_posts | size %}
+
+            {% for c_post in category_posts %}
+              {% if c_post.url == page.url %}
+                {% assign display_index = total_category_posts | minus: forloop.index | plus: 1 %}
+                
+                {% if display_index < 10 %}
+                  {% assign final_index = display_index | prepend: '0' %}
+                {% else %}
+                  {% assign final_index = display_index %}
+                {% endif %}
+              {% endif %}
+            {% endfor %}
+
+            {% comment %} 2. OUTPUT THE RESULT {% endcomment %}
+            #{{ final_index | prepend: '0' }}
+          </span>
+        </div>
+        
+        <div class="meta-item">
+          <span class="label">TIMESTAMP</span>
+          <time class="value dt-published" datetime="{{ page.date | date_to_xmlschema }}">
+            {{ page.date | date: "%b %d" }}
+          </time>
+        </div>
+
+        <div class="meta-item">
+          <span class="label">CATEGORY</span>
+          <span class="value">
+            {{ page.category | default: "General" | uppercase }}
+          </span>
+        </div>
+      </div>
+    </div>
   </header>
 
   <div class="post-content e-content" itemprop="articleBody">
