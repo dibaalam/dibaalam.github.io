@@ -1,6 +1,6 @@
 ---
 layout: home-experience
-hide_footer: true
+hide_footer: false
 full_width: true
 title: Home
 permalink: /
@@ -96,33 +96,25 @@ destinations:
   <section class="home-section" id="flight-path">
     <div class="home-header-container">
       <div class="header-wrapper">
-        <h1 class="header-title">Flight Path</h1>
+        <h1 class="header-title">Experience</h1>
           <div class="header-line"></div>
-        <span class="header-caption">Experience</span>
+        <span class="header-caption">Featured portfolio</span>
       </div>
     </div>
-    <div class="description-text-box">
-      <p>Collection of my professional experiences and career milestones.</p>
-    </div>
-    <div class="board-container">
-      <div class="departure-board">
-        <div class="board-header">
-          <div class="time-col">TIME</div>
-          <div class="destination-col">DESTINATION</div>
-          <div class="remarks-col">REMARKS</div>
-        </div>
-        {% for flight in site.data.experiences %}
-        <div class="flight-row">
-          <div class="time-col">{{ flight.time }}</div>
-          <div class="destination-col">
-            <div class="company">{{ flight.destination }}</div>
-            <div class="role">{{ flight.title }}</div>
-            <div class="description">{{ flight.description }}</div>
+    <div class="departure-board">
+      {% for entry in site.data.timeline %}
+        {% if entry.featured == true %}
+          <div class="flight-row">
+            <div class="time-col">{{ entry.date_range }}</div>
+            <div class="destination-col">
+              <div class="company">{{ entry.company }}</div>
+              <div class="role">{{ entry.title }}</div>
+              <div class="description">{{ entry.description }}</div>
+            </div>
+            <div class="remarks-col">{{ entry.category }}</div>
           </div>
-          <div class="remarks-col">{{ flight.remarks }}</div>
-        </div>
-        {% endfor %}
-      </div>
+        {% endif %}
+      {% endfor %}
     </div>
   </section>
 </div>
@@ -135,9 +127,6 @@ destinations:
           <div class="header-line"></div>
         <span class="header-caption">Projects</span>
       </div>
-    </div>
-    <div class="description-text-box">
-      <p>Technical deep dives into autonomous systems and robotics engineering.</p>
     </div>
     <div class="airport-terminal">
       <div class="cargo-bay entry"></div>
@@ -237,13 +226,8 @@ destinations:
     </div>
 
     <div class="contact-terminal-area">
-      <p>Establish connection at the arrivals terminal.</p>
+      <p></p>
     </div>
-
-    <footer class="minimal-footer">
-      <div class="footer-left">My Name 2026</div>
-      <div class="footer-right">LinkedIn / GitHub</div>
-    </footer>
   </section>
 </div>
 

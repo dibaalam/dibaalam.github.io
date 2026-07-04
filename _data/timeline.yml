@@ -13,8 +13,10 @@
 # Title: Name of position
 # Company: Organization associated with
 # Date Range: Start - End
+# Description: Short blurb for main page projects
 # Skills: Related tools, skills, etc.
 # Link: To future project/blog post
+# Featured: T/F to be shown on main page
 
 
 
@@ -24,8 +26,10 @@
   title: "Systems Design Engineering Intern"
   company: "MDA Space"
   date_range: "May 2025 – Present"
+  description: "Test Description"
   skills: ["Systems Design", "Mission Operations", "GNC", "Robotics", "Project Engineering", "VR", "UE5"]
   link: "#"
+  featured: true
 
 - year: 2026
   category: "LEADERSHIP"
@@ -33,17 +37,21 @@
   title: "Presidential Advisor"
   company: "WISE U of T"
   date_range: "June 2026 – Sept 2026"
+  description: "Test Description"
   skills: ["Strategy", "Governance"]
   link: "#"
+  featured: true
 
 - year: 2025
   category: "PROJECTS"
   icon: "🚀"
   title: "NASA Space Apps Challenge"
   company: "Global Nominee Team"
-  date_range: "October 2025"
+  date_range: "Oct 2025"
+  description: "Test Description"
   skills: ["Rapid Prototyping", "UI/UX"]
   link: "#"
+  featured: true
 
 - year: 2024
   category: "PROJECTS"
@@ -51,5 +59,7 @@
   title: "Test #2"
   company: "Global Nominee Team"
   date_range: "2024"
+  description: "Test Description"
   skills: ["Rapid Prototyping", "UI/UX"]
   link: "#"
+  featured: true

@@ -111,7 +111,7 @@ h1, h2, h3 {
 // PAGES ---------------------------------------------------------------------------------
 
 body.sky-theme {
-  background-color: #d0e7ff !important;
+  background-color: #e2f0ff !important;
   margin: 0;
   padding: 0;
   overflow-x: hidden;
@@ -124,15 +124,17 @@ body.sky-theme {
   box-sizing: border-box;
 
   position: relative;
-  padding: 3% 2%; 
+  padding: 0 2% 3% 2%; 
   justify-content: flex-start;
 
   display: flex;
   flex-direction: column;
-  background-color: #d0e7ff;
+  background-color: #e2f0ff;
 }
 
 #hero {
+  padding-top: 0px; // Offset for the fixed header
+  padding-bottom: 0px;
   box-sizing: border-box;
   @media (max-width: 900px) {
     padding-left: 6%;
