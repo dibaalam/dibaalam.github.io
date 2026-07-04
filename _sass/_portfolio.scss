@@ -1,0 +1,529 @@
+// Portfolio (Timeline of Experience) Styles
+
+// Variables for easy customization
+$timeline-color:      #e0e0e0;
+$text-muted:          #666666;
+$border-color:        #eaeaea;
+// Custom category colours
+$accent-work:         #4caf50;
+$accent-research:     #3b82f6; 
+$accent-projects:     #ec4899; 
+$accent-education:    #a855f7; 
+$accent-leadership:   #f97316;
+$accent-awards:       #eab308;
+$accent-volunteering: #14b8a6;
+
+// Map category names to their respective colours
+$category-colors: (
+  "work-experience":  $accent-work,
+  "research":         $accent-research,
+  "projects":         $accent-projects,
+  "education":        $accent-education,
+  "leadership":       $accent-leadership,
+  "awards":           $accent-awards,
+  "volunteering":     $accent-volunteering
+);
+
+.card-title {
+  font-family: $body-font;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #000;
+}
+
+.portfolio-archive-container {
+  font-family: $body-font;
+
+  // Subtitle (if needed)
+  .archive-subtitle {
+    color: $text-muted;
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  // Search Bar
+  .search-wrapper {
+    position: relative;
+    margin-bottom: 1.5rem;
+    font-family: $mono-font;
+
+    .search-icon {
+      position: absolute;
+      left: 15px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: $text-muted;
+    }
+
+    input {
+      width: 100%;
+      box-sizing: border-box;
+      display: block;
+      padding: 0.8rem 1rem 0.8rem 2.8rem;
+      border: 1px solid #333;
+      border-radius: 4px;
+      font-size: 1rem;
+      background: transparent;
+      outline: none;
+      
+      &:focus {
+        border-color: #000;
+      }
+    }
+  }
+
+  // Filter Buttons
+  .filter-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem; // Spacing between tags
+    margin-bottom: 1rem;
+
+    .filter-btn {
+      background: transparent;
+      border: 1px solid #333;
+      padding: 0.4rem 1rem;
+      border-radius: 4px;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      font-family: $mono-font;
+
+      &:hover, &.active {
+        background: #333;
+        color: #fff;
+      }
+    }
+  }
+
+  // View Controls Line
+  .view-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid $timeline-color;
+    padding-bottom: 0.75rem;
+    margin-bottom: 2.5rem;
+    font-family: $mono-font;
+    font-size: 0.85rem;
+    letter-spacing: 0.05em;
+
+    .timeline-toggle {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: #000;
+      font-weight: 600;
+      
+      input {
+        accent-color: #000;
+      }
+    }
+
+    .sort-wrapper {
+      color: $text-muted;
+      font-family: $mono-font;
+      strong { color: #000; }
+      padding-bottom: 1rem;
+    }
+
+    // Dropdown sorting menu
+    .sort-wrapper {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      
+      label {
+        font-family: $mono-font;
+        font-size: 0.75rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        color: #666;
+      }
+
+      select {
+        // Reset browser defaults
+        appearance: none;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        
+        font-family: $mono-font;
+        font-size: 0.75rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        
+        padding: 0.4rem 2rem 0.4rem 0.75rem;
+        border: 1px solid #000000;
+        border-radius: 4px;
+        background-color: #ffffff;
+        color: #000000;
+        cursor: pointer;
+        transition: all 0.2s ease;
+
+        // Custom dropdown arrow using inline SVG
+        background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'><path d='M0 0l5 5 5-5z' fill='%23000000'/></svg>");
+        background-repeat: no-repeat;
+        background-position: right 0.75rem center;
+        background-size: 10px 6px;
+
+        &:hover {
+          background-color: #f5f5f5;
+        }
+
+        &:focus {
+          outline: none;
+          border-color: #666;
+          box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.05);
+        }
+      }
+    }
+  }
+
+  .timeline-feed {
+    position: relative;
+  }
+}
+
+.timeline-row {
+  display: grid;
+  grid-template-columns: 55px 45px 1fr; // Separation for year, marker, and content
+  margin-bottom: 2rem;
+  position: relative;
+  
+  &:hover {
+    .timeline-card { border-color: #b5ac86; }
+    .arrow-link { transform: translateX(3px); }
+  }
+}
+
+.timeline-marker {
+  display: contents; 
+
+  .year {
+    grid-column: 1;
+    grid-row: 1;
+    font-family: $mono-font;
+    font-weight: 700;
+    font-size: 0.9rem;
+    color: #464646;
+    text-align: right; 
+    padding-right: 8px;
+    align-self: flex-start;
+    margin-top: 1rem;
+    display: block; 
+    visibility: hidden; 
+  }
+
+  .timeline-circle {
+    grid-column: 2;
+    grid-row: 1;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: #464646;
+    justify-self: center; 
+    z-index: 2;
+    align-self: flex-start;
+    margin-top: 1.5rem;
+    display: block; 
+    visibility: hidden; 
+  }
+
+  .timeline-line {
+    grid-column: 2;
+    grid-row: 1;
+    width: 1px;
+    background-color: #464646;
+    justify-self: center;
+    height: calc(100% + 2rem); 
+    align-self: flex-start;
+    z-index: 1;
+    visibility: visible; 
+  }
+
+  // If first entry of the year upon rendering, show the year and circle marker
+  &.first-of-year {
+    .year, .timeline-circle {
+      visibility: visible;
+    }
+  }
+}
+
+// Ticket design for content
+.timeline-card {
+  display: grid;
+  grid-template-columns: 100px 1fr; 
+  align-items: stretch;
+  padding: 0;
+  
+  background-color: #fdfbf3;
+  border: 2px solid #b5ac86;
+  border-radius: 6px;
+  
+  overflow: visible; 
+  position: relative;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    padding: 1.5rem;
+  }
+
+  // LEFT: Colour tab and icon column
+  .card-left {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-right: 2px solid #b5ac86;
+    padding: 1rem;
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+    // Update colour based on category
+    @each $class-name, $color-value in $category-colors {
+      &.#{$class-name} { 
+        background-color: darken($color-value, 1%); 
+      }
+    }
+  }
+
+  // RIGHT: Metadata content
+  .card-body {
+    display: grid;
+    grid-template-columns: 0.8fr 20px 1.4fr; // Separation for overview, divider, and meta
+    align-items: stretch;
+    position: relative;
+
+    @media (max-width: 768px) {
+      grid-template-columns: 1fr;
+      padding: 0;
+      gap: 1rem;
+    }
+
+    // Overview Section: Title, Company, Category
+    .card-details {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 0.25rem;
+      padding: 1rem 1rem 1rem 1.5rem;
+
+      .category-tag {
+        font-family: $mono-font;
+        font-size: 0.75rem;
+        font-weight: 700;
+        letter-spacing: 0.05em;
+        display: block;
+        // Update colour based on category
+        @each $class-name, $color-value in $category-colors {
+          &.#{$class-name} { 
+            color: darken($color-value, 10%); 
+          }
+        }
+      }
+
+      h3 {
+        margin: 0;
+        font-size: 1.1rem;
+        font-weight: 600;
+        color: #000;
+        white-space: nowrap;
+      }
+
+      .company {
+        margin: 0;
+        color: $text-muted;
+        font-size: 0.9rem;
+        font-family: $body-font;
+        font-style: italic;
+        text-transform: none;
+        font-weight: 400;
+      }
+    }
+
+    // Divider between ticket stubs
+    .card-divider {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      position: relative; 
+      height: 100%;
+      width: 100%; 
+
+      @media (max-width: 768px) {
+        display: none;
+      }
+
+      &::before {
+        // TOP Inner pure white circle to cover the rectangular border
+        content: '';
+        display: block;
+        width: 15px;
+        height: 15px;
+        border-radius: 50%;
+        background-color: #fcfbf7;
+        border: none;
+        
+        position: absolute;
+        bottom: -2px; 
+        left: 50%;
+        transform: translateX(-50%);
+        box-sizing: border-box;
+        z-index: 9;
+        margin-bottom: -9px;
+      }
+
+      // Dashed Perforation Line
+      .perforated-line {
+        height: 100%;
+        width: 0;
+        border-left: 1px dashed #333;
+        margin: 0; 
+        padding-top: 20px;    
+        padding-bottom: 20px; 
+
+        &::before {
+          // BOTTOM Inner pure white circle to cover the rectangular border
+          content: '';
+          display: block;
+          width: 15px;
+          height: 15px;
+          border-radius: 50%;
+          background-color: #fcfbf7;
+          border: none;
+          
+          position: absolute;
+          top: -2px; 
+          left: 50%;
+          transform: translateX(-50%);
+          box-sizing: border-box;
+          z-index: 9;
+          margin-top: -7.5px;
+        }
+
+        &::after {
+          // TOP Outer semi-circle cutout over rectangular border
+          content: '';
+          display: block;
+          width: 18px;
+          height: 18px;
+          border-radius: 50%;
+          background-color: #ffffff;
+          border: 2px solid #b5ac86; 
+          
+          position: absolute;
+          top: -3px;
+          left: 50%;
+          transform: translateX(-50%);
+          box-sizing: border-box;
+          z-index: 10;
+          clip-path: inset(54% 0 0 0); // Slightly more than half to align with border
+          margin-top: -7.5px;
+        }
+
+      }
+
+      &::after {
+        // BOTTOM Outer semi-circle cutout over rectangular border
+        content: '';
+        display: block;
+        width: 18px;
+        height: 18px;
+        border-radius: 50%;
+        background-color: #ffffff;
+        border: 2px solid #b5ac86; 
+        
+        position: absolute;
+        bottom: -2px; 
+        left: 50%;
+        transform: translateX(-50%);
+        box-sizing: border-box;
+        z-index: 10;
+
+        // Your clipping and positioning math:
+        clip-path: inset(0 0 54% 0);
+        margin-bottom: -9px;
+      }
+    }
+
+      // Metadata Section: Date and Skills
+    .card-meta {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start; 
+      width: 100%;
+      padding: 1.5rem;
+      box-sizing: border-box;
+
+      // Lock width of date column so skills are aligned across all cards
+      --date-column-width: 180px; 
+      --column-gap: 2rem;
+
+      @media (max-width: 768px) {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+        padding: 1rem;
+      }
+
+      // Left: Date range
+      .card-middle {
+        flex-shrink: 0; 
+        width: var(--date-column-width);
+        margin-right: var(--column-gap);
+        
+        .date-range {
+          font-family: $mono-font; 
+          font-size: 0.9rem;
+          color: #333;
+          white-space: nowrap; 
+        }
+      }
+
+      // Right: Skills list
+      .card-right {
+        display: flex;
+        align-items: center;
+        justify-content: space-between; 
+        flex-grow: 1; 
+        min-width: 0; 
+
+        .skills-list {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 0.8rem;
+          justify-content: flex-start; 
+
+          // Rounded containers
+          .skill-badge {
+            font-family: $mono-font; 
+            font-size: 0.75rem;
+            color: #1e293b;            
+            background-color: #ffffff; 
+            border: 1px solid rgb(134, 134, 134); 
+            padding: 0.35rem 0.75rem;
+            border-radius: 6px;        
+            white-space: nowrap;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.02); 
+          }
+        }
+      }
+
+      // Far right arrow indicating external link
+      .arrow-link {
+        margin-left: auto; 
+        padding-left: 1.5rem; 
+        font-size: 1.2rem;
+        color: #000;
+        text-decoration: none;
+        flex-shrink: 0;
+        transition: transform 0.2s ease;
+        
+        &:hover {
+          transform: translateX(3px);
+        }
+      }
+    }
+  }
+}

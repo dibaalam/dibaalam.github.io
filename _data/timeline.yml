@@ -1,0 +1,55 @@
+## Define experiences for the portfolio timeline
+
+# Year: Defines which year it will be associated with
+# Category: Defines grouping and colour
+  # - Work
+  # - Research
+  # - Projects
+  # - Education
+  # - Leadership
+  # - Awards
+  # - Volunteering
+# Icon: Temporary emoji, will be link to a png designed category icon
+# Title: Name of position
+# Company: Organization associated with
+# Date Range: Start - End
+# Skills: Related tools, skills, etc.
+# Link: To future project/blog post
+
+
+
+- year: 2026
+  category: "WORK EXPERIENCE"
+  icon: "⚙️"
+  title: "Systems Design Engineering Intern"
+  company: "MDA Space"
+  date_range: "May 2025 – Present"
+  skills: ["Systems Design", "Mission Operations", "GNC", "Robotics", "Project Engineering", "VR", "UE5"]
+  link: "#"
+
+- year: 2026
+  category: "LEADERSHIP"
+  icon: "👥"
+  title: "Presidential Advisor"
+  company: "WISE U of T"
+  date_range: "June 2026 – Sept 2026"
+  skills: ["Strategy", "Governance"]
+  link: "#"
+
+- year: 2025
+  category: "PROJECTS"
+  icon: "🚀"
+  title: "NASA Space Apps Challenge"
+  company: "Global Nominee Team"
+  date_range: "October 2025"
+  skills: ["Rapid Prototyping", "UI/UX"]
+  link: "#"
+
+- year: 2024
+  category: "PROJECTS"
+  icon: "🚀"
+  title: "Test #2"
+  company: "Global Nominee Team"
+  date_range: "2024"
+  skills: ["Rapid Prototyping", "UI/UX"]
+  link: "#"

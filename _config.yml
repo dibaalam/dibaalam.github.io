@@ -25,9 +25,9 @@ github_username:  dibaalam
 linkedin_username: diba-alam
 
 header_pages: # controls the ordering of the pages
-  - index.md 
+  - index.md
+  - portfolio.md 
   - blog.md 
-  - portfolio.md
   - travel.md
 
 series_settings:
