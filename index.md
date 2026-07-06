@@ -12,6 +12,10 @@ destinations:
   - { name: "Contact", id: "contact" }
 ---
 
+<head>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
 <section class="home-section" id="hero">
 <div class="sky-container"></div>
 
@@ -98,7 +102,7 @@ destinations:
       <div class="header-wrapper">
         <h1 class="header-title">Experience</h1>
           <div class="header-line"></div>
-        <span class="header-caption">Featured portfolio</span>
+        <span class="header-caption">Featured Portfolio</span>
       </div>
     </div>
     <div class="departure-board">
@@ -192,10 +196,6 @@ destinations:
       </div>
     </div>
 
-    <div class="description-text-box">
-      <p>Documenting the process of building agentic systems.</p>
-    </div>
-
     <div class="postcard-grid">
       {% assign featured_posts = site.posts | where: "featured", true %}
       {% for post in featured_posts limit: 4 %}
@@ -219,15 +219,69 @@ destinations:
   <section class="home-section" id="contact">
     <div class="home-header-container">
       <div class="header-wrapper">
-        <h1 class="header-title">Arrivals</h1>
+        <h1 class="header-title">Beyond the Desk</h1>
           <div class="header-line"></div>
-        <span class="header-caption">Contact</span>
+        <span class="header-caption">The Human Element</span>
       </div>
     </div>
 
     <div class="contact-terminal-area">
       <p></p>
     </div>
+
+    <section class="funfacts-section">
+      <!-- Wavy Dotted Path Background -->
+      <div class="wavy-line-container">
+        <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
+          <path d="M 0,60 Q 120,-35 240,40 T 480,40 T 720,40 T 960,40 T 1200,60" 
+                fill="none" 
+                stroke="#bdbdbd" 
+                stroke-width="2" 
+                stroke-dasharray="6,6" />
+        </svg>
+      </div>
+
+      <div class="funfacts-grid">
+        {% for fact in site.data.funfacts %}
+          <div class="funfact-item">
+            <!-- Icon Circle Container -->
+            <div class="icon-circle" style="background-color: {{ fact.color }};">
+              {% if fact.icon == 'swimmer' %}
+                <i class="fa-solid fa-person-swimming fa-lg"></i>
+              {% elsif fact.icon == 'music' %}
+                <i class="fa-solid fa-music fa-lg"></i>
+              {% elsif fact.icon == 'globe' %}
+                <i class="fa-solid fa-globe fa-lg"></i>
+              {% elsif fact.icon == 'plane' %}
+                <i class="fa-solid fa-plane fa-lg"></i>
+              {% elsif fact.icon == 'feather' %}
+                <i class="fa-solid fa-feather fa-lg"></i>
+              {% elsif fact.icon == 'camera' %}
+                <i class="fa-solid fa-camera fa-lg"></i>
+              {% endif %}
+            </div>
+            
+            <!-- Text content -->
+            <h3 class="fact-title">{{ fact.title }}</h3>
+            <p class="fact-description">{{ fact.description }}</p>
+          </div>
+        {% endfor %}
+      </div>
+    </section>
+
+    <section class="contact-cta-section">
+      <div class="contact-cta-container">
+        <div class="cta-text">
+          <h2>Let's build something together.</h2>
+          <p>Whether you want to talk robotics, explore collaboration opportunities, or just say hello, my inbox is always open.</p>
+        </div>
+        <div class="cta-action">
+          <a href="mailto:diba.alam@mail.utoronto.ca" class="cta-button">
+            Get in Touch <i class="fa-solid fa-arrow-right"></i>
+          </a>
+        </div>
+      </div>
+    </section>
   </section>
 </div>
 

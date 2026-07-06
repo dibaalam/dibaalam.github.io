@@ -9,7 +9,6 @@
   # - Leadership
   # - Awards
   # - Volunteering
-# Icon: Temporary emoji, will be link to a png designed category icon
 # Title: Name of position
 # Company: Organization associated with
 # Date Range: Start - End
@@ -19,10 +18,8 @@
 # Featured: T/F to be shown on main page
 
 
-
 - year: 2026
   category: "WORK EXPERIENCE"
-  icon: "⚙️"
   title: "Systems Design Engineering Intern"
   company: "MDA Space"
   date_range: "May 2025 – Present"
@@ -33,7 +30,6 @@
 
 - year: 2026
   category: "LEADERSHIP"
-  icon: "👥"
   title: "Presidential Advisor"
   company: "WISE U of T"
   date_range: "June 2026 – Sept 2026"
@@ -44,7 +40,6 @@
 
 - year: 2025
   category: "PROJECTS"
-  icon: "🚀"
   title: "NASA Space Apps Challenge"
   company: "Global Nominee Team"
   date_range: "Oct 2025"
@@ -54,8 +49,7 @@
   featured: true
 
 - year: 2024
-  category: "PROJECTS"
-  icon: "🚀"
+  category: "AWARDS"
   title: "Test #2"
   company: "Global Nominee Team"
   date_range: "2024"
