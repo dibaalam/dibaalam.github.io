@@ -285,6 +285,11 @@ $category-colors: (
         background-color: darken($color-value, 1%); 
       }
     }
+    i.ph {
+      font-size: 3rem;
+      flex-shrink: 0;
+      // color: #ffffff;
+    }
   }
 
   // RIGHT: Metadata content

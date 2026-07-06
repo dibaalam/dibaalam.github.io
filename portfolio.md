@@ -4,6 +4,8 @@ title : Portfolio
 permalink: /portfolio/
 ---
 
+<script src="https://unpkg.com/@phosphor-icons/web"></script>
+
 <div class="portfolio-archive-container">
   <!-- Search bar (not implemented) -->
   <div class="search-wrapper">
@@ -55,7 +57,24 @@ permalink: /portfolio/
         <!-- Insert card content -->
         <div class="timeline-card" data-year="{{ entry.year }}" data-title="{{ entry.title | downcase }}">
           <div class="card-left {{ entry.category | downcase | slugify}}">
-            <div>{{ entry.icon }}</div>
+            {% assign category_slug = entry.category | downcase | slugify %}
+            {% if category_slug == 'work-experience' %}
+              <i class="ph ph-briefcase"></i>
+            {% elsif category_slug == 'research' %}
+              <i class="ph ph-microscope"></i>
+            {% elsif category_slug == 'projects' %}
+              <i class="ph ph-gear"></i>
+            {% elsif category_slug == 'education' %}
+              <i class="ph ph-graduation-cap"></i>
+            {% elsif category_slug == 'leadership' %}
+              <i class="ph ph-users-three"></i>
+            {% elsif category_slug == 'awards' %}
+              <i class="ph ph-certificate"></i>
+            {% elsif category_slug == 'volunteering' %}
+              <i class="ph ph-hand-heart"></i>
+            {% else %}
+              <i class="ph ph-calendar-blank"></i>
+            {% endif %}
           </div>
           <div class="card-body">
             <div class="card-details">

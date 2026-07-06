@@ -1,0 +1,29 @@
+- title: "ATHLETICS"
+  icon: "swimmer" # We'll use FontAwesome or inline SVGs
+  color: "#d7ebca" # Soft green circle tint
+  description: "Former competitive swimmer and badminton player. Four years as intramurals badminton captain at UofT. I'm quick to pick up sports; I've trained in everything from Soccer to Track & Field to Archery!"
+
+- title: "MUSIC"
+  icon: "music"
+  color: "#c0d2ed" # Soft blue/purple tint
+  description: "Graduated from the Royal Conservatory of Music at 16 with an ARCT Diploma in Piano Performance. Four years a Flautist in Concert Band. I love singing — my favourite genres are Pop and Punk Rock!"
+
+- title: "LANGUAGES"
+  icon: "globe"
+  color: "#fce4d6" # Soft orange tint
+  description: "Bilingual in English and French (12 years French Immersion) with intermediate Cantonese. Currently learning German and Spanish."
+
+- title: "EXPLORATION"
+  icon: "plane"
+  color: "#fff2cc" # Soft yellow tint
+  description: "This one is traveling."
+
+- title: "VISION BOARD"
+  icon: "feather"
+  color: "#eb9999" # Soft red tint
+  description: "TBD."
+
+- title: "PHOTOGRAPHY"
+  icon: "camera"
+  color: "#bd8dc4" # Soft purple tint
+  description: "TBD."
