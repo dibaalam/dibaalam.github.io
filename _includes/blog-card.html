@@ -1,4 +1,4 @@
-<div class="blog-entry-wrapper">
+<div class="blog-entry-wrapper" data-category="{{ include.category | downcase }}" data-date="{{ include.date }}">
     {% if include.show_image%}
     <div class="blog-image theme-{{ include.color }}">
         <img src="{{ include.image | relative_url }}" alt="{{ include.title }}">
@@ -30,7 +30,8 @@
                 <div class="airport-codes">
                     <span class="code">{{ include.departure }}</span>
                     <div class="flight-path"></div>
-                    <span class="plane-icon">✈️</span>
+                    <!-- <span class="plane-icon">✈️</span> -->
+                    <i class="fa-solid fa-plane plane-icon"></i>
                     <div class="flight-path"></div>
                     <span class="code">{{ include.arrival }}</span>
                 </div>

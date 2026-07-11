@@ -1,0 +1,12 @@
+---
+layout: post
+title:  "Testing 2"
+date:   2026-06-18 21:00:00 -0400
+category: Design
+excerpt: "Testing!"
+departure: YYZ
+arrival: YYZ
+featured: true
+permalink: /blog/testing-2/
+---
+Testing 2

@@ -4,6 +4,198 @@
 .theme-blue   { --accent: #3498db; }
 .theme-purple { --accent: #9b59b6; }
 
+.search-wrapper {
+  position: relative;
+  margin-bottom: 1.5rem;
+  font-family: $mono-font;
+
+  .search-icon {
+    position: absolute;
+    left: 1rem;     /* Insets the icon from the left border */
+    top: 50%;
+    transform: translateY(-50%); /* Perfectly centers it vertically */
+    color: #000;
+    font-size: 0.95rem;
+    pointer-events: none; /* Ensures clicking the icon still focuses the input text */
+    z-index: 2;
+  }
+
+  input {
+    width: 100%;
+    box-sizing: border-box;
+    display: block;
+    padding: 0.8rem 0.8rem 0.8rem 2.8rem;
+    border: 1px solid #333;
+    border-radius: 4px;
+    font-size: 1rem;
+    background: transparent;
+    outline: none;
+    
+    &:focus {
+      border-color: #000;
+    }
+  }
+  
+  input#archive-search {
+    // This controls the active text you type
+    font-family: inherit; 
+    font-size: 0.85rem;
+    color: #000;
+
+    // This controls the "Search experiences..." placeholder text
+    &::placeholder {
+      font-family: inherit; /* Forces your project's monospace font */
+      font-size: 0.85rem;
+      color: #999;          /* Makes it a subtle, muted gray */
+      opacity: 1;           /* Prevents Firefox from dimming it incorrectly */
+    }
+  }
+}
+
+.blog-controls-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end; // Anchors text elements and sorting dropdown to the line baseline
+  width: 100%;
+  border-bottom: 1px solid #e0e0e0; // Creates the long thin separator line
+  padding-bottom: 0.5rem;
+  margin-bottom: 2.5rem;
+
+  .category-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem; // Clean spacing between plain text items
+  }
+
+  .category-item {
+    font-family: $mono-font;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: #666;
+    cursor: pointer;
+    position: relative;
+    padding-bottom: 0.6rem; // Matches the distance exactly to overlay the border line
+    transition: color 0.2s ease;
+
+    &:hover {
+      color: #000;
+    }
+
+    // Dynamic underline accent
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -1px; // Sits exactly on top of the parent container border
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background-color: #000;
+      transform: scaleX(0); // Invisible by default
+      transition: transform 0.2s ease;
+    }
+
+    &.active {
+      color: #000;
+      font-weight: 700;
+
+      &::after {
+        transform: scaleX(1); // Scales smoothly out to underline active item
+      }
+    }
+  }
+
+  .blog-sort-wrapper {
+  position: relative; /* Crucial: anchors the dropdown menu directly beneath the text trigger */
+  display: inline-block;
+
+  .custom-sort-trigger {
+    font-family: inherit;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: #000;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.4rem 0 0.4rem 0.25rem;
+    transition: opacity 0.15s ease;
+    user-select: none;
+
+    &:hover {
+      opacity: 0.7;
+    }
+
+    .trigger-chevron {
+      display: inline-block;
+      width: 0.75rem;
+      height: 0.75rem;
+      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><polyline points='6 9 12 15 18 9'></polyline></svg>");
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: contain;
+    }
+  }
+
+  // The floating menu that opens
+  .custom-sort-options {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    z-index: 9999; /* Higher z-index forces it to float over blog cards */
+    
+    // Aesthetic Styling
+    margin: 0.25rem 0 0 0;
+    padding: 0;
+    list-style: none;
+    background-color: #fff;
+    border: 1px solid #000; /* Matching crisp frame box */
+    border-radius: 0;        /* Sharp corners */
+    min-width: 140px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+
+    // Visibility control toggled by JS
+    display: none; 
+    
+    &.open {
+      display: block !important;
+    }
+
+    .sort-option {
+      font-family: inherit;
+      font-size: 0.8rem;
+      color: #555;
+      padding: 0.5rem 0.75rem;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: background-color 0.15s ease, color 0.15s ease;
+
+      &:hover {
+        background-color: #f5f5f5;
+        color: #000;
+      }
+
+      &.active {
+        font-weight: 700;
+        color: #000;
+        background-color: #fcfcfc;
+      }
+    }
+  }
+  }
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+    
+    .blog-sort-wrapper {
+      align-self: flex-end;
+    }
+  }
+}
+
+
+
 
 .blog-terminal-grid {
   display: grid;
@@ -57,7 +249,7 @@
   overflow: hidden;
   text-decoration: none;
   color: #333;
-  box-shadow: 5px 5px 0px rgba(0,0,0,0.05);
+  box-shadow: 8px 8px 0px rgba(0,0,0,0.05);
   min-width: 0;
   min-height: 0;
   transition: transform 0.2s ease;
@@ -209,7 +401,7 @@
   .code {
     font-family: 'JetBrains Mono', monospace;
     font-weight: 800;
-    font-size: 1.2rem;
+    font-size: 1rem;
     flex-shrink: 0; 
     letter-spacing: 1px;
   }
@@ -226,8 +418,6 @@
     font-size: 0.9rem;
     flex-shrink: 0;
     opacity: 0.6;
-    /* If the emoji looks weird, rotate it */
-    transform: rotate(45deg); 
   }
 }
 

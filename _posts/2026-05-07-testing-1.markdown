@@ -1,0 +1,12 @@
+---
+layout: post
+title:  "Testing 1"
+date:   2026-05-07 21:00:00 -0400
+category: Leadership
+excerpt: "Testing!"
+departure: YYZ
+arrival: YVR
+featured: true
+permalink: /blog/testing-1/
+---
+Testing 1
