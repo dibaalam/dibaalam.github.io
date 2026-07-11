@@ -1,6 +1,6 @@
 ---
 layout: home-experience
-hide_footer: false
+hide_footer: true
 full_width: true
 title: Home
 permalink: /
@@ -15,6 +15,7 @@ destinations:
 <head>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
+<script src="https://unpkg.com/@phosphor-icons/web"></script>
 
 <section class="home-section" id="hero">
 <div class="sky-container"></div>
@@ -190,7 +191,7 @@ destinations:
   <section class="home-section" id="travel-logs">
     <div class="home-header-container">
       <div class="header-wrapper">
-        <h1 class="header-title">Travel Logs</h1>
+        <h1 class="header-title">Logbook</h1>
           <div class="header-line"></div>
         <span class="header-caption">Blogs</span>
       </div>
@@ -201,6 +202,19 @@ destinations:
       {% for post in featured_posts limit: 4 %}
       {% assign brand = site.series_settings[post.category] %}
       {% assign current_color = brand.color | default: "blue" %}
+      {% assign category_posts = site.categories[post.category] %}
+      {% assign total_category_posts = category_posts | size %}
+
+      {% for c_post in category_posts %}
+          {% if c_post.url == post.url %}
+          {% assign display_index = total_category_posts | minus: forloop.index | plus: 1 %}
+          {% if display_index < 10 %}
+              {% assign final_index = display_index | prepend: '0' %}
+          {% else %}
+              {% assign final_index = display_index %}
+          {% endif %}
+          {% endif %}
+      {% endfor %}
         <div class="postcard-item">
           {% include blog-card.html 
             title=post.title 
@@ -208,7 +222,8 @@ destinations:
             color=current_color
             date=post.date 
             url=post.url 
-            index=forloop.index %}
+            description=post.excerpt
+            index=final_index %}
         </div>
       {% endfor %}
     </div>
@@ -275,10 +290,21 @@ destinations:
           <h2>Let's build something together.</h2>
           <p>Whether you want to talk robotics, explore collaboration opportunities, or just say hello, my inbox is always open.</p>
         </div>
+        
         <div class="cta-action">
           <a href="mailto:diba.alam@mail.utoronto.ca" class="cta-button">
-            Get in Touch <i class="fa-solid fa-arrow-right"></i>
+            Get in Touch <i class="ph-bold ph-caret-right"></i>
           </a>
+          
+          <!-- Social icons placed cleanly right beneath your main button -->
+          <div class="cta-socials">
+            <a href="https://github.com/dibaalam" target="_blank" aria-label="GitHub">
+              <i class="ph ph-github-logo"></i>
+            </a>
+            <a href="https://linkedin.com/in/diba-alam" target="_blank" aria-label="LinkedIn">
+              <i class="ph ph-linkedin-logo"></i>
+            </a>
+          </div>
         </div>
       </div>
     </section>

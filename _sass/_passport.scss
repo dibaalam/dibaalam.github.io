@@ -405,6 +405,7 @@
   border-top: 1px solid #eee; /* Clean separation from your fun facts */
   background-color: #fafafa;   /* Extremely subtle background tint to frame the section */
   box-shadow: 12px 12px 0px rgba(0, 0, 0, 0.1);
+  margin-bottom: 3rem; 
 }
 
 .contact-cta-container {
@@ -419,12 +420,15 @@
   @media (min-width: 768px) {
     flex-direction: row;
     justify-content: space-between;
-    align-items: center;
+    align-items: stretch; /* Changed from center to stretch so left/right sides match heights */
   }
 }
 
 .cta-text {
   max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Automatically pushes the subtitle down to the bottom baseline */
 
   h2 {
     font-size: 1.75rem;
@@ -439,33 +443,80 @@
     color: #666;
     margin: 0;
   }
+
+  // The new engineering tagline style nested right inside the left column
+  .cta-subtitle {
+    font-family: inherit; /* Keeps your crisp monospace layout styling intact */
+    font-size: 0.75rem;
+    color: #888;
+    border-top: 1px solid #e0e0e0;
+    padding-top: 1rem;
+    margin-top: 2rem; /* Creates a clean air gap under your body paragraph text */
+  }
 }
 
-// Minimalist, high-contrast button
-.cta-button {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.75rem;
-  background-color: #111; // Solid dark button
-  color: #fff;
-  text-decoration: none;
-  padding: 0.85rem 2rem;
-  border-radius: 6px;
-  font-size: 0.95rem;
-  font-weight: 600;
-  transition: background-color 0.2s ease, transform 0.2s ease;
+// Layout wrapper for the button + social tracks on the right column
+.cta-action {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.25rem;
 
-  i {
-    transition: transform 0.2s ease;
+  @media (min-width: 768px) {
+    align-items: flex-end; /* Right-aligns the buttons and icons neatly on desktop layouts */
+    justify-content: flex-start;
   }
 
-  &:hover {
-    background-color: #5a5a5a;
+  // Your original minimalist, high-contrast button styling
+  .cta-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    background-color: #111; // Solid dark button
+    color: #fff;
     text-decoration: none;
-    color: #ffffff;
-    
+    padding: 0.85rem 2rem;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+    white-space: nowrap; /* Prevents button text wrapping */
+
     i {
-      transform: translateX(4px); // Subtle interactive nudge on the arrow
+      transition: transform 0.2s ease;
+    }
+
+    &:hover {
+      background-color: #5a5a5a;
+      text-decoration: none;
+      color: #ffffff;
+      
+      i {
+        transform: translateX(4px); // Subtle interactive nudge on the arrow
+      }
+    }
+  }
+
+  // The clean new social icon track nested perfectly below the button
+  .cta-socials {
+    display: flex;
+    gap: 1.25rem;
+    padding-right: 0.25rem; /* Aligns logos precisely flush with the right edge of the button */
+
+    @media (max-width: 767px) {
+      padding-left: 0.25rem; /* Shifts orientation to left-align cleanly on mobile mobile viewports */
+    }
+
+    a {
+      color: #111;
+      font-size: 1.35rem; /* Keeps the asset scales highly readable and clean */
+      text-decoration: none;
+      transition: opacity 0.15s ease, transform 0.15s ease;
+
+      &:hover {
+        opacity: 0.6;
+        transform: translateY(-1px); /* Added a matching tactile hover interaction */
+      }
     }
   }
 }
