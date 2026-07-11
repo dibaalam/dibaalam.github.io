@@ -1,4 +1,5 @@
 ## Define experiences for the portfolio timeline
+# NOTE: Order it in reverse chronological (most recent first, including by months)
 
 # Year: Defines which year it will be associated with
 # Category: Defines grouping and colour
@@ -17,6 +18,15 @@
 # Link: To future project/blog post
 # Featured: T/F to be shown on main page
 
+- year: 2026
+  category: "LEADERSHIP"
+  title: "Presidential Advisor"
+  company: "WISE U of T"
+  date_range: "June 2026 – Sept 2026"
+  description: "Test Description"
+  skills: ["Strategy", "Governance"]
+  link: "#"
+  featured: true
 
 - year: 2026
   category: "WORK EXPERIENCE"
@@ -25,16 +35,6 @@
   date_range: "May 2025 – Present"
   description: "Test Description"
   skills: ["Systems Design", "Mission Operations", "GNC", "Robotics", "Project Engineering", "VR", "UE5"]
-  link: "#"
-  featured: true
-
-- year: 2026
-  category: "LEADERSHIP"
-  title: "Presidential Advisor"
-  company: "WISE U of T"
-  date_range: "June 2026 – Sept 2026"
-  description: "Test Description"
-  skills: ["Strategy", "Governance"]
   link: "#"
   featured: true
 

@@ -7,12 +7,6 @@ permalink: /portfolio/
 <script src="https://unpkg.com/@phosphor-icons/web"></script>
 
 <div class="portfolio-archive-container">
-  <!-- Search bar (not implemented) -->
-  <div class="search-wrapper">
-    <span class="search-icon">🔍</span>
-    <input type="text" id="archive-search" placeholder="Search experiences...">
-  </div>
-
   <div class="view-controls">
     <!-- Category filter buttons -->
     <div class="filter-tags">
@@ -96,7 +90,9 @@ permalink: /portfolio/
                   {% endfor %}
                 </div>
                 {% if entry.link %}
-                  <a href="{{ entry.link }}" class="arrow-link">→</a>
+                  <a href="{{ entry.link }}" class="arrow-link">
+                    <i class="ph-bold ph-caret-right"></i>
+                  </a>
                 {% endif %}
               </div>
             </div>
@@ -119,7 +115,7 @@ permalink: /portfolio/
   function updateFiltering(container) {
     const rows = container.querySelectorAll(".timeline-row");
 
-    // Handle basic category visibility stacking
+    // First Pass: Standard category visibility toggle
     rows.forEach(row => {
       const rowCategory = row.dataset.category; 
 
@@ -133,25 +129,35 @@ permalink: /portfolio/
         }
       }
       
-      // Strip any existing first-of-year marker classes before recalculating
+      // Reset timeline markers
       const marker = row.querySelector(".timeline-marker");
       if (marker) marker.classList.remove("first-of-year");
+
+      // Reset year headers
+      const yearHeader = row.querySelector(".portfolio-year-header");
+      if (yearHeader) yearHeader.classList.remove("show-year");
     });
 
-    // Track which years have already had their first visible dot placed
+    // Check first visible row of each year and mark it
     const renderedYears = new Set();
 
     rows.forEach(row => {
-      // Skip checking rows that we just hid
       if (row.style.display === "none") return;
 
       const currentYear = row.dataset.year;
       const marker = row.querySelector(".timeline-marker");
+      const yearHeader = row.querySelector(".portfolio-year-header"); // Use whatever class your actual year element uses
 
-      if (marker && !renderedYears.has(currentYear)) {
-        // First visible card for the year, render the year marker
-        marker.classList.add("first-of-year");
+      if (!renderedYears.has(currentYear)) {
         renderedYears.add(currentYear);
+
+        if (marker) {
+          marker.classList.add("first-of-year");
+        }
+
+        if (yearHeader) {
+          yearHeader.classList.add("show-year");
+        }
       }
     });
   }

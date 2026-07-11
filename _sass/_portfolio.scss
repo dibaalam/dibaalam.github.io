@@ -41,37 +41,6 @@ $category-colors: (
     margin-bottom: 1.5rem;
   }
 
-  // Search Bar
-  .search-wrapper {
-    position: relative;
-    margin-bottom: 1.5rem;
-    font-family: $mono-font;
-
-    .search-icon {
-      position: absolute;
-      left: 15px;
-      top: 50%;
-      transform: translateY(-50%);
-      color: $text-muted;
-    }
-
-    input {
-      width: 100%;
-      box-sizing: border-box;
-      display: block;
-      padding: 0.8rem 1rem 0.8rem 2.8rem;
-      border: 1px solid #333;
-      border-radius: 4px;
-      font-size: 1rem;
-      background: transparent;
-      outline: none;
-      
-      &:focus {
-        border-color: #000;
-      }
-    }
-  }
-
   // Filter Buttons
   .filter-tags {
     display: flex;
@@ -261,6 +230,7 @@ $category-colors: (
   background-color: #fdfbf3;
   border: 2px solid #b5ac86;
   border-radius: 6px;
+  box-shadow: 5px 5px 0px rgba(0,0,0,0.05);
   
   overflow: visible; 
   position: relative;
@@ -367,7 +337,7 @@ $category-colors: (
         width: 15px;
         height: 15px;
         border-radius: 50%;
-        background-color: #fcfbf7;
+        background-color: #ffffff;
         border: none;
         
         position: absolute;
@@ -395,7 +365,7 @@ $category-colors: (
           width: 15px;
           height: 15px;
           border-radius: 50%;
-          background-color: #fcfbf7;
+          background-color: #ffffff;
           border: none;
           
           position: absolute;
@@ -438,6 +408,7 @@ $category-colors: (
         border-radius: 50%;
         background-color: #ffffff;
         border: 2px solid #b5ac86; 
+        box-shadow: 0px 5px 0px rgba(0,0,0,0.05) inset;
         
         position: absolute;
         bottom: -2px; 
