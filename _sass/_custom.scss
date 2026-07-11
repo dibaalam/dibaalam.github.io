@@ -81,8 +81,9 @@ h1, h2, h3 {
 .page-link {
   text-decoration: none;
   padding: 5px 10px;
-  //transition: opacity 0.3s ease, letter-spacing 0.3s ease;
-  font-family: 'JetBrains Mono', monospace;
+  font-family: $body-font;
+  font-weight: 600;
+  letter-spacing: 2px;
   text-transform: uppercase;
 
   &::after {

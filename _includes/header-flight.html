@@ -1,3 +1,6 @@
+<head>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
 <header class="site-header frozen-header" role="banner">
   <div class="wrapper">
     {%- assign default_paths = site.pages | map: "path" -%}
@@ -37,7 +40,9 @@
       <div class="sky-line">
         <div id="solid-path"></div>
         <div class="dashed-path"></div>
-        <div id="plane-indicator">✈️</div>
+        <div id="plane-indicator">
+          <i class="fa-solid fa-plane"></i>
+        </div>
       </div>
 
       <ul class="destinations-list">
