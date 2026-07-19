@@ -1,6 +1,7 @@
 ## Define experiences for the portfolio timeline
 # NOTE: Order it in reverse chronological (most recent first, including by months)
 
+# Slug: Short code name
 # Year: Defines which year it will be associated with
 # Category: Defines grouping and colour
   # - Work
@@ -8,7 +9,7 @@
   # - Projects
   # - Education
   # - Leadership
-  # - Awards
+  # - Achievements
   # - Volunteering
 # Title: Name of position
 # Company: Organization associated with
@@ -18,42 +19,409 @@
 # Link: To future project/blog post
 # Featured: T/F to be shown on main page
 
-- year: 2026
+- slug: rcaf-26
+  year: 2026
+  category: "ACHIEVEMENTS"
+  title: "Billy Bishop Toronto City Airport Scholarship"
+  company: "RCAF Foundation"
+  date_range: "Jun 2026"
+  sort_date: 2026-06-01
+  description: "Test Description"
+  skills: []
+  featured: false
+
+- slug: wise
+  year: 2026
   category: "LEADERSHIP"
   title: "Presidential Advisor"
-  company: "WISE U of T"
-  date_range: "June 2026 – Sept 2026"
+  company: "Women in Science and Engineering U of T"
+  date_range: "Apr 2026 – Present"
+  sort_date: 2026-04-01
   description: "Test Description"
   skills: ["Strategy", "Governance"]
-  link: "#"
+  featured: false
+
+- slug: ictc
+  year: 2026
+  category: "WORK EXPERIENCE"
+  title: "Digital Youth Ambassador"
+  company: "Information and Communications Technology Council"
+  date_range: "Mar 2026 – Present"
+  sort_date: 2026-03-01
+  description: "Test Description"
+  skills: ["Strategy", "Governance"]
   featured: true
 
-- year: 2026
+- slug: autonomy-paper
+  year: 2025
+  category: "RESEARCH"
+  title: "A Method for Lunar Surface Autonomy Certification: Application to a Construction Pathfinder Mission"
+  company: "Journal of Aerospace, 12, 1115."
+  date_range: "Dec 2025"
+  sort_date: 2025-12-01
+  description: "Test Description"
+  skills: ["Research", "Space Exploration", "Autonomy"]
+  featured: false
+
+- slug: nsight
+  year: 2025
+  category: "VOLUNTEERING"
+  title: "Upper Year Mentor"
+  company: "NSight, University of Toronto Engineering"
+  date_range: "Sept 2025 – Apr 2026"
+  sort_date: 2025-09-01
+  description: "Test Description"
+  skills: []
+  featured: false
+
+- slug: fase-leadership
+  year: 2025
+  category: "ACHIEVEMENTS"
+  title: "Faculty of Applied Science & Engineering Leadership Award"
+  company: "University of Toronto Engineering"
+  date_range: "Aug 2025"
+  sort_date: 2025-08-01
+  description: "Test Description"
+  skills: []
+  featured: false
+
+- slug: esa-project
+  year: 2025
+  category: "PROJECTS"
+  title: "Autonomous ESA ExoMy Mars Rover"
+  company: "European Space Agency, ESTEC, Netherlands"
+  date_range: "May 2025"
+  sort_date: 2025-05-03
+  description: "Test Description"
+  skills: ["ROS/ROS2", "Python", "Autonomy", "Computer Vision", "Navigation"]
+  featured: true
+
+- slug: csa-grant
+  year: 2025
+  category: "ACHIEVEMENTS"
+  title: "Grant for Student Participation"
+  company: "Canadian Space Agency"
+  date_range: "May 2025"
+  sort_date: 2025-05-02
+  description: "Test Description"
+  skills: []
+  featured: false
+
+- slug: esa-academy-robotics
+  year: 2025
+  category: "ACHIEVEMENTS"
+  title: "ESA Academy Robotics Workshop"
+  company: "European Space Agency, The Netherlands"
+  date_range: "May 2025"
+  sort_date: 2025-05-01
+  description: "Test Description"
+  skills: []
+  featured: false
+
+- slug: wseds
+  year: 2025
+  category: "LEADERSHIP"
+  title: "wSEDS Co-Founder, External Relations"
+  company: "Students for the Exploration and Development of Space"
+  date_range: "Feb 2025 – Present"
+  sort_date: 2025-02-01
+  description: "Test Description"
+  skills: []
+  featured: false
+
+- slug: mda-internship
+  year: 2025
   category: "WORK EXPERIENCE"
   title: "Systems Design Engineering Intern"
   company: "MDA Space"
   date_range: "May 2025 – Present"
+  sort_date: 2025-05-01
   description: "Test Description"
   skills: ["Systems Design", "Mission Operations", "GNC", "Robotics", "Project Engineering", "VR", "UE5"]
-  link: "#"
   featured: true
 
-- year: 2025
+- slug: wise
+  year: 2025
+  category: "LEADERSHIP"
+  title: "Co-President"
+  company: "Women in Science and Engineering U of T"
+  date_range: "Apr 2025 – Apr 2026"
+  sort_date: 2025-04-01
+  description: "Test Description"
+  skills: ["Strategy", "Governance"]
+  featured: true
+
+- slug: space-apps-25
+  year: 2025
   category: "PROJECTS"
-  title: "NASA Space Apps Challenge"
-  company: "Global Nominee Team"
+  title: "Sharkonauts: Habitability Tracker"
+  company: "NASA Space Apps Hackathon"
   date_range: "Oct 2025"
+  sort_date: 2025-10-01
   description: "Test Description"
   skills: ["Rapid Prototyping", "UI/UX"]
-  link: "#"
+  featured: false
+
+- slug: space-apps-nominee
+  year: 2024
+  category: "ACHIEVEMENTS"
+  title: "Global Nominee and Toronto Event Winner"
+  company: "NASA Space Apps Hackathon"
+  date_range: "Oct 2024"
+  sort_date: 2024-10-02
+  description: "Test Description"
+  skills: []
+  featured: false
+
+- slug: space-apps-24
+  year: 2024
+  category: "PROJECTS"
+  title: "OrbitWatch: Interactive Solar Orrery"
+  company: "NASA Space Apps Hackathon"
+  date_range: "Oct 2024"
+  sort_date: 2024-10-01
+  description: "Test Description"
+  skills: ["Rapid Prototyping", "UI/UX"]
+  featured: false
+
+- slug: htn-24
+  year: 2024
+  category: "PROJECTS"
+  title: "EchoMoods: AI-Powered Emotion Analysis"
+  company: "Hack the North"
+  date_range: "Sept 2024"
+  sort_date: 2024-09-02
+  description: "Test Description"
+  skills: ["Cohere API", "LLM"]
+  featured: false
+
+- slug: utat-aeac-cv
+  year: 2024
+  category: "PROJECTS"
+  title: "Computer Vision Coordinator"
+  company: "University of Toronto Aerospace Team"
+  date_range: "Sept 2024 – May 2025"
+  sort_date: 2024-09-01
+  description: "Test Description"
+  skills: ["Computer Vision", "ROS"]
+  featured: false
+
+- slug: fase-enbridge
+  year: 2024
+  category: "ACHIEVEMENTS"
+  title: "Enbridge Scholarship in Engineering"
+  company: "University of Toronto Engineering"
+  date_range: "Aug 2024"
+  sort_date: 2024-08-01
+  description: "Test Description"
+  skills: []
+  featured: false
+
+- slug: isml-internship
+  year: 2024
+  category: "RESEARCH"
+  title: "Undergraduate Researcher"
+  company: "Intelligent Sensory Microsystems Laboratory"
+  date_range: "May 2024 – Aug 2024"
+  sort_date: 2024-05-01
+  description: "Test Description"
+  skills: ["Signal Analysis", "Hardware"]
+  featured: false
+
+- slug: wise
+  year: 2024
+  category: "LEADERSHIP"
+  title: "Vice President of Professional Development"
+  company: "Women in Science and Engineering U of T"
+  date_range: "May 2024 – Apr 2025"
+  sort_date: 2024-05-02
+  description: "Test Description"
+  skills: ["Strategy", "Governance"]
+  featured: false
+
+- slug: stantec-scholarship
+  year: 2024
+  category: "ACHIEVEMENTS"
+  title: "Stantec Equity and Diversity Scholarship"
+  company: "Stantec"
+  date_range: "Mar 2024"
+  sort_date: 2024-03-01
+  description: "Test Description"
+  skills: []
+  featured: false
+
+- slug: utat-space-systems
+  year: 2024
+  category: "PROJECTS"
+  title: "Space Systems Optics Member"
+  company: "University of Toronto Aerospace Team"
+  date_range: "Feb 2024 – Jul 2025"
+  sort_date: 2024-02-01
+  description: "Test Description"
+  skills: ["Research", "Optics"]
+  featured: false
+
+- slug: zcpf
+  year: 2024
+  category: "ACHIEVEMENTS"
+  title: "Zenith Fellow & Mentee"
+  company: "Zenith Canada Pathways Foundation"
+  date_range: "Feb 2024"
+  sort_date: 2024-02-01
+  description: "Test Description"
+  skills: ["Aerospace"]
+  featured: false
+
+- slug: wise
+  year: 2023
+  category: "LEADERSHIP"
+  title: "Industry Mentorship Director"
+  company: "Women in Science and Engineering U of T"
+  date_range: "Aug 2023 – May 2024"
+  sort_date: 2023-08-01
+  description: "Test Description"
+  skills: ["Strategy", "Governance"]
+  featured: false
+
+- slug: rcaf-23
+  year: 2023
+  category: "ACHIEVEMENTS"
+  title: "Alfred and Barbara Smith Scholarship"
+  company: "RCAF Foundation"
+  date_range: "Jun 2023"
+  sort_date: 2023-06-01
+  description: "Test Description"
+  skills: []
+  featured: false
+
+- slug: frosh
+  year: 2023
+  category: "VOLUNTEERING"
+  title: "Frosh!Week Orientation Leader"
+  company: "University of Toronto Engineering"
+  date_range: "Jun 2023 – Sept 2023"
+  sort_date: 2023-06-01
+  description: "Test Description"
+  skills: []
+  featured: false
+
+- slug: uoft-commuter
+  year: 2023
+  category: "LEADERSHIP"
+  title: "Marketing Director"
+  company: "University of Toronto Engineering Commuter Directorship"
+  date_range: "Jun 2023 – May 2024"
+  sort_date: 2023-06-01
+  description: "Test Description"
+  skills: ["Community Engagement", "Design", "Canva", "Campaign Strategy"]
+  featured: false
+
+- slug: uoft-intramurals
+  year: 2022
+  category: "VOLUNTEERING"
+  title: "Intramurals Badminton Captain"
+  company: "University of Toronto Athletics Association"
+  date_range: "Sept 2022 – Present"
+  sort_date: 2022-09-02
+  description: "Test Description"
+  skills: ["Athletics", "Leadership", "Coordination"]
+  featured: false
+
+- slug: iset
+  year: 2022
+  category: "PROJECTS"
+  title: "General Member"
+  company: "Interplanetary Space Exploration Team"
+  date_range: "Sept 2022 – Apr 2023"
+  sort_date: 2022-09-03
+  description: "Test Description"
+  skills: ["CAD", "Space"]
+  featured: false
+
+- slug: uoft-engsci
+  year: 2022
+  category: "EDUCATION"
+  title: "Bachelor of Applied Science in Engineering Science – Major in Machine Intelligence"
+  company: "University of Toronto, St. George"
+  date_range: "Sept 2022 – Present"
+  sort_date: 2022-09-01
+  description: "Test Description"
+  skills: ["AI", "Robotics"]
   featured: true
 
-- year: 2024
-  category: "AWARDS"
-  title: "Test #2"
-  company: "Global Nominee Team"
-  date_range: "2024"
+- slug: eekai-scholarship
+  year: 2022
+  category: "ACHIEVEMENTS"
+  title: "Eekai Foundation Scholarship"
+  company: "Eekai & Centre for Leadership and Innovation"
+  date_range: "Jun 2022"
+  sort_date: 2022-06-01
   description: "Test Description"
-  skills: ["Rapid Prototyping", "UI/UX"]
-  link: "#"
-  featured: true
+  skills: []
+  featured: false
+
+- slug: fase-merit
+  year: 2022
+  category: "ACHIEVEMENTS"
+  title: "Dean's Merit Award"
+  company: "University of Toronto Engineering"
+  date_range: "May 2022"
+  sort_date: 2022-05-01
+  description: "Test Description"
+  skills: []
+  featured: false
+
+- slug: fase-entry
+  year: 2022
+  category: "ACHIEVEMENTS"
+  title: "Faculty of Applied Science and Engineering Entrance Scholarship"
+  company: "University of Toronto Engineering"
+  date_range: "Feb 2022"
+  sort_date: 2022-02-01
+  description: "Test Description"
+  skills: []
+  featured: false
+
+- slug: gsm
+  year: 2022
+  category: "VOLUNTEERING"
+  title: "Mentee Coordinator"
+  company: "Girls SySTEM Mentorship"
+  date_range: "Apr 2022 – Aug 2025"
+  sort_date: 2022-04-01
+  description: "Test Description"
+  skills: ["Recruitment", "Communication"]
+  featured: false
+
+- slug: oscss
+  year: 2021
+  category: "EDUCATION"
+  title: "Science School – Semester 79"
+  company: "Ontario Science Centre"
+  date_range: "Sept 2021 – Jan 2022"
+  sort_date: 2021-09-01
+  description: "Test Description"
+  skills: []
+  featured: false
+
+- slug: arct
+  year: 2021
+  category: "ACHIEVEMENTS"
+  title: "Associate Diploma (ARCT) in Piano Performance, Honours"
+  company: "Royal Conservatory of Music"
+  date_range: "Sept 2021"
+  sort_date: 2021-09-01
+  description: "Test Description"
+  skills: []
+  featured: false
+
+- slug: osc-host
+  year: 2021
+  category: "WORK EXPERIENCE"
+  title: "Student Host"
+  company: "Ontario Science Centre"
+  date_range: "Dec 2021 – Jan 2023"
+  sort_date: 2021-12-01
+  description: "Test Description"
+  skills: ["Customer Service"]
+  featured: false

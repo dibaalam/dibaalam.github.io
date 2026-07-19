@@ -1,0 +1,173 @@
+---
+layout: default
+---
+<script src="https://unpkg.com/@phosphor-icons/web"></script>
+{% assign item = site.data.timeline | where: "slug", page.slug | first %}
+
+<main class="portfolio-detail-container" data-category="{{ page.category | slugify }}">
+  <div class="container">   
+    
+    <!-- Top Row: Info Block & Gallery -->
+    <div class="detail-header-row">
+    
+      <!-- Left: Text Info from YAML -->
+      <div class="project-intro-text">
+        <a href="/portfolio" class="back-link">← Back to all experiences</a>
+        
+        {% if page.category %}
+        <span class="work-tag">{{ page.category }}</span>
+        {% endif %}
+        
+        <h1 class="project-title">{{ page.title }}</h1>
+        <p class="organization-name">{{ page.organization }}</p>
+        
+        <div class="meta-info">
+          <span><i class="ph ph-map-pin"></i> {{ page.location }}</span>
+          <span><i class="ph ph-calendar-dots"></i> {{ page.date_range }}</span>
+        </div>
+        
+        <div class="skills-tags">
+          {% for skill in page.skills %}
+            <span>{{ skill }}</span>
+          {% endfor %}
+        </div>
+      </div>
+
+      <!-- Right: Media Gallery from YAML -->
+      <!-- Right: Media Gallery Card Wrapper -->
+      {% if page.main_image %}
+      <div class="project-media">
+        <!-- Main Large Image Container -->
+        <div class="main-media">
+          <img src="{{ page.main_image }}" alt="{{ page.title }} Featured Image">
+        </div>
+        <!-- Thumbnail Navigation Row Wrapper -->
+        <div class="thumbnail-carousel-container">
+          <button class="nav-arrow left-arrow" aria-label="Previous image">
+            <i class="ph ph-caret-left"></i> <!-- Using Phosphor Icons -->
+          </button>
+              
+          <div class="media-thumbnails">
+            {% for thumb in page.thumbnails %}
+            <div class="thumb-wrapper">
+              <img src="{{ thumb }}" alt="Project thumbnail">
+            </div>
+            {% endfor %}
+          </div>
+              
+          <button class="nav-arrow right-arrow" aria-label="Next image">
+            <i class="ph ph-caret-right"></i> <!-- Using Phosphor Icons -->
+          </button>
+        </div>
+      </div>
+      {% else %}
+      <div class="media-fallback-placeholder">
+        <!-- Dynamically falls back to a relevant category icon using your existing system -->
+        {% assign category_slug = page.category | slugify %}
+        {% if category_slug == 'work-experience' %}
+          <i class="ph ph-briefcase fallback-icon"></i>
+        {% elsif category_slug == 'education' %}
+          <i class="ph ph-graduation-cap fallback-icon"></i>
+        {% elsif category_slug == 'research' %}
+          <i class="ph ph-microscope fallback-icon"></i>
+        {% elsif category_slug == 'projects' %}
+          <i class="ph ph-gear fallback-icon"></i>
+        {% elsif category_slug == 'leadership' %}
+          <i class="ph ph-users-three fallback-icon"></i>
+        {% elsif category_slug == 'achievements' %}
+          <i class="ph ph-certificate fallback-icon"></i>
+        {% elsif category_slug == 'volunteering' %}
+          <i class="ph ph-hand-heart fallback-icon"></i>
+        {% else %}
+            <i class="ph-fill ph-image-broken fallback-icon"></i>
+        {% endif %}
+      </div>
+      {% endif %}
+    </div>
+
+    <!-- Main Body Content Split by Sections -->
+    <!-- Note: This custom layout structure maps directly to the design layout -->
+
+    <!-- Overview Box (Pulled from the markdown) -->
+    <section class="detail-section overview">
+      <div class="section-icon"><i class="ph ph-file-text"></i></div>
+      <div class="section-content">
+        <div class="section-title">Overview</div>
+        {{ content }}
+      </div>
+    </section>
+
+    <!-- Highlights Box (Pulled from the front matter as bullet points) -->
+    {% if page.highlights and page.highlights.size > 0 %}
+    <section class="detail-section highlights">
+      <div class="section-icon"><i class="ph ph-star"></i></div>
+      <div class="section-content">
+        <div class="section-title">Highlights</div>
+        {{ page.highlights | markdownify }}
+      </div>
+    </section>
+    {% endif %}
+
+    <!-- Technologies Box (Structured Array from YAML) -->
+    {% if page.tech_languages or page.tech_frameworks or page.tech_tools %}
+    <section class="detail-section technologies">
+      <div class="section-icon"><i class="ph ph-code"></i></div>
+      <div class="section-content">
+        <div class="section-title">Technologies</div>
+        <div class="tech-subsections">
+          {% if page.tech_languages %}
+          <div class="tech-category">
+            <h3>Languages</h3>
+            <div class="tags">
+              {% for lang in page.tech_languages %}<span>{{ lang }}</span>{% endfor %}
+            </div>
+          </div>
+          {% endif %}
+                
+          {% if page.tech_frameworks %}
+          <div class="tech-category">
+            <h3>Frameworks & Libraries</h3>
+            <div class="tags">
+              {% for framework in page.tech_frameworks %}<span>{{ framework }}</span>{% endfor %}
+            </div>
+          </div>
+          {% endif %}
+          
+          {% if page.tech_tools %}
+          <div class="tech-category">
+            <h3>Tools & Platforms</h3>
+            <div class="tags">
+              {% for tool in page.tech_tools %}<span>{{ tool }}</span>{% endfor %}
+            </div>
+          </div>
+          {% endif %}
+        </div>
+      </div>
+    </section>
+    {% endif %}
+
+    <!-- Resources Box (Object Array from YAML) -->
+    {% if page.resources and page.resources.size > 0 %}
+    <section class="detail-section resources">
+      <div class="section-icon"><i class="ph ph-link"></i></div>
+      <div class="section-content">
+        <div class="section-title">Resources</div>
+        <div class="resource-links">
+          {% for resource in page.resources %}
+          <a href="{{ resource.url }}" class="resource-card" target="_blank" rel="noopener">
+            <div class="card-detail-left">
+              <i class="{{ resource.icon }}"></i>
+              <div class="card-text">
+                <span class="card-title">{{ resource.name }}</span>
+                <span class="card-subtitle">{{ resource.subtitle }}</span>
+              </div>
+            </div>
+            <i class="ph ph-arrow-square-out"></i>
+          </a>
+          {% endfor %}
+        </div>
+      </div>
+    </section>
+    {% endif %}
+  </div>
+</main>

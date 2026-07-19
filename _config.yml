@@ -48,6 +48,10 @@ series_settings:
     icon: "💪🏻"
     code: "LDR"
 
+collections:
+  portfolio:
+    output: true
+    permalink: /portfolio/:path/
 
 # Build settings
 markdown: kramdown

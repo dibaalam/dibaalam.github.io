@@ -10,7 +10,7 @@ $accent-research:     #3b82f6;
 $accent-projects:     #ec4899; 
 $accent-education:    #a855f7; 
 $accent-leadership:   #f97316;
-$accent-awards:       #eab308;
+$accent-achievements: #eab308;
 $accent-volunteering: #14b8a6;
 
 // Map category names to their respective colours
@@ -20,7 +20,7 @@ $category-colors: (
   "projects":         $accent-projects,
   "education":        $accent-education,
   "leadership":       $accent-leadership,
-  "awards":           $accent-awards,
+  "achievements":     $accent-achievements,
   "volunteering":     $accent-volunteering
 );
 
@@ -50,7 +50,8 @@ $category-colors: (
 
     .filter-btn {
       background: transparent;
-      border: 1px solid #333;
+      border: 1px solid #333; // Soft default border
+      color: #333;               // Soft default text
       padding: 0.4rem 1rem;
       border-radius: 4px;
       font-size: 0.9rem;
@@ -58,9 +59,31 @@ $category-colors: (
       transition: all 0.2s ease;
       font-family: $mono-font;
 
-      &:hover, &.active {
-        background: #333;
-        color: #fff;
+      // 1. UNIVERSAL ACTIVE STATE: Any clicked button turns solid dark slate/black
+      &.active {
+        background: #333 !important;
+        border-color: #333 !important;
+        color: #fff !important;
+      }
+
+      // 2. ALL FILTER HOVER
+      &[data-filter="all"] {
+        &:hover {
+          background: #333;
+          border-color: #333;
+          color: #fff;
+        }
+      }
+
+      // 3. COLORFUL HOVER STATES: Dynamic tints applied *only* on hover
+      @each $name, $color in $category-colors {
+        &[data-filter="#{$name}"] {
+          &:hover {
+            border-color: $color;
+            color: $color;
+            background: rgba($color, 0.12); // Elegant soft tint on hover
+          }
+        }
       }
     }
   }
@@ -499,6 +522,480 @@ $category-colors: (
         &:hover {
           transform: translateX(3px);
         }
+      }
+    }
+  }
+}
+
+// ------------------------------------------------------------------
+// PORTFOLIO DETAILS SCSS
+// ------------------------------------------------------------------
+
+/* Container Box Sizing & Body Defaults */
+.portfolio-detail-container {
+  max-width: 1200px;
+  margin: 0px auto;
+  color: #1e293b;
+}
+
+/* Header Grid Row */
+.detail-header-row {
+  display: grid;
+  grid-template-columns: 1.25fr 1fr;
+  gap: 40px;
+  margin-bottom: 30px;
+  align-items: start;
+}
+
+.project-intro-text {
+  font-family: $body-font;
+}
+
+.back-link {
+  display: block;
+  color: #2563eb;
+  text-decoration: none;
+  font-size: 14px;
+  margin-bottom: 25px;
+  font-weight: 500;
+}
+
+.work-tag {
+  color: white;
+  font-family: $mono-font;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 4px 8px;
+  border-radius: 4px;
+  letter-spacing: 0.5px;
+}
+
+.project-title {
+  font-size: 36px;
+  font-weight: 800;
+  margin: 15px 0 5px 0;
+  color: #0f172a;
+}
+
+.organization-name {
+  font-size: 20px;
+  margin: 0 0 20px 0;
+}
+
+.meta-info {
+  display: flex;
+  gap: 40px;
+  color: #64748b;
+  font-size: 14px;
+  margin-bottom: 30px;
+}
+
+.skills-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.skills-tags span, .tags span {
+  border: 1px solid #e2e8f0;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 13px;
+  background: #ffffff;
+}
+
+/* Media Gallery Styling */
+.project-media {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 3px 3px rgba(0, 0, 0, 0.05);
+
+  .main-media {
+    width: 100%;    
+    img {
+      width: 100%;
+      height: auto;
+      display: block;
+      object-fit: cover;
+      aspect-ratio: 16 / 9;
+    }
+  }
+
+  // Bottom container holds arrows and thumbnails with padding
+  .thumbnail-carousel-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 24px;
+    gap: 16px;
+    background: #ffffff;
+  }
+
+  // Navigation arrows styling
+  .nav-arrow {
+    background: none;
+    border: none;
+    font-size: 20px;
+    color: #1e3a8a;
+    cursor: pointer;
+    padding: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.2s ease, transform 0.2s ease;
+
+    &:hover {
+      color: #2563eb;
+      transform: scale(1.1);
+    }
+    
+    &:active {
+      transform: scale(0.95);
+    }
+  }
+
+  // Flex track for thumbnails
+  .media-thumbnails {
+    display: flex;
+    flex-grow: 1;
+    justify-content: center;
+    gap: 12px;
+    width: 100%;
+  }
+
+  // Individual thumbnail wrapper to manage shapes and borders safely
+  .thumb-wrapper {
+    flex: 0 0 calc(25% - 9px); 
+    max-width: 120px; // Sets a hard maximum limit on how large a thumbnail can get
+    aspect-ratio: 4 / 3;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid #e2e8f0;
+    cursor: pointer;
+    transition: border-color 0.2s ease, transform 0.2s ease;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    &:hover {
+      border-color: #2563eb;
+      transform: translateY(-1px);
+    }
+
+    &.active {
+      border-color: #2563eb;
+      box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.2);
+    }
+  }
+}
+
+// Ensure proper stacking constraints on narrow displays
+@media (max-width: 640px) {
+  .project-media .thumbnail-carousel-container {
+    padding: 12px 16px;
+    gap: 8px;
+  }
+  .project-media .media-thumbnails {
+    gap: 6px;
+  }
+}
+
+.media-fallback-placeholder {
+  width: 100%;
+  aspect-ratio: 16 / 11;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  overflow: hidden;
+  border: none;
+
+  @media (max-width: 900px) { 
+    display: none !important; // Forcefully hide on small screens
+  }
+
+  .fallback-icon {
+    font-size: 20cqw; 
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    transition: color 0.3s ease, transform 0.3s ease;
+    
+    &::before {
+      display: block;
+    }
+  }
+}
+
+@each $name, $color in $category-colors {
+  .portfolio-detail-container[data-category="#{$name}"] {
+    .media-fallback-placeholder {
+      background-color: rgba($color, 0.06);
+      
+      .fallback-icon {
+        color: rgba($color, 0.7); 
+      }
+    }
+  }
+}
+
+/* Card Style Sections */
+.detail-section {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 30px;
+  margin-bottom: 25px;
+  display: flex;
+  gap: 24px;
+  box-shadow: 3px 3px rgba(0, 0, 0, 0.05);
+}
+
+@each $name, $color in $category-colors {
+  .portfolio-detail-container[data-category="#{$name}"] {
+    .work-tag {
+      background-color: $color;
+    }
+    .section-icon {
+      background-color: rgba($color, 0.1); // Soft tinted background
+      color: $color;                        // Vibrant icon color
+    }
+    .resource-card:hover {
+      border-color: rgba($color, 0.5); // Subtle hover effect
+      background-color: rgba($color, 0.1);
+      // remove underline
+      text-decoration: none;
+    }
+  }
+}
+
+.section-title{
+  font-size: 30px;
+  font-weight: 700;
+  margin-bottom: 15px;
+}
+
+.section-icon {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  flex-shrink: 0;
+}
+
+.section-content {
+  flex-grow: 1;
+}
+
+.section-content h2 {
+  margin: 0 0 15px 0;
+  font-size: 20px;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.section-content p {
+  font-family: $body-font;
+  font-size: 16px;
+  color: #334155;  
+  line-height: 1.6;
+  margin-bottom: 15px;
+}
+
+.section-content ul {
+  font-family: $body-font;
+  font-size: 16px;
+  color: #334155; 
+  margin: 0;
+  padding-left: 20px;
+}
+
+.section-content li {
+  font-family: $body-font;
+  font-size: 16px;
+  color: #334155; 
+  margin-bottom: 10px;
+}
+
+/* Tech Grid */
+.tech-subsections {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.tech-category h3 {
+  font-size: 13px;
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin: 0 0 12px 0;
+}
+
+.tech-category .tags {
+  font-family: $mono-font;
+  font-size: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+/* Resource Cards */
+.resource-links {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 15px;
+}
+
+.resource-card {
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 15px;
+  text-decoration: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #fafafa;
+  transition: all 0.2s ease;
+}
+
+.card-detail-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.card-detail-left i {
+  font-size: 20px;
+}
+
+.card-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.card-title {
+  font-weight: 600;
+  font-size: 14px;
+  color: #1e293b;
+}
+
+.card-subtitle {
+  font-family: $body-font;  
+  font-size: 11px;
+  color: #64748b;
+  margin-top: 2px;
+}
+
+.external-arrow {
+  font-size: 12px;
+  color: #94a3b8;
+}
+
+/* Related Experiences Footer Bar */
+.detail-footer {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 20px 30px;
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.related-experience-label {
+  font-weight: 600;
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.related-links {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.related-links a {
+  color: #2563eb;
+  text-decoration: underline;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.footer-arrow {
+  color: #94a3b8;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 900px) {
+  .detail-header-row, .tech-subsections, .resource-links {
+    grid-template-columns: 1fr;
+  }
+  .detail-footer {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+  }
+}
+
+.detail-section {
+  display: flex;
+  gap: 24px; // Desktop spacing between icon column and content column
+  align-items: flex-start;
+
+  // The header/title grouping area inside your section-content
+  .section-header-row {
+    display: none; // Only used on tablet/mobile views
+  }
+
+    // Desktop: title stays inside the content block
+  .section-content {
+    h2 {
+      margin-top: 0;
+      margin-bottom: 16px;
+    }
+  }
+
+  // Responsive layout breakpoint at 900px
+  @media (max-width: 900px) {
+    flex-direction: column; // Stack the section vertically
+    gap: 12px;
+
+    .section-icon {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      
+      // Force the H2 to sit directly next to the icon inline
+      h2 {
+        margin: 0;
+        font-size: 1.25rem;
+        color: #1e293b;
+      }
+    }
+
+    // Remove the default desktop H2 inside the content block so it isn't duplicated
+    .section-content {
+      width: 100%;
+      h2 {
+        display: none; 
       }
     }
   }

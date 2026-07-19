@@ -12,11 +12,11 @@ permalink: /portfolio/
     <div class="filter-tags">
       <button class="filter-btn active" data-filter="all">All</button>
       <button class="filter-btn" data-filter="work-experience">Work</button>
+      <button class="filter-btn" data-filter="education">Education</button>
       <button class="filter-btn" data-filter="research">Research</button>
       <button class="filter-btn" data-filter="projects">Projects</button>
-      <button class="filter-btn" data-filter="education">Education</button>
       <button class="filter-btn" data-filter="leadership">Leadership</button>
-      <button class="filter-btn" data-filter="awards">Awards</button>
+      <button class="filter-btn" data-filter="achievements">Achievements</button>
       <button class="filter-btn" data-filter="volunteering">Volunteering</button>
     </div>
     <!-- Chronological filter controls -->
@@ -30,12 +30,13 @@ permalink: /portfolio/
   </div>
 
   <!-- Default sorting as reverse chronological -->
-  {% assign sorted_timeline = site.data.timeline | sort: 'year' | reverse %}
+  {% assign sorted_timeline = site.data.timeline | sort: 'sort_date' | reverse %}
   {% assign last_year = "" %}
 
   <div class="timeline-container">
     <!-- Read each entry and assign years -->
     {% for entry in sorted_timeline %}
+      {% assign match = site.portfolio | where: "slug", entry.slug | first %}
       {% assign is_first_of_year = false %}
       {% if entry.year != last_year %}
         {% assign is_first_of_year = true %}
@@ -49,20 +50,20 @@ permalink: /portfolio/
           <div class="timeline-line"></div>
         </div>
         <!-- Insert card content -->
-        <div class="timeline-card" data-year="{{ entry.year }}" data-title="{{ entry.title | downcase }}">
+        <div class="timeline-card" data-year="{{ entry.year }}" data-title="{{ entry.title | downcase }}" data-date="{{ entry.sort_date }}">
           <div class="card-left {{ entry.category | downcase | slugify}}">
             {% assign category_slug = entry.category | downcase | slugify %}
             {% if category_slug == 'work-experience' %}
               <i class="ph ph-briefcase"></i>
+            {% elsif category_slug == 'education' %}
+              <i class="ph ph-graduation-cap"></i>
             {% elsif category_slug == 'research' %}
               <i class="ph ph-microscope"></i>
             {% elsif category_slug == 'projects' %}
               <i class="ph ph-gear"></i>
-            {% elsif category_slug == 'education' %}
-              <i class="ph ph-graduation-cap"></i>
             {% elsif category_slug == 'leadership' %}
               <i class="ph ph-users-three"></i>
-            {% elsif category_slug == 'awards' %}
+            {% elsif category_slug == 'achievements' %}
               <i class="ph ph-certificate"></i>
             {% elsif category_slug == 'volunteering' %}
               <i class="ph ph-hand-heart"></i>
@@ -89,8 +90,8 @@ permalink: /portfolio/
                     <span class="skill-badge">{{ skill }}</span>
                   {% endfor %}
                 </div>
-                {% if entry.link %}
-                  <a href="{{ entry.link }}" class="arrow-link">
+                {% if match %}
+                  <a href="{{ match.url }}" class="arrow-link">
                     <i class="ph-bold ph-caret-right"></i>
                   </a>
                 {% endif %}
@@ -216,22 +217,28 @@ permalink: /portfolio/
       });
     });
 
-    // Sorting dropdown event listener
+    // Sorting dropdown event listener based on date
     if (sortDropdown) {
       sortDropdown.addEventListener("change", function () {
         const sortBy = this.value;
         const rows = Array.from(container.querySelectorAll(".timeline-row"));
 
-        // Calculate sorting based on year data attribute of the timeline cards
+        // Calculate sorting based on the exact start date string (YYYY-MM-DD)
         rows.sort((rowA, rowB) => {
           const cardA = rowA.querySelector(".timeline-card");
           const cardB = rowB.querySelector(".timeline-card");
           if (!cardA || !cardB) return 0;
 
-          const yearA = parseInt(cardA.dataset.year);
-          const yearB = parseInt(cardB.dataset.year);
+          // Fallback to a blank string if date is missing
+          const dateStrA = cardA.dataset.date || "";
+          const dateStrB = cardB.dataset.date || "";
 
-          return sortBy === "recent" ? (yearB - yearA) : (yearA - yearB);
+          // Simple lexicographical string comparison handles YYYY-MM-DD perfectly
+          if (sortBy === "recent") {
+            return dateStrB.localeCompare(dateStrA); // Newest first (June 2026 before April 2026)
+          } else {
+            return dateStrA.localeCompare(dateStrB); // Oldest first
+          }
         });
 
         container.innerHTML = "";
