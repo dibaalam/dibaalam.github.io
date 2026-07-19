@@ -394,6 +394,53 @@
   color: #666;
   max-width: 180px; // Set a max-width for better readability
   margin: 0;
+  @media (max-width: 768px) {
+    max-width: 100%; // Allow full width on smaller screens
+  }
+}
+
+.fact-description {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem; /* Creates a clean, structured gap between the text paragraph and the button */
+
+  p {
+    margin: 0;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    color: #555;
+  }
+}
+
+// Fun fact buttons
+.fact-cta-btn {
+  align-self: center; /* Prevents the button from stretching the full width of the box */
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  background-color: transparent;
+  border: 1px solid #2b2b2b;
+  color: #2b2b2b;
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 600;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+
+  i {
+    font-size: 0.9rem;
+    transition: transform 0.2s ease;
+  }
+
+  &:hover {
+    background-color: #2b2b2b;
+    color: #fff;
+
+    i {
+      transform: translate(2px, -2px); /* Subtle up-and-right shift on hover */
+    }
+  }
 }
 
 
@@ -519,4 +566,31 @@
       }
     }
   }
+}
+
+@media (max-width: 768px) { // Adjust breakpoint if your mobile view triggers at 900px
+    .funfacts-section{
+        display: grid;
+        grid-template-columns: 1fr;
+        flex-direction: column;
+        justify-content: center;  // Centers the single column vertically
+        justify-items: center;    // Centers the single column horizontally
+        align-items: center;    // Centers the icon, headings, and buttons horizontally
+        text-align: center;      // Centers the multi-line text strings
+    }
+    .funfact-item { // Replace with your exact card class name if different
+        max-width: 90%;          // Ensures the card doesn't exceed the viewport width
+        width: 100%;
+        box-sizing: border-box;
+        align-items: center;     // Centers the content vertically within the card
+        text-align: center;      // Centers the text content within the card
+
+        // Centers the button link block in the flex alignment column
+        a.button, 
+        .view-btn {
+            margin-left: auto;
+            margin-right: auto;
+            width: max-content; // Keeps button snug around its text rather than stretching full-width
+        }
+    }
 }

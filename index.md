@@ -278,7 +278,15 @@ destinations:
             
             <!-- Text content -->
             <h3 class="fact-title">{{ fact.title }}</h3>
-            <p class="fact-description">{{ fact.description }}</p>
+            <div class="fact-description">
+              <p>{{ fact.description }}</p>
+              <!-- Check if this specific fact entry has a custom link assigned -->
+              {% if fact.link_url %}
+                <a href="{{ fact.link_url }}" class="fact-cta-btn">
+                  {{ fact.link_text | default: "Learn More" }} <i class="ph ph-arrow-up-right"></i>
+                </a>
+              {% endif %}
+            </div>
           </div>
         {% endfor %}
       </div>

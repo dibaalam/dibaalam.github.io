@@ -11,17 +11,21 @@
 - title: "LANGUAGES"
   icon: "globe"
   color: "#fce4d6" # Soft orange tint
-  description: "Bilingual in English and French (12 years French Immersion) with intermediate Cantonese. Currently learning German and Spanish."
+  description: "Bilingual in English and French (12 years studying French Immersion) with intermediate Cantonese proficiency. Currently learning German and Spanish."
 
 - title: "EXPLORATION"
   icon: "plane"
   color: "#fff2cc" # Soft yellow tint
-  description: "This one is traveling."
+  description: "An avid traveler, I love exploring new cultures and sights. Documenting my adventures in my interactive travel app."
+  link_url: /travel
+  link_text: "View Travel App!"
 
 - title: "VISION BOARD"
   icon: "feather"
   color: "#eb9999" # Soft red tint
-  description: "TBD."
+  description: "A compilation of bucket list items I work towards each year."
+  link_url: /visionboard
+  link_text: "View Vision Board!"
 
 - title: "PHOTOGRAPHY"
   icon: "camera"
