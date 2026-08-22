@@ -212,6 +212,12 @@ body.sky-theme {
   margin-top: 20px;
 }
 
+.postcard-grid > * {
+  transform: scale(0.95);
+  transform-origin: center;
+}
+
+
 /* 2. Target the include's root element. 
       In Jekyll, this is usually the first tag inside the postcard-item. */
 .postcard-item > a, 
@@ -230,6 +236,29 @@ body.sky-theme {
   display: grid !important;
   width: 100% !important;
   grid-template-columns: 1fr 250px !important; /* Left stretches, right stays 250px */
+}
+
+// Overriding for the index page shortened blog format
+
+/* 1. Hide the right-side elements */
+.compact-card .banner-right,
+.compact-card .pass-stub {
+  display: none !important;
+}
+
+/* 2. Override to a single column that stretches 100% */
+.compact-card .series-banner,
+.compact-card .pass-body {
+  grid-template-columns: 1fr !important;
+  width: 100% !important;
+}
+
+/* 3. Allow the outer card wrappers to fill the grid cell width */
+.compact-card,
+.compact-card .boarding-pass {
+  width: 100% !important;
+  max-width: 100% !important;
+  display: block !important;
 }
 
 /* Mobile Responsiveness: Stack them in 1 column on smaller screens */

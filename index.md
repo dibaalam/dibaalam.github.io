@@ -197,36 +197,38 @@ destinations:
       </div>
     </div>
 
-    <div class="postcard-grid">
-      {% assign featured_posts = site.posts | where: "featured", true %}
-      {% for post in featured_posts limit: 4 %}
-      {% assign brand = site.series_settings[post.category] %}
-      {% assign current_color = brand.color | default: "blue" %}
-      {% assign category_posts = site.categories[post.category] %}
-      {% assign total_category_posts = category_posts | size %}
+      <div class="postcard-grid">
+        {% assign featured_posts = site.posts | where: "featured", true %}
+        {% for post in featured_posts limit: 4 %}
+        {% assign brand = site.series_settings[post.category] %}
+        {% assign current_color = brand.color | default: "blue" %}
+        {% assign category_posts = site.categories[post.category] %}
+        {% assign total_category_posts = category_posts | size %}
 
-      {% for c_post in category_posts %}
-          {% if c_post.url == post.url %}
-          {% assign display_index = total_category_posts | minus: forloop.index | plus: 1 %}
-          {% if display_index < 10 %}
-              {% assign final_index = display_index | prepend: '0' %}
-          {% else %}
-              {% assign final_index = display_index %}
-          {% endif %}
-          {% endif %}
-      {% endfor %}
-        <div class="postcard-item">
-          {% include blog-card.html 
-            title=post.title 
-            show_image=false
-            color=current_color
-            date=post.date 
-            url=post.url 
-            description=post.excerpt
-            index=final_index %}
-        </div>
-      {% endfor %}
-    </div>
+        {% for c_post in category_posts %}
+            {% if c_post.url == post.url %}
+            {% assign display_index = total_category_posts | minus: forloop.index | plus: 1 %}
+            {% if display_index < 10 %}
+                {% assign final_index = display_index | prepend: '0' %}
+            {% else %}
+                {% assign final_index = display_index %}
+            {% endif %}
+            {% endif %}
+        {% endfor %}
+          <div class="postcard-item">
+            {% include blog-card.html 
+              title=post.title 
+              show_image=false
+              color=current_color
+              date=post.date 
+              url=post.url 
+              description=post.excerpt
+              index=final_index
+              hide_stub=true
+              hide_banner_right=true %}
+          </div>
+        {% endfor %}
+      </div>
   </section>
 </div>
 

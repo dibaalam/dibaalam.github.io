@@ -1,5 +1,5 @@
-<div class="blog-entry-wrapper" data-category="{{ include.category | downcase }}" data-date="{{ include.date }}">
-    {% if include.show_image%}
+<div class="blog-entry-wrapper {% if include.hide_stub %}compact-card{% endif %}" data-category="{{ include.category | downcase }}" data-date="{{ include.date }}">
+    {% if include.show_image %}
     <div class="blog-image theme-{{ include.color }}">
         <img src="{{ include.image | relative_url }}" alt="{{ include.title }}">
     </div>
@@ -11,7 +11,9 @@
                 <span class="series-name"><i>{{ include.category }}</i></span>
                 <span class="flight-num">FLIGHT #{{ include.index | prepend: '00' | slice: -3, 3 }}</span>
             </div>
+            {% unless include.hide_banner_right %}
             <div class="banner-right">BOARDING PASS</div>
+            {% endunless %}
         </header>
         
         <div class="pass-body">
@@ -21,6 +23,7 @@
                 <p class="post-description">{{ include.description }}</p>
             </div>
             
+            {% unless include.hide_stub %}
             <div class="pass-stub">
                 <div class="metadata-grid">
                     <div class="meta-item" style="font-family: 'JetBrains Mono', monospace;"><span>SEAT</span><strong>{{ include.date | date: "%d" }}</strong></div>
@@ -30,13 +33,13 @@
                 <div class="airport-codes">
                     <span class="code">{{ include.departure }}</span>
                     <div class="flight-path"></div>
-                    <!-- <span class="plane-icon">✈️</span> -->
                     <i class="fa-solid fa-plane plane-icon"></i>
                     <div class="flight-path"></div>
                     <span class="code">{{ include.arrival }}</span>
                 </div>
                 <div class="barcode-area"></div>
             </div>
+            {% endunless %}
         </div>
     </a>
 </div>
