@@ -126,7 +126,7 @@ body.sky-theme {
   box-sizing: border-box;
 
   position: relative;
-  padding: 0 2% 3% 2%; 
+  padding: 0 2% 4% 2%; 
   justify-content: flex-start;
 
   display: flex;
@@ -135,14 +135,29 @@ body.sky-theme {
 }
 
 #hero {
-  padding-top: 0px; // Offset for the fixed header
+  padding-top: 0px;
   padding-bottom: 0px;
   box-sizing: border-box;
+  height: 90vh;
+  width: 100%;
   @media (max-width: 900px) {
     padding-left: 6%;
     padding-right: 6%;
     padding-top: 0px; // Reduce padding on mobile to save space
   }
+}
+
+.passport-desktop {
+  width: 100%;
+  height: 100%;
+  flex: 1;
+  box-sizing: border-box;
+
+  /* Centering styles */
+  display: flex;
+  flex-direction: column; /* Keeps card content aligned properly */
+  justify-content: center; /* Centers .passport-card vertically */
+  align-items: center;     /* Centers .passport-card horizontally */
 }
 
 .home-header-container {
@@ -156,10 +171,14 @@ body.sky-theme {
   display: flex;
   align-items: center;
   width: 100%;
+  padding-bottom: 1%;
 }
 
 .header-title {
   font-family: $body-font;
+  text-transform: uppercase;
+  // letter spacing
+  letter-spacing: 2px;
   font-weight: 700;
   margin-bottom: 0px;
   @media (max-width: 900px) {

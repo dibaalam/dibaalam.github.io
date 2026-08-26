@@ -284,6 +284,7 @@ $category-colors: (
       // color: #ffffff;
     }
   }
+  
 
   // RIGHT: Metadata content
   .card-body {
@@ -724,7 +725,7 @@ $category-colors: (
   }
 
   .fallback-icon {
-    font-size: 20cqw; 
+    font-size: 17cqw; 
     line-height: 1;
     display: flex;
     align-items: center;
@@ -757,6 +758,7 @@ $category-colors: (
   border: 1px solid #e2e8f0;
   border-radius: 12px;
   padding: 30px;
+  padding-right: 60px;
   margin-bottom: 25px;
   display: flex;
   gap: 24px;
@@ -893,6 +895,7 @@ $category-colors: (
   font-weight: 600;
   font-size: 14px;
   color: #1e293b;
+  white-space: pre-line;
 }
 
 .card-subtitle {

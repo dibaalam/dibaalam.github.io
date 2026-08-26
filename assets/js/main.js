@@ -1,5 +1,32 @@
 // assets/js/main.js
 
+(function () {
+  const savedTheme = localStorage.getItem('theme') || 
+    (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+  
+  document.documentElement.setAttribute('data-theme', savedTheme);
+
+  window.addEventListener('DOMContentLoaded', () => {
+    const toggleBtn = document.getElementById('theme-toggle');
+    const icon = toggleBtn?.querySelector('.theme-icon');
+
+    const updateIcon = (theme) => {
+      if (icon) icon.textContent = theme === 'dark' ? '☀️' : '🌙';
+    };
+
+    updateIcon(savedTheme);
+
+    toggleBtn?.addEventListener('click', () => {
+      const currentTheme = document.documentElement.getAttribute('data-theme');
+      const nextTheme = currentTheme === 'dark' ? 'light' : 'dark';
+      
+      document.documentElement.setAttribute('data-theme', nextTheme);
+      localStorage.setItem('theme', nextTheme);
+      updateIcon(nextTheme);
+    });
+  });
+})();
+
 document.addEventListener("DOMContentLoaded", () => {
   
   // --- 1. HEADER FLIGHT INDICATOR LOGIC ---

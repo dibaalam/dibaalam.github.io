@@ -103,20 +103,25 @@ destinations:
       <div class="header-wrapper">
         <h1 class="header-title">Experience</h1>
           <div class="header-line"></div>
-        <span class="header-caption">Featured Portfolio</span>
+        <span class="header-caption">Highlights of My Journey</span>
       </div>
     </div>
     <div class="departure-board">
-      {% for entry in site.data.timeline %}
+      {% assign sorted_timeline = site.data.timeline | sort: "order" %}
+      {% for entry in sorted_timeline %}
         {% if entry.featured == true %}
           <div class="flight-row">
-            <div class="time-col">{{ entry.date_range }}</div>
+            <div class="logo-col">
+              <div class="logo-box">
+                <img src="{{ entry.logo }}" class="logo-img">
+              </div>
+            </div>
             <div class="destination-col">
               <div class="company">{{ entry.company }}</div>
-              <div class="role">{{ entry.title }}</div>
               <div class="description">{{ entry.description }}</div>
+              <div class="role">{{ entry.title }}</div>
             </div>
-            <div class="remarks-col">{{ entry.category }}</div>
+            <div class="time-col">{{ entry.date_range }}</div>
           </div>
         {% endif %}
       {% endfor %}
@@ -128,9 +133,9 @@ destinations:
   <section class="home-section" id="destinations">
     <div class="home-header-container">
       <div class="header-wrapper">
-        <h1 class="header-title">Destinations</h1>
+        <h1 class="header-title">Projects</h1>
           <div class="header-line"></div>
-        <span class="header-caption">Projects</span>
+        <span class="header-caption">Things I've Built</span>
       </div>
     </div>
     <div class="airport-terminal">
@@ -193,7 +198,7 @@ destinations:
       <div class="header-wrapper">
         <h1 class="header-title">Logbook</h1>
           <div class="header-line"></div>
-        <span class="header-caption">Blogs</span>
+        <span class="header-caption">Notes & Stories</span>
       </div>
     </div>
 

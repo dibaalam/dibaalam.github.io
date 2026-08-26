@@ -1,8 +1,18 @@
 // PASSPORT CARD ---------------------------------------------------------------------------------
 
+
 .passport-card {
-  width: 95%;
-  max-width: 900px;
+  /* Baseline sizing and ratio */
+  width: 900px;
+  max-width: 90vw; /* Keeps space around edges on mobile */
+  aspect-ratio: 900 / 573;
+  box-sizing: border-box;
+
+  /* Scale dynamically based on viewport width */
+  /* On 1000px screen -> scales to 0.9 | On 1800px screen -> scales to 1.6 */
+  transform: scale(calc(90vw / 900));
+  transform-origin: center center;
+
   margin: 28px auto 45px;
   background-color: #fff;
   border: 6px solid #a47c03;
@@ -218,10 +228,25 @@
 
   .passport-mobile {
     display: block;
+    width: 100%;
+    height: 100%;
+    flex: 1;
+    box-sizing: border-box;
+
+    /* Centering styles */
+    display: flex;
+    flex-direction: column; /* Keeps card content aligned properly */
+    justify-content: center; /* Centers .passport-card vertically */
+    align-items: center;     /* Centers .passport-card horizontally */
   }
 
   .passport-card {
-    max-width: 600px;
+    width: auto;
+    aspect-ratio: auto !important;
+  }
+
+  .header-caption {
+    display: none;
   }
 
   .passport-top {
