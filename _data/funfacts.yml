@@ -2,32 +2,40 @@
   icon: "swimmer" # We'll use FontAwesome or inline SVGs
   color: "#d7ebca" # Soft green circle tint
   description: "Former competitive swimmer and badminton player. Four years as intramurals badminton captain at UofT. I'm quick to pick up sports; I've trained in everything from Soccer to Track & Field to Archery!"
+  link_url: /athletics
+  link_text: "Athletic History"
 
 - title: "MUSIC"
   icon: "music"
   color: "#c0d2ed" # Soft blue/purple tint
-  description: "Graduated from the Royal Conservatory of Music at 16 with an ARCT Diploma in Piano Performance. Four years a Flautist in Concert Band. I love singing — my favourite genres are Pop and Punk Rock!"
+  description: "Graduated from the Royal Conservatory of Music with an ARCT Diploma in Piano Performance. There's always a rhythm in my head. I love singing — my favourite genres are Pop and Punk Rock!"
+  link_url: /music
+  link_text: "Hear Repertoire"
 
 - title: "LANGUAGES"
   icon: "globe"
   color: "#fce4d6" # Soft orange tint
-  description: "Bilingual in English and French (12 years studying French Immersion) with intermediate Cantonese proficiency. Currently learning German and Spanish."
+  description: "Bilingual in English and French (12 years studying + Certificate of Bilingualism in French Immersion) with intermediate Cantonese proficiency. Currently teaching myself basic German and Spanish."
+  link_url: /languages
+  link_text: "Linguistic Journey"
 
 - title: "EXPLORATION"
   icon: "plane"
   color: "#fff2cc" # Soft yellow tint
-  description: "An avid traveler, I love exploring new cultures and sights. Documenting my adventures in my interactive travel app."
+  description: "As an avid traveler, I love exploring new cultures and sights. Ventured through 42 countries and counting, with many future plans! Documenting all my adventures in my interactive travel app."
   link_url: /travel
-  link_text: "View Travel App!"
+  link_text: "Explore Travel App"
 
 - title: "VISION BOARD"
   icon: "feather"
   color: "#eb9999" # Soft red tint
-  description: "A compilation of bucket list items I work towards each year."
+  description: "A compilation of lifetime bucket list items or yearly goals I'm working towards, some more ambitious than others. See something interesting worth chatting about? Send me a message and help me cross it off!"
   link_url: /visionboard
-  link_text: "View Vision Board!"
+  link_text: "View Vision Board"
 
 - title: "PHOTOGRAPHY"
   icon: "camera"
   color: "#bd8dc4" # Soft purple tint
-  description: "TBD."
+  description: "I enjoy capturing sights, but am by no means even an amateur photographer. These snapshots are my memories of travel and bliss, but I like to pretend I know a thing or two about basic composition."
+  link_url: /gallery
+  link_text: "Browse Gallery"

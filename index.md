@@ -285,15 +285,20 @@ destinations:
             
             <!-- Text content -->
             <h3 class="fact-title">{{ fact.title }}</h3>
-            <div class="fact-description">
-              <p>{{ fact.description }}</p>
-              <!-- Check if this specific fact entry has a custom link assigned -->
-              {% if fact.link_url %}
-                <a href="{{ fact.link_url }}" class="fact-cta-btn">
-                  {{ fact.link_text | default: "Learn More" }} <i class="ph ph-arrow-up-right"></i>
-                </a>
-              {% endif %}
+
+            <!-- Fixed height wrapper for description text -->
+            <div class="fact-text-container">
+              <p class="fact-description">{{ fact.description }}</p>
             </div>
+
+            <!-- Check if this specific fact entry has a custom link assigned -->
+            {% if fact.link_url %}
+              <a href="{{ fact.link_url }}" class="fact-cta-btn">
+                <span class="btn-text-desktop">{{ fact.link_text | default: "Learn More" }}</span>
+                <span class="btn-text-mobile">Explore!</span>
+                <i class="ph ph-arrow-up-right"></i>
+              </a>
+            {% endif %}
           </div>
         {% endfor %}
       </div>
@@ -303,7 +308,7 @@ destinations:
       <div class="contact-cta-container">
         <div class="cta-text">
           <h2>Let's build something together.</h2>
-          <p>Whether you want to talk robotics, explore collaboration opportunities, or just say hello, my inbox is always open.</p>
+          <p>Whether you want to talk robotics, explore collaboration opportunities, exchange travel tips, or just say hello, my inbox is always open.</p>
         </div>
         
         <div class="cta-action">

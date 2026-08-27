@@ -1,6 +1,5 @@
 // PASSPORT CARD ---------------------------------------------------------------------------------
 
-
 .passport-card {
   /* Baseline sizing and ratio */
   width: 900px;
@@ -9,7 +8,6 @@
   box-sizing: border-box;
 
   /* Scale dynamically based on viewport width */
-  /* On 1000px screen -> scales to 0.9 | On 1800px screen -> scales to 1.6 */
   transform: scale(calc(90vw / 900));
   transform-origin: center center;
 
@@ -111,7 +109,6 @@
   width: 100%;
 }
 
-
 .field-label {
   font-size: 9px;
   color: #b59229c7;
@@ -120,10 +117,12 @@
   display: block;
   margin-bottom: -5px; 
   opacity: 0.7;
+
   &::before {
     content: "> ";
     opacity: 0.5;
   }
+
   @media (max-width: 450px) {
     display: none;
   }
@@ -148,7 +147,6 @@
 .passport-name {
   margin: 0;
   font-size: clamp(2rem, 5vw, 3.5rem); 
-  // font spacing of 2 px below
   letter-spacing: 4px;
   text-transform: uppercase;
   color: #222;
@@ -171,11 +169,11 @@
   margin-bottom: 15px;
   position: relative;
   text-align: left;
-}
 
-.passport-description-box p{
-  margin: 0;
-  padding: 0;
+  p {
+    margin: 0;
+    padding: 0;
+  }
 }
 
 .passport-actions {
@@ -183,6 +181,7 @@
   flex-wrap: nowrap;
   gap: 20px;
   justify-content: left;
+
   @media (max-width: 900px) {
     justify-content: center;
   }
@@ -199,14 +198,13 @@
   padding: 8px 20px;
   font-size: 13px;
   font-weight: 800;
-  cursor: pointer;
   position: relative;
   transition: transform 0.1s ease;
   font-family: 'JetBrains Mono', monospace;
 
   &:hover {
-    background-color: rgba(0, 51, 153, 0.05); // Very faint blue tint
-    border: 2px solid #003399; // "Security Blue" ink color
+    background-color: rgba(0, 51, 153, 0.05);
+    border: 2px solid #003399;
     color: #003399;
     box-shadow: 2px 2px 0px rgba(0, 51, 153, 0.2);
   }
@@ -216,7 +214,7 @@
   display: none;
 }
 
-/* Mobile: swap */
+/* Mobile Swap Rules */
 @media (max-width: 900px) {
   .passport-desktop {
     display: none;
@@ -227,17 +225,14 @@
   }
 
   .passport-mobile {
-    display: block;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     width: 100%;
     height: 100%;
     flex: 1;
     box-sizing: border-box;
-
-    /* Centering styles */
-    display: flex;
-    flex-direction: column; /* Keeps card content aligned properly */
-    justify-content: center; /* Centers .passport-card vertically */
-    align-items: center;     /* Centers .passport-card horizontally */
   }
 
   .passport-card {
@@ -252,7 +247,7 @@
   .passport-top {
     padding: 20px 20px 0px 20px;
     display: grid;
-    grid-template-columns: max-content 1fr; // photo | text
+    grid-template-columns: max-content 1fr;
     gap: 20px;
     align-items: start;
     box-sizing: border-box;
@@ -332,59 +327,119 @@
   }
 }
 
+// FUN FACTS --------------------------------------------------------------------------------------
 
-
-
-// Fun facts
-
-// Dotted wavy line background element
 .wavy-line-container {
   position: absolute;
   left: 0;
   width: 100%;
   z-index: 1;
   pointer-events: none;
-  padding: 0 5%; 
+  padding: 1% 5%; 
   box-sizing: border-box;
 
-  @media (max-width: 768px) {
+  @media (max-width: 1300px) {
     display: none; 
   }
 }
 
 .funfacts-section {
   position: relative;
-  padding: 2rem 0 4rem;
+  padding: 1rem 0 4rem;
   width: 100%;
   overflow: hidden;
+
+  @media (max-width: 768px) {
+    display: grid;
+    grid-template-columns: 1fr;
+    flex-direction: column;
+    justify-content: center;
+    justify-items: center;
+    align-items: center;
+    text-align: center;
+  }
 }
 
-// Multi-Column Layout
+// Multi-Column Layout using CSS Grid & Subgrid
 .funfacts-grid {
+  margin-top: 1rem;
   position: relative;
   z-index: 2;
   display: flex;
   flex-direction: column;
-  gap: 5rem;
+  gap: 3rem;
 
-  @media (min-width: 768px) {
-    flex-direction: row;
-    justify-content: space-between;
-    gap: 1.5rem;
+  // Small screens (640px to 767px): 2 columns x 3 rows
+  @media (min-width: 640px) and (max-width: 767.9px) {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-rows: repeat(3, auto auto auto auto);
+    gap: 1rem 1.5rem;
+    column-gap: 1.25rem;
+
+    .funfact-item:nth-child(n+3) {
+      margin-top: 3rem;
+    }
+  }
+
+  // Medium screens (768px to 1300px): 3 columns x 2 rows
+  @media (min-width: 768px) and (max-width: 1300.9px) {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-rows: repeat(2, auto);
+    gap: 1.25rem 1.5rem;
+
+    .funfact-item:nth-child(n+4) {
+      margin-top: 2rem;
+    }
+  }
+
+  // Large screens (> 1300px): All 6 items on a single row
+  @media (min-width: 1301px) {
+    display: grid;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: 1.25rem 1.5rem;
   }
 }
 
 // Individual Items
 .funfact-item {
-  flex: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
-  max-width: 180px;
+
+  @media (max-width: 639.9px) {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    gap: 0.5rem;
+    align-items: start;
+    text-align: left;
+  }
+
+  @media (min-width: 640px) {
+    display: grid;
+    grid-template-rows: subgrid;
+    grid-row: span 4; 
+  }
+
+  @media (max-width: 768px) {
+    max-width: 100%;
+    width: 100%;
+    box-sizing: border-box;
+    align-items: center;
+    text-align: center;
+
+    a.button, 
+    .view-btn {
+      margin-left: auto;
+      margin-right: auto;
+      width: max-content;
+    }
+  }
 }
 
-// Icon circle container
+// Row 1: Icon circle container
 .icon-circle {
   width: 80px;
   height: 80px;
@@ -392,54 +447,83 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 1.5rem;
+  margin-bottom: 0.5rem;
   font-size: 1.25rem;
-  color: #333; // Dark minimal icon color
-  box-shadow: 0 8px 8px rgba(0,0,0,0.1); 
+  color: #333;
+  box-shadow: 0 8px 8px rgba(0, 0, 0, 0.1); 
   transition: transform 0.3s ease;
+  justify-self: center;
+
+  @media (max-width: 639.9px) {
+    width: 60px;
+    height: 60px;
+    grid-column: 1;
+    grid-row: 1;
+    justify-self: center;
+    margin-bottom: 0.5rem;
+  }
 
   &:hover {
     transform: translateY(-6px);
   }
 }
 
+// Row 2: Title
 .fact-title {
   font-family: $mono-font;
   font-size: 0.85rem;
   letter-spacing: 0.12em;
   font-weight: 700;
   text-transform: uppercase;
-  margin: 0 0 0.75rem 0;
-  color: var(--text-color, #111);
-}
-
-.fact-description {
-  font-size: 0.9rem;
-  line-height: 1.5;
-  color: #666;
-  max-width: 180px; // Set a max-width for better readability
   margin: 0;
-  @media (max-width: 768px) {
-    max-width: 100%; // Allow full width on smaller screens
+  color: var(--text-color, #111);
+
+  @media (max-width: 639.9px) {
+    grid-column: 1;
+    grid-row: 2;
+    margin-bottom: 0.25rem;
   }
 }
 
-.fact-description {
+// Row 3: Dynamic Text Container
+.fact-text-container {
+  align-self: start;
   display: flex;
   flex-direction: column;
-  gap: 1rem; /* Creates a clean, structured gap between the text paragraph and the button */
+  align-items: center;
+  justify-content: center;
 
-  p {
-    margin: 0;
-    font-size: 0.9rem;
-    line-height: 1.5;
-    color: #555;
+  @media (max-width: 639.9px) {
+    text-align: left;
+    grid-column: 2;
+    grid-row: 1 / span 3;
+    align-self: start;
+    justify-content: center;
+    width: 100%;
   }
 }
 
-// Fun fact buttons
+.fact-description {
+  margin: 0;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: #555;
+  max-width: 180px;
+
+  @media (max-width: 639.9px) {
+    max-width: 100%;
+    padding-left: 0.75rem;
+  }
+
+  @media (max-width: 1300px) {
+    max-width: 90%;
+  }
+}
+
+// Row 4: Action Button
 .fact-cta-btn {
-  align-self: center; /* Prevents the button from stretching the full width of the box */
+  justify-self: center;
+  align-self: flex-start;
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
@@ -453,6 +537,28 @@
   border-radius: 4px;
   transition: all 0.2s ease;
 
+  .btn-text-desktop {
+    display: inline;
+  }
+
+  .btn-text-mobile {
+    display: none;
+  }
+
+  @media (max-width: 639.9px) {
+    grid-column: 1;
+    grid-row: 3;
+    justify-self: center;
+
+    .btn-text-desktop {
+      display: none;
+    }
+
+    .btn-text-mobile {
+      display: inline;
+    }
+  }
+
   i {
     font-size: 0.9rem;
     transition: transform 0.2s ease;
@@ -463,21 +569,24 @@
     color: #fff;
 
     i {
-      transform: translate(2px, -2px); /* Subtle up-and-right shift on hover */
+      transform: translate(2px, -2px);
     }
   }
 }
 
-
-// Call to Action (contact)
+// Call to Action (Contact)
 .contact-cta-section {
   padding: 5rem 0;
   width: 100%;
   border-radius: 20px;
-  border-top: 1px solid #eee; /* Clean separation from your fun facts */
-  background-color: #fafafa;   /* Extremely subtle background tint to frame the section */
+  border-top: 1px solid #eee;
+  background-color: #fafafa;
   box-shadow: 12px 12px 0px rgba(0, 0, 0, 0.1);
   margin-bottom: 3rem; 
+
+  @media (max-width: 768px) {
+    padding: 3rem 0rem;
+  }
 }
 
 .contact-cta-container {
@@ -492,7 +601,7 @@
   @media (min-width: 768px) {
     flex-direction: row;
     justify-content: space-between;
-    align-items: stretch; /* Changed from center to stretch so left/right sides match heights */
+    align-items: stretch;
   }
 }
 
@@ -500,7 +609,7 @@
   max-width: 600px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between; /* Automatically pushes the subtitle down to the bottom baseline */
+  justify-content: space-between;
 
   h2 {
     font-size: 1.75rem;
@@ -515,19 +624,8 @@
     color: #666;
     margin: 0;
   }
-
-  // The new engineering tagline style nested right inside the left column
-  .cta-subtitle {
-    font-family: inherit; /* Keeps your crisp monospace layout styling intact */
-    font-size: 0.75rem;
-    color: #888;
-    border-top: 1px solid #e0e0e0;
-    padding-top: 1rem;
-    margin-top: 2rem; /* Creates a clean air gap under your body paragraph text */
-  }
 }
 
-// Layout wrapper for the button + social tracks on the right column
 .cta-action {
   display: flex;
   flex-direction: column;
@@ -535,16 +633,15 @@
   gap: 1.25rem;
 
   @media (min-width: 768px) {
-    align-items: flex-end; /* Right-aligns the buttons and icons neatly on desktop layouts */
+    align-items: flex-end;
     justify-content: flex-start;
   }
 
-  // Your original minimalist, high-contrast button styling
   .cta-button {
     display: inline-flex;
     align-items: center;
     gap: 0.75rem;
-    background-color: #111; // Solid dark button
+    background-color: #111;
     color: #fff;
     text-decoration: none;
     padding: 0.85rem 2rem;
@@ -552,7 +649,7 @@
     font-size: 0.95rem;
     font-weight: 600;
     transition: background-color 0.2s ease, transform 0.2s ease;
-    white-space: nowrap; /* Prevents button text wrapping */
+    white-space: nowrap;
 
     i {
       transition: transform 0.2s ease;
@@ -564,58 +661,30 @@
       color: #ffffff;
       
       i {
-        transform: translateX(4px); // Subtle interactive nudge on the arrow
+        transform: translateX(4px);
       }
     }
   }
 
-  // The clean new social icon track nested perfectly below the button
   .cta-socials {
     display: flex;
     gap: 1.25rem;
-    padding-right: 0.25rem; /* Aligns logos precisely flush with the right edge of the button */
+    padding-right: 0.25rem;
 
-    @media (max-width: 767px) {
-      padding-left: 0.25rem; /* Shifts orientation to left-align cleanly on mobile mobile viewports */
+    @media (max-width: 639.9px) {
+      padding-left: 0.25rem;
     }
 
     a {
       color: #111;
-      font-size: 1.35rem; /* Keeps the asset scales highly readable and clean */
+      font-size: 1.35rem;
       text-decoration: none;
       transition: opacity 0.15s ease, transform 0.15s ease;
 
       &:hover {
         opacity: 0.6;
-        transform: translateY(-1px); /* Added a matching tactile hover interaction */
+        transform: translateY(-1px);
       }
     }
   }
-}
-
-@media (max-width: 768px) { // Adjust breakpoint if your mobile view triggers at 900px
-    .funfacts-section{
-        display: grid;
-        grid-template-columns: 1fr;
-        flex-direction: column;
-        justify-content: center;  // Centers the single column vertically
-        justify-items: center;    // Centers the single column horizontally
-        align-items: center;    // Centers the icon, headings, and buttons horizontally
-        text-align: center;      // Centers the multi-line text strings
-    }
-    .funfact-item { // Replace with your exact card class name if different
-        max-width: 90%;          // Ensures the card doesn't exceed the viewport width
-        width: 100%;
-        box-sizing: border-box;
-        align-items: center;     // Centers the content vertically within the card
-        text-align: center;      // Centers the text content within the card
-
-        // Centers the button link block in the flex alignment column
-        a.button, 
-        .view-btn {
-            margin-left: auto;
-            margin-right: auto;
-            width: max-content; // Keeps button snug around its text rather than stretching full-width
-        }
-    }
 }
